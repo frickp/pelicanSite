@@ -1,0 +1,8 @@
+New Post
+########
+
+:date: 2015-9-3 9:04
+:tags:
+:category:
+
+Another post
