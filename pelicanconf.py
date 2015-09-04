@@ -3,7 +3,7 @@
 from __future__ import unicode_literals
 
 AUTHOR = u'Peter Frick'
-SITENAME = u'Data Sandbox'
+SITENAME = u'Peter Frick'
 SITEURL = ''
 
 PATH = 'content'
@@ -36,5 +36,6 @@ DEFAULT_PAGINATION = 10
 
 MARKUP = ('md', 'ipynb')
 
-PLUGIN_PATHS = ['plugins/','pelican-plugins/']
+PLUGIN_PATHS = ['addIns/plugins/','addIns/pelican-plugins/']
 PLUGINS = ['ipynb','sitemap']
+REVERSE_CATEGORY_ORDER = True
