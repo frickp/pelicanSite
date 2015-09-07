@@ -1,3 +1,7 @@
+**Using below method won't give the right code display (color, etc)
+Alternaltively, could just copy/paste in the figures from the working html file
+
+
 To publish R-studio content, 
 1) Knit the file as an html file and save the html.
 2) Open text editor and copy and paste the following (from http://docs.getpelican.com/en/3.6.3/content.html):
