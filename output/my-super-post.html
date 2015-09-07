@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<head>
+    <title>R retry2 - Peter Frick</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+<link rel="canonical" href="/my-super-post.html">
+
+        <meta name="author" content="Peter Frick" />
+        <meta name="keywords" content="thats,awesome" />
+        <meta name="description" content="Short version for index and feeds" />
+
+        <meta property="og:site_name" content="Peter Frick" />
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="R retry2"/>
+        <meta property="og:url" content="/my-super-post.html"/>
+        <meta property="og:description" content="Short version for index and feeds"/>
+        <meta property="article:published_time" content="2015-09-05" />
+            <meta property="article:section" content="try" />
+            <meta property="article:tag" content="thats" />
+            <meta property="article:tag" content="awesome" />
+            <meta property="article:author" content="Peter Frick" />
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="/theme/css/bootstrap.min.css" type="text/css"/>
+    <link href="/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="/theme/css/style.css" type="text/css"/>
+
+
+
+
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/" class="navbar-brand">
+Peter Frick            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                         <li><a href="/pages/about_me.html">
+                             about_me
+                          </a></li>
+                        <li >
+                            <a href="/category/yeah.html">Yeah</a>
+                        </li>
+                        <li >
+                            <a href="/category/welcome.html">Welcome</a>
+                        </li>
+                        <li class="active">
+                            <a href="/category/try.html">Try</a>
+                        </li>
+                        <li >
+                            <a href="/category/test.html">Test</a>
+                        </li>
+                        <li >
+                            <a href="/category/page.html">Page</a>
+                        </li>
+                        <li >
+                            <a href="/category/misc.html">Misc</a>
+                        </li>
+                        <li >
+                            <a href="/category/ipython-notebook.html">Ipython notebook</a>
+                        </li>
+                        <li >
+                            <a href="/category/blog.html">Blog</a>
+                        </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="/archives.html"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+<!-- Banner -->
+<!-- End Banner -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="/my-super-post.html"
+                       rel="bookmark"
+                       title="Permalink to R retry2">
+                        R retry2
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2015-09-05T00:00:00+02:00"> Sat 05 September 2015</time>
+    </span>
+
+
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="/tag/thats.html">thats</a>
+        /
+	<a href="/tag/awesome.html">awesome</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <div class="highlight"><pre>x1<span class="o">=</span><span class="m">1</span><span class="o">:</span><span class="m">100</span>
+y<span class="o">=</span><span class="kp">log</span><span class="p">(</span>x1<span class="p">)</span>
+plot<span class="p">(</span>x1<span class="p">,</span>y<span class="p">,</span>main<span class="o">=</span><span class="s">&#39;Diminishing returns&#39;</span><span class="p">,</span>xlab<span class="o">=</span><span class="s">&#39;Invested resources&#39;</span><span class="p">,</span>ylab<span class="o">=</span><span class="s">&#39;Return on investment&#39;</span><span class="p">,</span>font.lab<span class="o">=</span><span class="m">2</span><span class="p">)</span>
+</pre></div>
+
+
+<p><img alt="plot of chunk unnamed-chunk-1" src="figure/unnamed-chunk-1-1.png" /> </p>
+<p>Okay, so the plot looks good now! Let's add some noise around the theoretical value to make it look more like real-world data</p>
+<div class="highlight"><pre><span class="c1">#Let&#39;s keep x-values the same</span>
+<span class="c1">#x1=1:100</span>
+
+<span class="c1">#Now, update y values to include noise</span>
+par<span class="p">(</span>mfrow<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">3</span><span class="p">))</span>
+y<span class="o">=</span><span class="kp">log</span><span class="p">(</span>x1<span class="p">)</span> <span class="o">+</span> rnorm<span class="p">(</span><span class="kp">length</span><span class="p">(</span>x1<span class="p">),</span>sd<span class="o">=</span><span class="m">0.1</span><span class="p">)</span>
+y2<span class="o">=</span><span class="kp">log</span><span class="p">(</span>x1<span class="p">)</span> <span class="o">+</span> rnorm<span class="p">(</span><span class="kp">length</span><span class="p">(</span>x1<span class="p">),</span>sd<span class="o">=</span><span class="m">0.3</span><span class="p">)</span>
+y3<span class="o">=</span><span class="kp">log</span><span class="p">(</span>x1<span class="p">)</span> <span class="o">+</span> rnorm<span class="p">(</span><span class="kp">length</span><span class="p">(</span>x1<span class="p">),</span>sd<span class="o">=</span><span class="m">1</span><span class="p">)</span>
+plot<span class="p">(</span>x1<span class="p">,</span>y<span class="p">,</span>main<span class="o">=</span><span class="s">&#39;Diminishing returns&#39;</span><span class="p">,</span>xlab<span class="o">=</span><span class="s">&#39;Invested resources&#39;</span><span class="p">,</span>ylab<span class="o">=</span><span class="s">&#39;Return on investment&#39;</span><span class="p">,</span>font.lab<span class="o">=</span><span class="m">2</span><span class="p">)</span>
+plot<span class="p">(</span>x1<span class="p">,</span>y2<span class="p">)</span>
+plot<span class="p">(</span>x1<span class="p">,</span>y3<span class="p">)</span>
+</pre></div>
+
+
+<p><img alt="plot of chunk unnamed-chunk-2" src="figure/unnamed-chunk-2-1.png" /> </p>
+            </div>
+            <!-- /.entry-content -->
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3" id="sidebar">
+            <aside>
+
+<section class="well well-sm">
+    <ul class="list-group list-group-flush">
+            <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+              <ul class="list-group" id="social">
+                <li class="list-group-item"><a href="#"><i class="fa fa-you-can-add-links-in-your-config-file-square fa-lg"></i> You can add links in your config file</a></li>
+                <li class="list-group-item"><a href="#"><i class="fa fa-another-social-link-square fa-lg"></i> Another social link</a></li>
+              </ul>
+            </li>
+
+
+
+
+
+    <li class="list-group-item"><h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Links</span></h4>
+      <ul class="list-group" id="links">
+        <li class="list-group-item">
+            <a href="http://getpelican.com/" target="_blank">
+                Pelican
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="http://python.org/" target="_blank">
+                Python.org
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="http://jinja.pocoo.org/" target="_blank">
+                Jinja2
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="#" target="_blank">
+                You can modify those links in your config file
+            </a>
+        </li>
+      </ul>
+    </li>
+    </ul>
+</section>
+            </aside>
+        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2015 Peter Frick
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="/theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="/theme/js/respond.min.js"></script>
+
+
+</body>
+</html>

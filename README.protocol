@@ -1,0 +1,26 @@
+To publish R-studio content, 
+1) Knit the file as an html file and save the html.
+2) Open text editor and copy and paste the following (from http://docs.getpelican.com/en/3.6.3/content.html):
+<html>
+    <head>
+        <title>My super title</title>
+        <meta name="tags" content="thats, awesome" />
+        <meta name="date" content="2012-07-09 22:28" />
+        <meta name="modified" content="2012-07-10 20:14" />
+        <meta name="category" content="yeah" />
+        <meta name="authors" content="Alexis Métaireau, Conan Doyle" />
+        <meta name="summary" content="Short version for index and feeds" />
+    </head>
+    <body>
+        This is the content of my super blog post.
+    </body>
+</html>
+3) Open RStudio-generated html file in a text editor. Copy the body of the file (the part between the 
+two <body> commands). Keeping anything else will prevent the post from displaying online. Paste
+this content between the two <body> commands in the new document in the text editor
+4) Update the annotations, etc in the first line. 
+That's it! Pelican should be able to handle the file just fine now.
+
+
+
+http://docs.getpelican.com/en/3.6.3/content.html
