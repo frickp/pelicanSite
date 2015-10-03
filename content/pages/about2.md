@@ -9,4 +9,5 @@ Summary: Short version for index and feeds
 
 This is an alternate to try to add pic
 
-![Alt Text](../images/headShot.tif)
+<img src="https://github.com/frickp/pelicanSite/blob/master/images/headShot.tif?raw=true" width="200" height="200" />
+Here's some more text
