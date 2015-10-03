@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<head>
+    <title>Variable selection for multiple regression models - Peter Frick</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+<link rel="canonical" href="/variable-selection-r-multiple-regression.html">
+
+        <meta name="author" content="Peter Frick" />
+        <meta name="keywords" content="R,jupyter" />
+        <meta name="description" content="Examine variable selection in the Boston housing price dataset Note, that there are some drawbacks/limitations to consider when using variable selection: http://www.stata.com/support/faqs/statistics/stepwise-regression-problems/ First do a set of linear models to see which predictors are most significant" />
+
+        <meta property="og:site_name" content="Peter Frick" />
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="Variable selection for multiple regression models"/>
+        <meta property="og:url" content="/variable-selection-r-multiple-regression.html"/>
+        <meta property="og:description" content="Examine variable selection in the Boston housing price dataset Note, that there are some drawbacks/limitations to consider when using variable selection: http://www.stata.com/support/faqs/statistics/stepwise-regression-problems/ First do a set of linear models to see which predictors are most significant"/>
+        <meta property="article:published_time" content="2015-09-08" />
+            <meta property="article:section" content="blog" />
+            <meta property="article:tag" content="R" />
+            <meta property="article:tag" content="jupyter" />
+            <meta property="article:author" content="Peter Frick" />
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="/theme/css/bootstrap.min.css" type="text/css"/>
+    <link href="/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="/theme/css/style.css" type="text/css"/>
+
+
+
+
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/" class="navbar-brand">
+Peter Frick            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                         <li><a href="/pages/about-me.html">
+                             About me
+                          </a></li>
+                        <li >
+                            <a href="/category/welcome.html">Welcome</a>
+                        </li>
+                        <li class="active">
+                            <a href="/category/blog.html">Blog</a>
+                        </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="/archives.html"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+<!-- Banner -->
+<!-- End Banner -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="/variable-selection-r-multiple-regression.html"
+                       rel="bookmark"
+                       title="Permalink to Variable selection for multiple regression models">
+                        Variable selection for multiple regression models
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2015-09-08T00:00:00+02:00"> Tue 08 September 2015</time>
+    </span>
+
+
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="/tag/r.html">R</a>
+        /
+	<a href="/tag/jupyter.html">jupyter</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <style type="text/css">/*!
+*
+* IPython notebook
+*
+*/.ansibold{font-weight:700}.ansiblack{}.ansired{color:#8b0000}.ansigreen{6400}.ansiyellow{color:#c4a000}.ansiblue{8b}.ansipurple{color:#9400d3}.ansicyan{color:#4682b4}.ansigray{color:gray}.ansibgblack{background-}.ansibgred{background-color:red}.ansibggreen{background-color:green}.ansibgyellow{background-color:#ff0}.ansibgblue{background-f}.ansibgpurple{background-color:#ff00ff}.ansibgcyan{background-ff}.ansibggray{background-color:gray}div.cell{border:1px solid transparent;display:-webkit-box;-webkit-box-orient:vertical;display:-moz-box;-moz-box-orient:vertical;display:box;box-orient:vertical;box-align:stretch;display:flex;flex-direction:column;align-items:stretch;border-radius:2px;box-sizing:border-box;-moz-box-sizing:border-box;border-width:thin;border-style:solid;width:100%;padding:5px;margin:0;outline:0}div.cell.selected{border-color:#ababab}@media print{div.cell.selected{border-color:transparent}}.edit_mode div.cell.selected{border-color:green}.prompt{min-width:14ex;padding:.4em;margin:0;font-family:monospace;text-align:right;line-height:1.21429em}div.inner_cell{display:-webkit-box;-webkit-box-orient:vertical;display:-moz-box;-moz-box-orient:vertical;display:box;box-orient:vertical;box-align:stretch;display:flex;flex-direction:column;align-items:stretch;-webkit-box-flex:1;-moz-box-flex:1;box-flex:1;flex:1}@-moz-document url-prefix(){div.inner_cell{overflow-x:hidden}}div.input_area{border:1px solid #cfcfcf;border-radius:2px;background:#f7f7f7;line-height:1.21429em}div.prompt:empty{padding-top:0;padding-bottom:0}div.unrecognized_cell{padding:5px 5px 5px 0;display:-webkit-box;-webkit-box-orient:horizontal;display:-moz-box;-moz-box-orient:horizontal;display:box;box-orient:horizontal;box-align:stretch;display:flex;flex-direction:row;align-items:stretch}div.unrecognized_cell .inner_cell{border-radius:2px;padding:5px;font-weight:700;color:red;border:1px solid #cfcfcf;background:#eaeaea}div.unrecognized_cell .inner_cell a,div.unrecognized_cell .inner_cell a:hover{color:inherit;text-decoration:none}@media (max-width:540px){.prompt{text-align:left}div.unrecognized_cell>div.prompt{display:none}}div.code_cell{}div.input{page-break-inside:avoid;display:-webkit-box;-webkit-box-orient:horizontal;display:-moz-box;-moz-box-orient:horizontal;display:box;box-orient:horizontal;box-align:stretch;display:flex;flex-direction:row;align-items:stretch}@media (max-width:540px){div.input{-webkit-box-orient:vertical;-moz-box-orient:vertical;box-orient:vertical;box-align:stretch;display:flex;flex-direction:column;align-items:stretch}}div.input_prompt{color:navy;border-top:1px solid transparent}div.input_area>div.highlight{margin:.4em;border:none;padding:0;background-color:transparent}div.input_area>div.highlight>pre{margin:0;border:none;padding:0;background-color:transparent}.CodeMirror{line-height:1.21429em;font-size:14px;height:auto;background:0 0}.CodeMirror-scroll{overflow-y:hidden;overflow-x:auto}.CodeMirror-lines{padding:.4em}.CodeMirror-linenumber{padding:0 8px 0 4px}.CodeMirror-gutters{border-bottom-left-radius:2px;border-top-left-radius:2px}.CodeMirror pre{padding:0;border:0;border-radius:0}.highlight-base,.highlight-variable{}.highlight-variable-2{color:#1a1a1a}.highlight-variable-3{color:#333}.highlight-string{color:#BA2121}.highlight-comment{color:#408080;font-style:italic}.highlight-number{80}.highlight-atom{color:#88F}.highlight-keyword{color:green;font-weight:700}.highlight-builtin{color:green}.highlight-error{color:red}.highlight-operator{color:#A2F;font-weight:700}.highlight-meta{color:#A2F}.highlight-def{f}.highlight-string-2{color:#f50}.highlight-qualifier{color:#555}.highlight-bracket{color:#997}.highlight-tag{color:#170}.highlight-attribute{c}.highlight-header{f}.highlight-quote{90}.highlight-link{c}.cm-s-ipython span.cm-keyword{color:green;font-weight:700}.cm-s-ipython span.cm-atom{color:#88F}.cm-s-ipython span.cm-number{80}.cm-s-ipython span.cm-def{f}.cm-s-ipython span.cm-variable{}.cm-s-ipython span.cm-operator{color:#A2F;font-weight:700}.cm-s-ipython span.cm-variable-2{color:#1a1a1a}.cm-s-ipython span.cm-variable-3{color:#333}.cm-s-ipython span.cm-comment{color:#408080;font-style:italic}.cm-s-ipython span.cm-string{color:#BA2121}.cm-s-ipython span.cm-string-2{color:#f50}.cm-s-ipython span.cm-meta{color:#A2F}.cm-s-ipython span.cm-qualifier{color:#555}.cm-s-ipython span.cm-builtin{color:green}.cm-s-ipython span.cm-bracket{color:#997}.cm-s-ipython span.cm-tag{color:#170}.cm-s-ipython span.cm-attribute{c}.cm-s-ipython span.cm-header{f}.cm-s-ipython span.cm-quote{90}.cm-s-ipython span.cm-link{c}.cm-s-ipython span.cm-error{color:red}.cm-s-ipython span.cm-tab{background:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAMCAYAAAAkuj5RAAAAAXNSR0IArs4c6QAAAGFJREFUSMft1LsRQFAQheHPowAKoACx3IgEKtaEHujDjORSgWTH/ZOdnZOcM/sgk/kFFWY0qV8foQwS4MKBCS3qR6ixBJvElOobYAtivseIE120FaowJPN75GMu8j/LfMwNjh4HUpwg4LUAAAAASUVORK5CYII=')right no-repeat}div.output_wrapper{display:-webkit-box;-webkit-box-align:stretch;display:-moz-box;-moz-box-align:stretch;display:box;box-orient:vertical;box-align:stretch;display:flex;flex-direction:column;align-items:stretch;z-index:1}div.output_scroll{height:24em;width:100%;overflow:auto;border-radius:2px;-webkit-box-shadow:inset 0 2px 8px rgba(0,0,0,.8);box-shadow:inset 0 2px 8px rgba(0,0,0,.8);display:block}div.output_collapsed{margin:0;padding:0;display:-webkit-box;-webkit-box-orient:vertical;display:-moz-box;-moz-box-orient:vertical;display:box;box-orient:vertical;box-align:stretch;display:flex;flex-direction:column;align-items:stretch}div.out_prompt_overlay{height:100%;padding:0 .4em;position:absolute;border-radius:2px}div.out_prompt_overlay:hover{-webkit-box-shadow:inset 0 0 1px #000;box-shadow:inset 0 0 1px #000;background:rgba(240,240,240,.5)}div.output_prompt{color:#8b0000}div.output_area{padding:0;page-break-inside:avoid;display:-webkit-box;-webkit-box-orient:horizontal;display:-moz-box;-moz-box-orient:horizontal;display:box;box-orient:horizontal;box-align:stretch;display:flex;flex-direction:row;align-items:stretch}div.output_area .MathJax_Display{text-align:left!important}div.output_area div.output_area img,div.output_area svg{max-width:100%;height:auto}div.output_area img.unconfined,div.output_area svg.unconfined{max-width:none}.output{display:-webkit-box;-webkit-box-orient:vertical;display:-moz-box;-moz-box-orient:vertical;display:box;box-orient:vertical;box-align:stretch;display:flex;flex-direction:column;align-items:stretch}@media (max-width:540px){div.output_area{-webkit-box-orient:vertical;-moz-box-orient:vertical;box-orient:vertical;box-align:stretch;display:flex;flex-direction:column;align-items:stretch}}div.output_area pre{margin:0;padding:0;border:0;vertical-align:baseline;background-color:transparent;border-radius:0}div.output_subarea{overflow-x:auto;padding:.4em;-webkit-box-flex:1;-moz-box-flex:1;box-flex:1;flex:1;max-width:calc(100% - 14ex)}div.output_text{text-align:left;line-height:1.21429em}div.output_stderr{background:#fdd}div.output_latex{text-align:left}div.output_javascript:empty{padding:0}.js-error{color:#8b0000}div.raw_input_container{font-family:monospace;padding-top:5px}span.raw_input_prompt{}input.raw_input{font-family:inherit;font-size:inherit;color:inherit;width:auto;vertical-align:baseline;padding:0 .25em;margin:0 .25em}input.raw_input:focus{box-shadow:none}p.p-space{margin-bottom:10px}div.output_unrecognized{padding:5px;font-weight:700;color:red}div.output_unrecognized a,div.output_unrecognized a:hover{color:inherit;text-decoration:none}.rendered_html{}.rendered_html :link,.rendered_html :visited,.rendered_html h1:first-child{margin-top:.538em}.rendered_html h2:first-child{margin-top:.636em}.rendered_html h3:first-child{margin-top:.777em}.rendered_html h4:first-child,.rendered_html h5:first-child,.rendered_html h6:first-child{margin-top:1em}.rendered_html *+ol,.rendered_html *+ul{margin-top:1em}.rendered_html *+table{margin-top:1em}.rendered_html *+p{margin-top:1em}.rendered_html *+img{margin-top:1em}div.text_cell{display:-webkit-box;-webkit-box-orient:horizontal;display:-moz-box;-moz-box-orient:horizontal;display:box;box-orient:horizontal;box-align:stretch;display:flex;flex-direction:row;align-items:stretch}@media (max-width:540px){div.text_cell>div.prompt{display:none}}div.text_cell_render{outline:0;resize:none;width:inherit;border-style:none;padding:.5em .5em .5em .4em;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box}a.anchor-link:link{text-decoration:none;padding:0 20px;visibility:hidden}h1:hover .anchor-link,h2:hover .anchor-link,h3:hover .anchor-link,h4:hover .anchor-link,h5:hover .anchor-link,h6:hover .anchor-link{visibility:visible}.text_cell.rendered .input_area{display:none}.text_cell.rendered .text_cell.unrendered .text_cell_render{display:none}.cm-header-1,.cm-header-2,.cm-header-3,.cm-header-4,.cm-header-5,.cm-header-6{font-weight:700;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif}.cm-header-1{font-size:185.7%}.cm-header-2{font-size:157.1%}.cm-header-3{font-size:128.6%}.cm-header-4{font-size:110%}.cm-header-5,.cm-header-6{font-size:100%;font-style:italic}</style>
+<style type="text/css">.highlight .hll { background-color: #ffffcc }
+.highlight  { background: #f8f8f8; }
+.highlight .c { color: #408080; font-style: italic } /* Comment */
+.highlight .err { border: 1px solid #FF0000 } /* Error */
+.highlight .k { color: #008000; font-weight: bold } /* Keyword */
+.highlight .o { color: #666666 } /* Operator */
+.highlight .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: #BC7A00 } /* Comment.Preproc */
+.highlight .c1 { color: #408080; font-style: italic } /* Comment.Single */
+.highlight .cs { color: #408080; font-style: italic } /* Comment.Special */
+.highlight .gd { color: #A00000 } /* Generic.Deleted */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gr { color: #FF0000 } /* Generic.Error */
+.highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.highlight .gi { color: #00A000 } /* Generic.Inserted */
+.highlight .go { color: #888888 } /* Generic.Output */
+.highlight .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.highlight .gt { color: #0044DD } /* Generic.Traceback */
+.highlight .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.highlight .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.highlight .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.highlight .kp { color: #008000 } /* Keyword.Pseudo */
+.highlight .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #B00040 } /* Keyword.Type */
+.highlight .m { color: #666666 } /* Literal.Number */
+.highlight .s { color: #BA2121 } /* Literal.String */
+.highlight .na { color: #7D9029 } /* Name.Attribute */
+.highlight .nb { color: #008000 } /* Name.Builtin */
+.highlight .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.highlight .no { color: #880000 } /* Name.Constant */
+.highlight .nd { color: #AA22FF } /* Name.Decorator */
+.highlight .ni { color: #999999; font-weight: bold } /* Name.Entity */
+.highlight .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.highlight .nf { color: #0000FF } /* Name.Function */
+.highlight .nl { color: #A0A000 } /* Name.Label */
+.highlight .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.highlight .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.highlight .nv { color: #19177C } /* Name.Variable */
+.highlight .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.highlight .w { color: #bbbbbb } /* Text.Whitespace */
+.highlight .mb { color: #666666 } /* Literal.Number.Bin */
+.highlight .mf { color: #666666 } /* Literal.Number.Float */
+.highlight .mh { color: #666666 } /* Literal.Number.Hex */
+.highlight .mi { color: #666666 } /* Literal.Number.Integer */
+.highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
+.highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.highlight .s2 { color: #BA2121 } /* Literal.String.Double */
+.highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.highlight .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.highlight .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.highlight .sx { color: #008000 } /* Literal.String.Other */
+.highlight .sr { color: #BB6688 } /* Literal.String.Regex */
+.highlight .s1 { color: #BA2121 } /* Literal.String.Single */
+.highlight .ss { color: #19177C } /* Literal.String.Symbol */
+.highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .vc { color: #19177C } /* Name.Variable.Class */
+.highlight .vg { color: #19177C } /* Name.Variable.Global */
+.highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */</style><html><body><div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Examine variable selection in the Boston housing price dataset</p>
+<p>Note, that there are some drawbacks/limitations to consider when using variable selection: <a href="http://www.stata.com/support/faqs/statistics/stepwise-regression-problems/">http://www.stata.com/support/faqs/statistics/stepwise-regression-problems/</a></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>First do a set of linear models to see which predictors are most significant</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [1]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-r"><pre><span class="kn">library</span><span class="p">(</span>MASS<span class="p">)</span>
+<span class="kn">attach</span><span class="p">(</span>Boston<span class="p">)</span>
+nm <span class="o">=</span> <span class="kp">names</span><span class="p">(</span>Boston<span class="p">)</span>
+nm <span class="o">=</span> nm<span class="p">[</span>nm<span class="o">!=</span><span class="s">'medv'</span><span class="p">]</span>
+<span class="c1"># First, choose the predictor with the highest R^2 value</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [2]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-r"><pre>statsum<span class="o">&lt;-</span><span class="kt">data.frame</span><span class="p">(</span>pred<span class="o">=</span><span class="kp">rep</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span><span class="kp">length</span><span class="p">(</span>nm<span class="p">)),</span>R2<span class="o">=</span><span class="kt">numeric</span><span class="p">(</span><span class="kp">length</span><span class="p">(</span>nm<span class="p">)))</span>
+<span class="kr">for</span> <span class="p">(</span>i <span class="kr">in</span> <span class="m">1</span><span class="o">:</span><span class="kp">length</span><span class="p">(</span>nm<span class="p">))</span>
+<span class="p">{</span>
+  fit   <span class="o">&lt;-</span> lm<span class="p">(</span>medv <span class="o">~</span> <span class="kp">eval</span><span class="p">(</span><span class="kp">parse</span><span class="p">(</span>text<span class="o">=</span>nm<span class="p">[</span>i<span class="p">])))</span>
+  statsum<span class="o">$</span>pred<span class="p">[</span>i<span class="p">]</span><span class="o">=</span>nm<span class="p">[</span>i<span class="p">]</span>
+  statsum<span class="o">$</span>R2<span class="p">[</span>i<span class="p">]</span><span class="o">=</span><span class="kp">summary</span><span class="p">(</span>fit<span class="p">)</span><span class="o">$</span>r.squared
+<span class="p">}</span>
+
+highR2 <span class="o">=</span> statsum<span class="o">$</span>pred<span class="p">[</span>statsum<span class="o">$</span>R2<span class="o">==</span><span class="kp">max</span><span class="p">(</span>statsum<span class="o">$</span>R2<span class="p">)]</span>
+<span class="kp">print</span><span class="p">(</span>
+  <span class="kp">paste</span><span class="p">(</span>
+    <span class="s">'The best predictor is'</span><span class="p">,</span>
+    statsum<span class="o">$</span>pred<span class="p">[</span>statsum<span class="o">$</span>R2<span class="o">==</span><span class="kp">max</span><span class="p">(</span>statsum<span class="o">$</span>R2<span class="p">)],</span>
+    <span class="s">'with and R2 value of'</span><span class="p">,</span>
+    <span class="kp">round</span><span class="p">(</span>statsum<span class="o">$</span>R2<span class="p">[</span>statsum<span class="o">$</span>R2<span class="o">==</span><span class="kp">max</span><span class="p">(</span>statsum<span class="o">$</span>R2<span class="p">)],</span><span class="m">2</span><span class="p">)</span>
+    <span class="p">)</span>
+  <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[1] "The best predictor is lstat with and R2 value of 0.54"
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Next, find out the variable that additively makes the model most predictice</p>
+<p>Do forward, reverse, and mixed selection on a linear model.
+<a href="http://stackoverflow.com/questions/22913774/forward-stepwise-regression">http://stackoverflow.com/questions/22913774/forward-stepwise-regression</a></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [4]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-r"><pre>min.model<span class="o">=</span>lm<span class="p">(</span>medv <span class="o">~</span> <span class="m">1</span><span class="p">)</span>
+max.model<span class="o">=</span>lm<span class="p">(</span>medv<span class="o">~</span><span class="m">.</span><span class="p">,</span>data<span class="o">=</span>Boston<span class="p">)</span>
+
+fwd.model<span class="o">=</span>step<span class="p">(</span>object<span class="o">=</span>min.model<span class="p">,</span>scope<span class="o">=</span>formula<span class="p">(</span>max.model<span class="p">),</span>direction<span class="o">=</span><span class="s">'forward'</span><span class="p">)</span>
+<span class="c1">#rev.model=step(object=max.model,scope=formula(min.model),direction='backward')</span>
+<span class="c1">#fwd.model=step(object=min.model,scope=formula(max.model),direction='both')</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Start:  AIC=2246.51
+medv ~ 1
+
+          Df Sum of Sq   RSS    AIC
++ lstat    1   23243.9 19472 1851.0
++ rm       1   20654.4 22062 1914.2
++ ptratio  1   11014.3 31702 2097.6
++ indus    1    9995.2 32721 2113.6
++ tax      1    9377.3 33339 2123.1
++ nox      1    7800.1 34916 2146.5
++ crim     1    6440.8 36276 2165.8
++ rad      1    6221.1 36495 2168.9
++ age      1    6069.8 36647 2171.0
++ zn       1    5549.7 37167 2178.1
++ black    1    4749.9 37966 2188.9
++ dis      1    2668.2 40048 2215.9
++ chas     1    1312.1 41404 2232.7
+&lt;none&gt;                 42716 2246.5
+
+Step:  AIC=1851.01
+medv ~ lstat
+
+          Df Sum of Sq   RSS    AIC
++ rm       1    4033.1 15439 1735.6
++ ptratio  1    2670.1 16802 1778.4
++ chas     1     786.3 18686 1832.2
++ dis      1     772.4 18700 1832.5
++ age      1     304.3 19168 1845.0
++ tax      1     274.4 19198 1845.8
++ black    1     198.3 19274 1847.8
++ zn       1     160.3 19312 1848.8
++ crim     1     146.9 19325 1849.2
++ indus    1      98.7 19374 1850.4
+&lt;none&gt;                 19472 1851.0
++ rad      1      25.1 19447 1852.4
++ nox      1       4.8 19468 1852.9
+
+Step:  AIC=1735.58
+medv ~ lstat + rm
+
+          Df Sum of Sq   RSS    AIC
++ ptratio  1   1711.32 13728 1678.1
++ chas     1    548.53 14891 1719.3
++ black    1    512.31 14927 1720.5
++ tax      1    425.16 15014 1723.5
++ dis      1    351.15 15088 1725.9
++ crim     1    311.42 15128 1727.3
++ rad      1    180.45 15259 1731.6
++ indus    1     61.09 15378 1735.6
+&lt;none&gt;                 15439 1735.6
++ zn       1     56.56 15383 1735.7
++ age      1     20.18 15419 1736.9
++ nox      1     14.90 15424 1737.1
+
+Step:  AIC=1678.13
+medv ~ lstat + rm + ptratio
+
+        Df Sum of Sq   RSS    AIC
++ dis    1    499.08 13229 1661.4
++ black  1    389.68 13338 1665.6
++ chas   1    377.96 13350 1666.0
++ crim   1    122.52 13606 1675.6
++ age    1     66.24 13662 1677.7
+&lt;none&gt;               13728 1678.1
++ tax    1     44.36 13684 1678.5
++ nox    1     24.81 13703 1679.2
++ zn     1     14.96 13713 1679.6
++ rad    1      6.07 13722 1679.9
++ indus  1      0.83 13727 1680.1
+
+Step:  AIC=1661.39
+medv ~ lstat + rm + ptratio + dis
+
+        Df Sum of Sq   RSS    AIC
++ nox    1    759.56 12469 1633.5
++ black  1    502.64 12726 1643.8
++ chas   1    267.43 12962 1653.1
++ indus  1    242.65 12986 1654.0
++ tax    1    240.34 12989 1654.1
++ crim   1    233.54 12995 1654.4
++ zn     1    144.81 13084 1657.8
++ age    1     61.36 13168 1661.0
+&lt;none&gt;               13229 1661.4
++ rad    1     22.40 13206 1662.5
+
+Step:  AIC=1633.47
+medv ~ lstat + rm + ptratio + dis + nox
+
+        Df Sum of Sq   RSS    AIC
++ chas   1    328.27 12141 1622.0
++ black  1    311.83 12158 1622.7
++ zn     1    151.71 12318 1629.3
++ crim   1    141.43 12328 1629.7
++ rad    1     53.48 12416 1633.3
+&lt;none&gt;               12469 1633.5
++ indus  1     17.10 12452 1634.8
++ tax    1     10.50 12459 1635.0
++ age    1      0.25 12469 1635.5
+
+Step:  AIC=1621.97
+medv ~ lstat + rm + ptratio + dis + nox + chas
+
+        Df Sum of Sq   RSS    AIC
++ black  1   272.837 11868 1612.5
++ zn     1   164.406 11977 1617.1
++ crim   1   116.330 12025 1619.1
++ rad    1    58.556 12082 1621.5
+&lt;none&gt;               12141 1622.0
++ indus  1    26.274 12115 1622.9
++ tax    1     4.187 12137 1623.8
++ age    1     2.331 12139 1623.9
+
+Step:  AIC=1612.47
+medv ~ lstat + rm + ptratio + dis + nox + chas + black
+
+        Df Sum of Sq   RSS    AIC
++ zn     1   189.936 11678 1606.3
++ rad    1   144.320 11724 1608.3
++ crim   1    55.633 11813 1612.1
+&lt;none&gt;               11868 1612.5
++ indus  1    15.584 11853 1613.8
++ age    1     9.446 11859 1614.1
++ tax    1     2.703 11866 1614.4
+
+Step:  AIC=1606.31
+medv ~ lstat + rm + ptratio + dis + nox + chas + black + zn
+
+        Df Sum of Sq   RSS    AIC
++ crim   1    94.712 11584 1604.2
++ rad    1    93.614 11585 1604.2
+&lt;none&gt;               11678 1606.3
++ indus  1    16.048 11662 1607.6
++ tax    1     3.952 11674 1608.1
++ age    1     1.491 11677 1608.2
+
+Step:  AIC=1604.19
+medv ~ lstat + rm + ptratio + dis + nox + chas + black + zn + 
+    crim
+
+        Df Sum of Sq   RSS    AIC
++ rad    1   228.604 11355 1596.1
+&lt;none&gt;               11584 1604.2
++ indus  1    15.773 11568 1605.5
++ age    1     2.470 11581 1606.1
++ tax    1     1.305 11582 1606.1
+
+Step:  AIC=1596.1
+medv ~ lstat + rm + ptratio + dis + nox + chas + black + zn + 
+    crim + rad
+
+        Df Sum of Sq   RSS    AIC
++ tax    1   273.619 11081 1585.8
+&lt;none&gt;               11355 1596.1
++ indus  1    33.894 11321 1596.6
++ age    1     0.096 11355 1598.1
+
+Step:  AIC=1585.76
+medv ~ lstat + rm + ptratio + dis + nox + chas + black + zn + 
+    crim + rad + tax
+
+        Df Sum of Sq   RSS    AIC
+&lt;none&gt;               11081 1585.8
++ indus  1   2.51754 11079 1587.7
++ age    1   0.06271 11081 1587.8
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Reverse stepwise method gives the same</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [9]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-r"><pre>rev.model<span class="o">=</span>step<span class="p">(</span>object<span class="o">=</span>max.model<span class="p">,</span>scope<span class="o">=</span>formula<span class="p">(</span>min.model<span class="p">),</span>direction<span class="o">=</span><span class="s">'backward'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Start:  AIC=1589.64
+medv ~ crim + zn + indus + chas + nox + rm + age + dis + rad + 
+    tax + ptratio + black + lstat
+
+          Df Sum of Sq   RSS    AIC
+- age      1      0.06 11079 1587.7
+- indus    1      2.52 11081 1587.8
+&lt;none&gt;                 11079 1589.6
+- chas     1    218.97 11298 1597.5
+- tax      1    242.26 11321 1598.6
+- crim     1    243.22 11322 1598.6
+- zn       1    257.49 11336 1599.3
+- black    1    270.63 11349 1599.8
+- rad      1    479.15 11558 1609.1
+- nox      1    487.16 11566 1609.4
+- ptratio  1   1194.23 12273 1639.4
+- dis      1   1232.41 12311 1641.0
+- rm       1   1871.32 12950 1666.6
+- lstat    1   2410.84 13490 1687.3
+
+Step:  AIC=1587.65
+medv ~ crim + zn + indus + chas + nox + rm + dis + rad + tax + 
+    ptratio + black + lstat
+
+          Df Sum of Sq   RSS    AIC
+- indus    1      2.52 11081 1585.8
+&lt;none&gt;                 11079 1587.7
+- chas     1    219.91 11299 1595.6
+- tax      1    242.24 11321 1596.6
+- crim     1    243.20 11322 1596.6
+- zn       1    260.32 11339 1597.4
+- black    1    272.26 11351 1597.9
+- rad      1    481.09 11560 1607.2
+- nox      1    520.87 11600 1608.9
+- ptratio  1   1200.23 12279 1637.7
+- dis      1   1352.26 12431 1643.9
+- rm       1   1959.55 13038 1668.0
+- lstat    1   2718.88 13798 1696.7
+
+Step:  AIC=1585.76
+medv ~ crim + zn + chas + nox + rm + dis + rad + tax + ptratio + 
+    black + lstat
+
+          Df Sum of Sq   RSS    AIC
+&lt;none&gt;                 11081 1585.8
+- chas     1    227.21 11309 1594.0
+- crim     1    245.37 11327 1594.8
+- zn       1    257.82 11339 1595.4
+- black    1    270.82 11352 1596.0
+- tax      1    273.62 11355 1596.1
+- rad      1    500.92 11582 1606.1
+- nox      1    541.91 11623 1607.9
+- ptratio  1   1206.45 12288 1636.0
+- dis      1   1448.94 12530 1645.9
+- rm       1   1963.66 13045 1666.3
+- lstat    1   2723.48 13805 1695.0
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-r"><pre>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: 'center'," +
+        "    displayIndent: '0em'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['$','$'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+        "    } " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+
+            </div>
+            <!-- /.entry-content -->
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3" id="sidebar">
+            <aside>
+
+<section class="well well-sm">
+    <ul class="list-group list-group-flush">
+            <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+              <ul class="list-group" id="social">
+                <li class="list-group-item"><a href="https://www.linkedin.com/pub/peter-frick/39/455/ab7"><i class="fa fa-linkedin-square fa-lg"></i> LinkedIn</a></li>
+                <li class="list-group-item"><a href="https://github.com/frickp"><i class="fa fa-github-square fa-lg"></i> GitHub</a></li>
+              </ul>
+            </li>
+
+
+
+
+
+    <li class="list-group-item"><h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Links</span></h4>
+      <ul class="list-group" id="links">
+        <li class="list-group-item">
+            <a href="http://getpelican.com/" target="_blank">
+                Pelican
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="http://python.org/" target="_blank">
+                Python.org
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="http://jinja.pocoo.org/" target="_blank">
+                Jinja2
+            </a>
+        </li>
+      </ul>
+    </li>
+    </ul>
+</section>
+            </aside>
+        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2015 Peter Frick
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="/theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="/theme/js/respond.min.js"></script>
+
+
+</body>
+</html>

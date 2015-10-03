@@ -23,11 +23,12 @@ AUTHOR_FEED_RSS = None
 LINKS = (('Pelican', 'http://getpelican.com/'),
          ('Python.org', 'http://python.org/'),
          ('Jinja2', 'http://jinja.pocoo.org/'),
-         ('You can modify those links in your config file', '#'),)
+        )
 
 # Social widget
-SOCIAL = (('You can add links in your config file', '#'),
-          ('Another social link', '#'),)
+SOCIAL = (('LinkedIn', 'https://www.linkedin.com/pub/peter-frick/39/455/ab7'),
+        ('GitHub','https://github.com/frickp'), 
+	 )
 
 DEFAULT_PAGINATION = 10
 

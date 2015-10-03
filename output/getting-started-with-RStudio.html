@@ -64,15 +64,6 @@ Peter Frick            </a>
                             <a href="/category/welcome.html">Welcome</a>
                         </li>
                         <li >
-                            <a href="/category/test.html">Test</a>
-                        </li>
-                        <li >
-                            <a href="/category/page.html">Page</a>
-                        </li>
-                        <li >
-                            <a href="/category/misc.html">Misc</a>
-                        </li>
-                        <li >
                             <a href="/category/ipython-notebook.html">Ipython notebook</a>
                         </li>
                         <li class="active">
@@ -120,67 +111,92 @@ Peter Frick            </a>
     
 </footer><!-- /.post-info -->                    </div>
                 </div>
-                <p>The goal of this exercise is to learn how to embed an R Markdown document in a website.</p>
-<p>To illustrate in-line code, do simple math: 
-five + five = <code>5+5</code></p>
-<p>Next, I want to generate some code to illustrate plotting. First, just consider a logistic equation, $$y=log(x)$$</p>
-<p>Because the y-value increases more slowly with increasing x, let's say this represents the law of diminishing returns</p>
+                <p>The goal of this exercise is to learn R-markdown by comparing simple model fits.</p>
+<p>First, let's consider a logarithmic equation, $$y=log(x)$$
+Because the y-value increases more slowly with increasing x, let's say this represents the law of diminishing returns</p>
 <div class="highlight"><pre>x1<span class="o">=</span><span class="m">1</span><span class="o">:</span><span class="m">100</span>
 y<span class="o">=</span><span class="kp">log</span><span class="p">(</span>x1<span class="p">)</span>
-plot<span class="p">(</span>x1<span class="p">,</span>y<span class="p">,</span>main<span class="o">=</span><span class="s">&#39;Diminishing returns&#39;</span><span class="p">,</span>xlab<span class="o">=</span><span class="s">&#39;Invested resources&#39;</span><span class="p">,</span>ylab<span class="o">=</span><span class="s">&#39;Return on investment&#39;</span><span class="p">,</span>font.lab<span class="o">=</span><span class="m">2</span><span class="p">)</span>
+plot<span class="p">(</span>x1<span class="p">,</span>y<span class="p">,</span>main<span class="o">=</span><span class="s">&#39;Diminishing returns&#39;</span><span class="p">,</span>xlab<span class="o">=</span><span class="s">&#39;Invested resources&#39;</span><span class="p">,</span>ylab<span class="o">=</span><span class="s">&#39;Return on investment&#39;</span><span class="p">,</span>font.lab<span class="o">=</span><span class="m">2</span><span class="p">,</span>cex.lab<span class="o">=</span><span class="m">1.2</span><span class="p">)</span>
 </pre></div>
 
 
 <p><img alt="plot of chunk unnamed-chunk-1" src="figure/unnamed-chunk-1-1.png" /> </p>
-<p>Okay, so the plot looks good now! Let's add some noise around the theoretical value to make it look more like real-world data</p>
-<div class="highlight"><pre><span class="c1">#Let&#39;s keep x-values the same</span>
-<span class="c1">#x1=1:100</span>
-
-<span class="c1">#Now, update y values to include noise</span>
-par<span class="p">(</span>mfrow<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">3</span><span class="p">))</span>
+<p>Okay, so the plot looks good now! Let's add varying amounts of noise around the theoretical value to make it look more like real-world data.</p>
+<div class="highlight"><pre><span class="c1"># update y values to include noise</span>
+par<span class="p">(</span>mfrow<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">3</span><span class="p">),</span>font.lab<span class="o">=</span><span class="m">2</span><span class="p">,</span>cex.lab<span class="o">=</span><span class="m">1.8</span><span class="p">,</span>cex.main<span class="o">=</span><span class="m">2</span><span class="p">,</span>cex.axis<span class="o">=</span><span class="m">1.4</span><span class="p">,</span>mar <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="m">5</span><span class="p">,</span><span class="m">7</span><span class="p">,</span><span class="m">4</span><span class="p">,</span><span class="m">2</span><span class="p">))</span>
 y<span class="o">=</span><span class="kp">log</span><span class="p">(</span>x1<span class="p">)</span> <span class="o">+</span> rnorm<span class="p">(</span><span class="kp">length</span><span class="p">(</span>x1<span class="p">),</span>sd<span class="o">=</span><span class="m">0.1</span><span class="p">)</span>
 y2<span class="o">=</span><span class="kp">log</span><span class="p">(</span>x1<span class="p">)</span> <span class="o">+</span> rnorm<span class="p">(</span><span class="kp">length</span><span class="p">(</span>x1<span class="p">),</span>sd<span class="o">=</span><span class="m">0.3</span><span class="p">)</span>
 y3<span class="o">=</span><span class="kp">log</span><span class="p">(</span>x1<span class="p">)</span> <span class="o">+</span> rnorm<span class="p">(</span><span class="kp">length</span><span class="p">(</span>x1<span class="p">),</span>sd<span class="o">=</span><span class="m">1</span><span class="p">)</span>
-plot<span class="p">(</span>x1<span class="p">,</span>y<span class="p">,</span>main<span class="o">=</span><span class="s">&#39;Diminishing returns&#39;</span><span class="p">,</span>xlab<span class="o">=</span><span class="s">&#39;Invested resources&#39;</span><span class="p">,</span>ylab<span class="o">=</span><span class="s">&#39;Return on investment&#39;</span><span class="p">,</span>font.lab<span class="o">=</span><span class="m">2</span><span class="p">)</span>
-plot<span class="p">(</span>x1<span class="p">,</span>y2<span class="p">)</span>
-plot<span class="p">(</span>x1<span class="p">,</span>y3<span class="p">)</span>
+plot<span class="p">(</span>x1<span class="p">,</span>y<span class="p">,</span>main<span class="o">=</span><span class="s">&#39;Low noise&#39;</span><span class="p">,</span>xlab<span class="o">=</span><span class="s">&#39;Invested resources&#39;</span><span class="p">,</span>ylab<span class="o">=</span><span class="s">&#39;ROI&#39;</span><span class="p">)</span>
+plot<span class="p">(</span>x1<span class="p">,</span>y2<span class="p">,</span>main<span class="o">=</span><span class="s">&#39;Med noise&#39;</span><span class="p">,</span>xlab<span class="o">=</span><span class="s">&#39;Invested resources&#39;</span><span class="p">,</span>ylab<span class="o">=</span><span class="s">&#39;ROI&#39;</span><span class="p">)</span>
+plot<span class="p">(</span>x1<span class="p">,</span>y3<span class="p">,</span>main<span class="o">=</span><span class="s">&#39;High noise&#39;</span><span class="p">,</span>xlab<span class="o">=</span><span class="s">&#39;Invested resources&#39;</span><span class="p">,</span>ylab<span class="o">=</span><span class="s">&#39;ROI&#39;</span><span class="p">)</span>
 </pre></div>
 
 
 <p><img alt="plot of chunk unnamed-chunk-2" src="figure/unnamed-chunk-2-1.png" /> </p>
-<p>Okay, now let's try to fit the data using a linear model and the true form of the data to compute the errors.</p>
+<p>Great! Now let's try to fit the data two competing models, $$y=m<em>log(x)$$ which we know to be true, and a straight line, $$y=m</em>x$$ </p>
 <p>P.S., stackoverflow is really useful!
 http://stackoverflow.com/questions/11569068/fitting-logarithmic-curve-to-data-points-in-r</p>
-<div class="highlight"><pre><span class="c1">#plot(x,y2,main=&#39;Diminishing returns&#39;,xlab=&#39;Invested resources&#39;,ylab=&#39;Return on investment&#39;,font.lab=2)</span>
-
-pltFits<span class="o">=</span><span class="kr">function</span><span class="p">(</span>yvar<span class="o">=</span>y2<span class="p">,</span>xvar<span class="o">=</span>x1<span class="p">)</span>
+<div class="highlight"><pre>pltFits<span class="o">=</span><span class="kr">function</span><span class="p">(</span>yvar<span class="o">=</span>y2<span class="p">,</span>xvar<span class="o">=</span>x1<span class="p">,</span>title<span class="o">=</span><span class="s">&#39;Diminishing returns&#39;</span><span class="p">)</span>
 <span class="p">{</span>
   ymax <span class="o">=</span> <span class="kp">max</span><span class="p">(</span>y<span class="p">,</span>y2<span class="p">,</span>y3<span class="p">)</span>
-  plot<span class="p">(</span>xvar<span class="p">,</span>yvar<span class="p">,</span>main<span class="o">=</span><span class="s">&#39;Diminishing returns&#39;</span><span class="p">,</span>xlab<span class="o">=</span><span class="s">&#39;Invested resources&#39;</span><span class="p">,</span>ylab<span class="o">=</span><span class="s">&#39;Return on investment&#39;</span><span class="p">,</span>font.lab<span class="o">=</span><span class="m">2</span><span class="p">,</span>ylim<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span>ymax<span class="p">))</span>
+  plot<span class="p">(</span>xvar<span class="p">,</span>yvar<span class="p">,</span>main<span class="o">=</span>title<span class="p">,</span>xlab<span class="o">=</span><span class="s">&#39;Invested resources&#39;</span><span class="p">,</span>ylab<span class="o">=</span><span class="s">&#39;ROI&#39;</span><span class="p">,</span>font.lab<span class="o">=</span><span class="m">2</span><span class="p">,</span>ylim<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span>ymax<span class="p">))</span>
   linEst<span class="o">=</span>lm<span class="p">(</span>yvar<span class="o">~</span>xvar<span class="p">)</span>
   logEst<span class="o">=</span>lm<span class="p">(</span>yvar<span class="o">~</span><span class="kp">log</span><span class="p">(</span>xvar<span class="p">))</span>
   lines<span class="p">(</span>xvar<span class="p">,</span>predict<span class="p">(</span>linEst<span class="p">),</span>lwd<span class="o">=</span><span class="m">3</span><span class="p">,</span>col<span class="o">=</span><span class="s">&#39;red&#39;</span><span class="p">,</span>lty<span class="o">=</span><span class="m">2</span><span class="p">)</span>
   lines<span class="p">(</span>xvar<span class="p">,</span>predict<span class="p">(</span>logEst<span class="p">),</span>lwd<span class="o">=</span><span class="m">3</span><span class="p">,</span>col<span class="o">=</span><span class="s">&#39;blue&#39;</span><span class="p">,</span>lty<span class="o">=</span><span class="m">2</span><span class="p">)</span>
   f<span class="o">=</span><span class="kr">function</span><span class="p">(</span>x<span class="p">){</span><span class="kp">log</span><span class="p">(</span>x<span class="p">)}</span>
   curve<span class="p">(</span>f<span class="p">,</span>from<span class="o">=</span><span class="kp">min</span><span class="p">(</span>xvar<span class="p">),</span>to<span class="o">=</span><span class="kp">max</span><span class="p">(</span>xvar<span class="p">),</span>add<span class="o">=</span><span class="bp">T</span><span class="p">)</span>
+  legend<span class="p">(</span><span class="s">&#39;topleft&#39;</span><span class="p">,</span><span class="kt">c</span><span class="p">(</span><span class="s">&#39;linear est&#39;</span><span class="p">,</span><span class="s">&#39;log est&#39;</span><span class="p">),</span>fill<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="s">&#39;red&#39;</span><span class="p">,</span><span class="s">&#39;blue&#39;</span><span class="p">),</span>bty<span class="o">=</span><span class="s">&#39;n&#39;</span><span class="p">)</span>
+ <span class="p">}</span>
 
-  <span class="c1">#I should plot the actual function in a solid line! Legend: linear/log estimates and true function</span>
-  resMax <span class="o">=</span> <span class="kp">max</span><span class="p">(</span><span class="kp">abs</span><span class="p">(</span>linEst<span class="o">$</span>residuals<span class="p">),</span><span class="kp">abs</span><span class="p">(</span>logEst<span class="o">$</span>residuals<span class="p">))</span>
-  plot<span class="p">(</span>linEst<span class="o">$</span>residuals<span class="p">,</span>ylim<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="o">-</span>resMax<span class="p">,</span>resMax<span class="p">),</span>col<span class="o">=</span><span class="s">&#39;red&#39;</span><span class="p">,</span>main<span class="o">=</span><span class="s">&#39;Residuals&#39;</span><span class="p">,</span>xlab<span class="o">=</span><span class="s">&#39;Invested resources&#39;</span><span class="p">,</span>ylab<span class="o">=</span><span class="s">&#39;Residuals&#39;</span><span class="p">,</span>font.lab<span class="o">=</span><span class="m">2</span><span class="p">)</span>
-  points<span class="p">(</span>logEst<span class="o">$</span>residuals<span class="p">,</span>ylim<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="o">-</span>resMax<span class="p">,</span>resMax<span class="p">),</span>col<span class="o">=</span><span class="s">&#39;blue&#39;</span><span class="p">)</span>
-  <span class="c1">#barplot(summary(logEst)$r.squared,summary(linEst)$r.squared)</span>
-  <span class="c1">#Plot the true curves on top of the data</span>
-<span class="p">}</span>
-par<span class="p">(</span>mfcol<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">),</span>cex.lab<span class="o">=</span><span class="m">1.4</span><span class="p">,</span>cex.main<span class="o">=</span><span class="m">1.7</span><span class="p">)</span>
-pltFits<span class="p">(</span>y<span class="p">)</span>
-pltFits<span class="p">(</span>y2<span class="p">)</span>
-pltFits<span class="p">(</span>y3<span class="p">)</span>
+par<span class="p">(</span>mfcol<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">3</span><span class="p">),</span>cex.lab<span class="o">=</span><span class="m">1.8</span><span class="p">,</span>cex.main<span class="o">=</span><span class="m">2</span><span class="p">,</span>cex.axis<span class="o">=</span><span class="m">1.4</span><span class="p">,</span>mar <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="m">5</span><span class="p">,</span><span class="m">7</span><span class="p">,</span><span class="m">4</span><span class="p">,</span><span class="m">2</span><span class="p">))</span>
+pltFits<span class="p">(</span>y<span class="p">,</span>title<span class="o">=</span><span class="s">&#39;Low noise&#39;</span><span class="p">)</span>
+pltFits<span class="p">(</span>y2<span class="p">,</span>title<span class="o">=</span><span class="s">&#39;Med noise&#39;</span><span class="p">)</span>
+pltFits<span class="p">(</span>y3<span class="p">,</span>title<span class="o">=</span><span class="s">&#39;High noise&#39;</span><span class="p">)</span>
 </pre></div>
 
 
 <p><img alt="plot of chunk unnamed-chunk-3" src="figure/unnamed-chunk-3-1.png" /> </p>
-<p>Looks like the two models cannot be distinguished in the limit of high noise, but can be in the low noise limit</p>
-<p>There we go! Now hopefully on to some more interesting stuff!</p>
+<p>Next we can look for systematic errors by plotting the residuals for each model fit.</p>
+<div class="highlight"><pre>pltRes<span class="o">=</span><span class="kr">function</span><span class="p">(</span>yvar<span class="o">=</span>y2<span class="p">,</span>xvar<span class="o">=</span>x1<span class="p">,</span>title<span class="o">=</span><span class="s">&#39;Diminishing returns&#39;</span><span class="p">)</span>
+  <span class="p">{</span>
+  linEst<span class="o">=</span>lm<span class="p">(</span>yvar<span class="o">~</span>xvar<span class="p">)</span>
+  logEst<span class="o">=</span>lm<span class="p">(</span>yvar<span class="o">~</span><span class="kp">log</span><span class="p">(</span>xvar<span class="p">))</span>
+  resMax <span class="o">=</span> <span class="kp">max</span><span class="p">(</span><span class="kp">abs</span><span class="p">(</span>linEst<span class="o">$</span>residuals<span class="p">),</span><span class="kp">abs</span><span class="p">(</span>logEst<span class="o">$</span>residuals<span class="p">))</span>
+  plot<span class="p">(</span>linEst<span class="o">$</span>residuals<span class="p">,</span>ylim<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="o">-</span>resMax<span class="p">,</span>resMax<span class="p">),</span>col<span class="o">=</span><span class="s">&#39;red&#39;</span><span class="p">,</span>main<span class="o">=</span>title<span class="p">,</span>xlab<span class="o">=</span><span class="s">&#39;Invested resources&#39;</span><span class="p">,</span>ylab<span class="o">=</span><span class="s">&#39;Residuals&#39;</span><span class="p">,</span>font.lab<span class="o">=</span><span class="m">2</span><span class="p">)</span>
+  points<span class="p">(</span>logEst<span class="o">$</span>residuals<span class="p">,</span>ylim<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="o">-</span>resMax<span class="p">,</span>resMax<span class="p">),</span>col<span class="o">=</span><span class="s">&#39;blue&#39;</span><span class="p">)</span>
+  legend<span class="p">(</span><span class="s">&#39;topleft&#39;</span><span class="p">,</span><span class="kt">c</span><span class="p">(</span><span class="s">&#39;linear est&#39;</span><span class="p">,</span><span class="s">&#39;log est&#39;</span><span class="p">),</span>fill<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="s">&#39;red&#39;</span><span class="p">,</span><span class="s">&#39;blue&#39;</span><span class="p">),</span>bty<span class="o">=</span><span class="s">&#39;n&#39;</span><span class="p">)</span>
+<span class="p">}</span>
+par<span class="p">(</span>mfcol<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">3</span><span class="p">),</span>cex.lab<span class="o">=</span><span class="m">1.8</span><span class="p">,</span>cex.main<span class="o">=</span><span class="m">2</span><span class="p">,</span>cex.axis<span class="o">=</span> <span class="m">1.4</span><span class="p">,</span>mar <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="m">5</span><span class="p">,</span><span class="m">7</span><span class="p">,</span><span class="m">4</span><span class="p">,</span><span class="m">2</span><span class="p">))</span>
+pltRes<span class="p">(</span>y<span class="p">,</span>title<span class="o">=</span><span class="s">&#39;Low noise&#39;</span><span class="p">)</span>
+pltRes<span class="p">(</span>y2<span class="p">,</span>title<span class="o">=</span><span class="s">&#39;Med noise&#39;</span><span class="p">)</span>
+pltRes<span class="p">(</span>y3<span class="p">,</span>title<span class="o">=</span><span class="s">&#39;High noise&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p><img alt="plot of chunk unnamed-chunk-4" src="figure/unnamed-chunk-4-1.png" /> </p>
+<p>In both the low- and medium noise, its clear by eye that the log model is superior, due to a random distribution around zero.</p>
+<p>In the limit of high noise, its harder to tell by eye. So we can look at some summary stats.</p>
+<div class="highlight"><pre>logEst<span class="o">=</span><span class="kp">summary</span><span class="p">(</span>lm<span class="p">(</span>y3<span class="o">~</span><span class="kp">log</span><span class="p">(</span>x1<span class="p">)))</span><span class="o">$</span>r.squared
+linEst<span class="o">=</span><span class="kp">summary</span><span class="p">(</span>lm<span class="p">(</span>y3<span class="o">~</span>x1<span class="p">))</span><span class="o">$</span>r.squared
+<span class="kp">paste0</span><span class="p">(</span><span class="s">&#39;linear R2 = &#39;</span><span class="p">,</span>linEst<span class="p">)</span>
+</pre></div>
+
+
+<div class="highlight"><pre>## [1] &quot;linear R2 = 0.555461398246554&quot;
+</pre></div>
+
+
+<div class="highlight"><pre><span class="kp">paste0</span><span class="p">(</span><span class="s">&#39;log R2 = &#39;</span><span class="p">,</span>logEst<span class="p">)</span>
+</pre></div>
+
+
+<div class="highlight"><pre>## [1] &quot;log R2 = 0.548760279507731&quot;
+</pre></div>
+
+
+<p>Looking at the r-squared values, the log fit can explain more of the variance than the linear. Onward and upward!</p>
             </div>
             <!-- /.entry-content -->
         </article>
@@ -194,8 +210,7 @@ pltFits<span class="p">(</span>y3<span class="p">)</span>
     <ul class="list-group list-group-flush">
             <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
               <ul class="list-group" id="social">
-                <li class="list-group-item"><a href="#"><i class="fa fa-you-can-add-links-in-your-config-file-square fa-lg"></i> You can add links in your config file</a></li>
-                <li class="list-group-item"><a href="#"><i class="fa fa-another-social-link-square fa-lg"></i> Another social link</a></li>
+                <li class="list-group-item"><a href="https://www.linkedin.com/pub/peter-frick/39/455/ab7"><i class="fa fa-linkedin-square fa-lg"></i> LinkedIn</a></li>
               </ul>
             </li>
 
@@ -218,11 +233,6 @@ pltFits<span class="p">(</span>y3<span class="p">)</span>
         <li class="list-group-item">
             <a href="http://jinja.pocoo.org/" target="_blank">
                 Jinja2
-            </a>
-        </li>
-        <li class="list-group-item">
-            <a href="#" target="_blank">
-                You can modify those links in your config file
             </a>
         </li>
       </ul>
