@@ -8,4 +8,4 @@ When I took my first college physics class, I remember being fascinated with how
 
 At Vanderbilt I worked with biologists, statisticians, and mathematicians to predict more effective cancer therapies. What I enjoyed the most was bringing a quantitative angle to study difficult problems, leveraging big data and modeling. Seeking to build upon this theme led me to study genomics at Stanford University.
 
-
+`![Alt Text]({filename}/images/headShot.tif)`

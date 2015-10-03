@@ -20,9 +20,9 @@ AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
 # Blogroll
-LINKS = (('Pelican', 'http://getpelican.com/'),
-         ('Python.org', 'http://python.org/'),
-         ('Jinja2', 'http://jinja.pocoo.org/'),
+LINKS = (
+	 ('Quaranta lab', 'http://ccsb.vanderbilt.edu/qlab/frontpage'),
+         ('Greenleaf lab','http://greenleaf.stanford.edu'),
         )
 
 # Social widget
@@ -41,3 +41,4 @@ PLUGIN_PATHS = ['addIns/plugins/','addIns/pelican-plugins/']
 PLUGINS = ['ipynb','sitemap','rmd_reader']
 REVERSE_CATEGORY_ORDER = True
 THEME = 'addIns/themes/pelican-bootstrap3/'
+STATIC_PATHS = ['images']
