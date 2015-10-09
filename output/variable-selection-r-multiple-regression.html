@@ -13,13 +13,13 @@
 
         <meta name="author" content="Peter Frick" />
         <meta name="keywords" content="R,jupyter" />
-        <meta name="description" content="Examine variable selection in the Boston housing price dataset Note, that there are some drawbacks/limitations to consider when using variable selection: http://www.stata.com/support/faqs/statistics/stepwise-regression-problems/ First do a set of linear models to see which predictors are most significant" />
+        <meta name="description" content="Here, I want to look at using R to perform variable selection for a linear model. Let&#39;s consider forward and reverse selection, statistical techniques to keep only variables that maximize the variance explained. The dataset I&#39;m using is the Boston housing price dataset from the MASS library. Note, that there are some drawbacks/limitations to consider when using variable selection: http://www.stata.com/support/faqs/statistics/stepwise-regression-problems/" />
 
         <meta property="og:site_name" content="Peter Frick" />
         <meta property="og:type" content="article"/>
         <meta property="og:title" content="Variable selection for multiple regression models"/>
         <meta property="og:url" content="/variable-selection-r-multiple-regression.html"/>
-        <meta property="og:description" content="Examine variable selection in the Boston housing price dataset Note, that there are some drawbacks/limitations to consider when using variable selection: http://www.stata.com/support/faqs/statistics/stepwise-regression-problems/ First do a set of linear models to see which predictors are most significant"/>
+        <meta property="og:description" content="Here, I want to look at using R to perform variable selection for a linear model. Let&#39;s consider forward and reverse selection, statistical techniques to keep only variables that maximize the variance explained. The dataset I&#39;m using is the Boston housing price dataset from the MASS library. Note, that there are some drawbacks/limitations to consider when using variable selection: http://www.stata.com/support/faqs/statistics/stepwise-regression-problems/"/>
         <meta property="article:published_time" content="2015-09-08" />
             <meta property="article:section" content="blog" />
             <meta property="article:tag" content="R" />
@@ -55,12 +55,9 @@ Peter Frick            </a>
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
-                         <li><a href="/pages/my-super-post.html">
-                             RetryIt
+                         <li><a href="/pages/about-me.html">
+                             About me
                           </a></li>
-                        <li >
-                            <a href="/category/welcome.html">Welcome</a>
-                        </li>
                         <li class="active">
                             <a href="/category/blog.html">Blog</a>
                         </li>
@@ -180,8 +177,24 @@ Peter Frick            </a>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Examine variable selection in the Boston housing price dataset</p>
+<p>Here, I want to look at using R to perform variable selection for a linear model. Let's consider forward and reverse selection, statistical techniques to keep only variables that maximize the variance explained. The dataset I'm using is the Boston housing price dataset from the MASS library.</p>
 <p>Note, that there are some drawbacks/limitations to consider when using variable selection: <a href="http://www.stata.com/support/faqs/statistics/stepwise-regression-problems/">http://www.stata.com/support/faqs/statistics/stepwise-regression-problems/</a></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [2]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-r"><pre><span class="c1"># Load dependencies</span>
+<span class="kn">library</span><span class="p">(</span>MASS<span class="p">)</span>
+<span class="kn">attach</span><span class="p">(</span>Boston<span class="p">)</span>
+<span class="c1"># Define predictors</span>
+nm <span class="o">=</span> <span class="kp">names</span><span class="p">(</span>Boston<span class="p">)</span>
+nm <span class="o">=</span> nm<span class="p">[</span>nm<span class="o">!=</span><span class="s">'medv'</span><span class="p">]</span>
+</pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -190,28 +203,13 @@ Peter Frick            </a>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>First do a set of linear models to see which predictors are most significant</p>
+<p>First, let's perform a set of linear models to see which predictor is the most significant</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [1]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-r"><pre><span class="kn">library</span><span class="p">(</span>MASS<span class="p">)</span>
-<span class="kn">attach</span><span class="p">(</span>Boston<span class="p">)</span>
-nm <span class="o">=</span> <span class="kp">names</span><span class="p">(</span>Boston<span class="p">)</span>
-nm <span class="o">=</span> nm<span class="p">[</span>nm<span class="o">!=</span><span class="s">'medv'</span><span class="p">]</span>
-<span class="c1"># First, choose the predictor with the highest R^2 value</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [2]:</div>
+<div class="prompt input_prompt">In [3]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-r"><pre>statsum<span class="o">&lt;-</span><span class="kt">data.frame</span><span class="p">(</span>pred<span class="o">=</span><span class="kp">rep</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span><span class="kp">length</span><span class="p">(</span>nm<span class="p">)),</span>R2<span class="o">=</span><span class="kt">numeric</span><span class="p">(</span><span class="kp">length</span><span class="p">(</span>nm<span class="p">)))</span>
@@ -251,9 +249,10 @@ highR2 <span class="o">=</span> statsum<span class="o">$</span>pred<span class="
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Next, find out the variable that additively makes the model most predictice</p>
-<p>Do forward, reverse, and mixed selection on a linear model.
+<p>Okay, looks like <em>lstat</em> is the most predictive. So, we could iteratively add each significant variable until we explain the most variance. To reduce potential over-fitting, an impovement on this would be to penalize models for degrees for excess degrees of freedom. The Aikaike information criteria (AIC) metric accomplishes this, and the model with the lowest AIC should be kept.</p>
+<p>R actually has functionality to do forward selection, as described, and also reverse selection.
 <a href="http://stackoverflow.com/questions/22913774/forward-stepwise-regression">http://stackoverflow.com/questions/22913774/forward-stepwise-regression</a></p>
+<p>First, let's start with forward selection</p>
 </div>
 </div>
 </div>
@@ -262,12 +261,12 @@ highR2 <span class="o">=</span> statsum<span class="o">$</span>pred<span class="
 <div class="prompt input_prompt">In [4]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-r"><pre>min.model<span class="o">=</span>lm<span class="p">(</span>medv <span class="o">~</span> <span class="m">1</span><span class="p">)</span>
+<div class=" highlight hl-r"><pre><span class="c1">#Define the minimum model as having only a constant term and no predictors</span>
+min.model<span class="o">=</span>lm<span class="p">(</span>medv <span class="o">~</span> <span class="m">1</span><span class="p">)</span>
+<span class="c1">#Define the maximum model as containing all the predictors</span>
 max.model<span class="o">=</span>lm<span class="p">(</span>medv<span class="o">~</span><span class="m">.</span><span class="p">,</span>data<span class="o">=</span>Boston<span class="p">)</span>
 
 fwd.model<span class="o">=</span>step<span class="p">(</span>object<span class="o">=</span>min.model<span class="p">,</span>scope<span class="o">=</span>formula<span class="p">(</span>max.model<span class="p">),</span>direction<span class="o">=</span><span class="s">'forward'</span><span class="p">)</span>
-<span class="c1">#rev.model=step(object=max.model,scope=formula(min.model),direction='backward')</span>
-<span class="c1">#fwd.model=step(object=min.model,scope=formula(max.model),direction='both')</span>
 </pre></div>
 </div>
 </div>
@@ -451,7 +450,7 @@ medv ~ lstat + rm + ptratio + dis + nox + chas + black + zn +
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Reverse stepwise method gives the same</p>
+<p>So, if we look above, we can see the model iterate through and progressively add more terms to make the linear model more predictive. Notice that the AIC is decreasing at each step as a new variable is added to the model, until the final step, where any of the remaining variables give higher AIC than the previous model.</p>
 </div>
 </div>
 </div>
@@ -531,14 +530,13 @@ medv ~ crim + zn + chas + nox + rm + dis + rad + tax + ptratio +
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [ ]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-r"><pre>
-</pre></div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Doing reverse selection operates on the same principle and gives the same result, in this case. So that is how variable selection works in R.</p>
+<p>One more thing I'd like to try <em>later</em> is to test the predictive power of each of these models by splitting the dataset into training- and test sets.</p>
 </div>
 </div>
 </div>
