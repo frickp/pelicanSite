@@ -13,13 +13,13 @@
 
         <meta name="author" content="Peter Frick" />
         <meta name="keywords" content="ipython,blogging" />
-        <meta name="description" content="This is the first iPython notebook I&#39;m adding online. The goal of this notebook is more to learn the syntax, etc. For example, one asterisk makes text italic. Two asterisks makes text bold. Putting 2 dollar signs before and after an expression gives an equation: $$y=10*x$$An equation can be displayed inline with the text by adding a single dollar sign on either side of the expression, like so: $y=sin(x)$" />
+        <meta name="description" content="Purpose¶This is the first iPython notebook I&#39;m adding online. The goal of this notebook is more to learn the syntax, etc. For example, one asterisk makes text italic. Two asterisks makes text bold. Putting 2 dollar signs before and after an expression gives an equation: $$y=10*x$$An equation can be displayed inline with the text by adding a single dollar sign on either side of the expression, like so: $y=sin(x)$" />
 
         <meta property="og:site_name" content="Peter Frick" />
         <meta property="og:type" content="article"/>
         <meta property="og:title" content="Trial python blog using jupyter"/>
         <meta property="og:url" content="/python-first-try-jupyter.html"/>
-        <meta property="og:description" content="This is the first iPython notebook I&#39;m adding online. The goal of this notebook is more to learn the syntax, etc. For example, one asterisk makes text italic. Two asterisks makes text bold. Putting 2 dollar signs before and after an expression gives an equation: $$y=10*x$$An equation can be displayed inline with the text by adding a single dollar sign on either side of the expression, like so: $y=sin(x)$"/>
+        <meta property="og:description" content="Purpose¶This is the first iPython notebook I&#39;m adding online. The goal of this notebook is more to learn the syntax, etc. For example, one asterisk makes text italic. Two asterisks makes text bold. Putting 2 dollar signs before and after an expression gives an equation: $$y=10*x$$An equation can be displayed inline with the text by adding a single dollar sign on either side of the expression, like so: $y=sin(x)$"/>
         <meta property="article:published_time" content="2015-09-03" />
             <meta property="article:section" content="blog" />
             <meta property="article:tag" content="ipython" />
@@ -177,7 +177,7 @@ Peter Frick            </a>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>This is the first iPython notebook I'm adding online. The goal of this notebook is more to learn the syntax, etc.
+<h3 id="Purpose">Purpose<a class="anchor-link" href="#Purpose">¶</a></h3><p>This is the first iPython notebook I'm adding online. The goal of this notebook is more to learn the syntax, etc.
 For example, one asterisk makes text <em>italic</em>. Two asterisks makes text <strong>bold</strong>. Putting 2 dollar signs before and after an expression gives an equation:</p>
 $$y=10*x$$<p>An equation can be displayed inline with the text by adding a single dollar sign on
 either side of the expression, like so: $y=sin(x)$</p>
@@ -193,7 +193,7 @@ either side of the expression, like so: $y=sin(x)$</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [29]:</div>
+<div class="prompt input_prompt">In [1]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
@@ -219,7 +219,7 @@ either side of the expression, like so: $y=sin(x)$</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [12]:</div>
+<div class="prompt input_prompt">In [2]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="c">#Set a randomization seed for reproducibility</span>
@@ -234,7 +234,7 @@ either side of the expression, like so: $y=sin(x)$</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [13]:</div>
+<div class="prompt input_prompt">In [3]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s">'x'</span><span class="p">],</span><span class="n">df</span><span class="p">[</span><span class="s">'y'</span><span class="p">])</span>
@@ -244,9 +244,9 @@ either side of the expression, like so: $y=sin(x)$</p>
 </div>
 <div class="output_wrapper">
 <div class="output">
-<div class="output_area"><div class="prompt output_prompt">Out[13]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[3]:</div>
 <div class="output_text output_subarea output_execute_result">
-<pre>[&lt;matplotlib.lines.Line2D at 0x10ec541d0&gt;]</pre>
+<pre>[&lt;matplotlib.lines.Line2D at 0x108f7d850&gt;]</pre>
 </div>
 </div>
 <div class="output_area"><div class="prompt"></div>
@@ -508,39 +508,12 @@ IGIuCIKQB/x/vUfN7k7gaFEAAAAASUVORK5CYII=
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [27]:</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="n">m</span><span class="o">=</span><span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s">'y'</span><span class="p">],</span><span class="n">df</span><span class="p">[</span><span class="s">'x'</span><span class="p">])</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
-<span class="k">print</span> <span class="n">m</span><span class="o">.</span><span class="n">conf_int</span><span class="p">()</span>
-<span class="c">#m.summary()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>          0         1
-x  0.773937  0.864305
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [48]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="c">#m=linear_model.LinearRegression()</span>
-<span class="c">#m.fit(df['x'],df['y'])</span>
-</pre></div>
-</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>I really like how easy jupyter makes it to illustrate code, plots, and descriptions together!</p>
 </div>
 </div>
 </div>
