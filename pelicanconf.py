@@ -49,4 +49,4 @@ AVATAR = 'https://raw.githubusercontent.com/frickp/pelicanSite/master/images/hea
 #PYGMENTS_STYLE=['friendly']
 #NOTEBOOK_DIR = 'notebooks'
 #EXTRA_HEADER = open('_nb_header.html').read().decode('utf-8')
-IPYNB_USE_META_SUMMARY = ['True']
+#IPYNB_USE_META_SUMMARY = ['False']
