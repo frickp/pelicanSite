@@ -26,7 +26,7 @@ Digression over. Here's how to run the code. I have this optimized for use on ma
 
 1. Install [R](https://www.r-project.org).
     - note, that this is optimized for version 3.2.
-2. Follow this [link](https://github.com/frickp/cFPpaper-Rcode/blob/master/copyPaste_rawDataAndPreprocessingScripts/LibraryLoader.R), copy the code and paste it in the R console. Run the code by pressing return.
+2. Follow this [link](https://raw.githubusercontent.com/frickp/cFPpaper-Rcode/master/copyPaste_rawDataAndPreprocessingScripts/LibraryLoader.R), copy the code and paste it in the R console. Run the code by pressing return.
     - This makes sure you have everything that you need installed.
 3. Follow this [link](https://raw.githubusercontent.com/frickp/cFPpaper-Rcode/master/copyPaste_scripts/Fig3-BoxplotsAndLinearModels.r).
 4. Copy and paste the code into the R console and hit return

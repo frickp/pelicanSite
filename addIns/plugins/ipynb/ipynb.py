@@ -162,7 +162,7 @@ class MyHTMLParser(HTMLReader._HTMLParser):
     """
     def __init__(self, settings, filename):
         HTMLReader._HTMLParser.__init__(self, settings, filename)
-        self.wordcount = 0
+        self.wordcount = 1
         self.summary = None
 
         self.stop_tags = [('div', ('class', 'input')), ('div', ('class', 'output'))]

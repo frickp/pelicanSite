@@ -38,9 +38,14 @@ DEFAULT_PAGINATION = 10
 MARKUP = ('md', 'ipynb','html','rmd')
 
 PLUGIN_PATHS = ['addIns/plugins/','addIns/pelican-plugins/']
-PLUGINS = ['ipynb','sitemap','rmd_reader']
+PLUGINS = ['ipynb','sitemap','liquid_tags','liquid_tags.notebook']
+#PLUGINS = ['sitemap','liquid_tags']
 REVERSE_CATEGORY_ORDER = True
 THEME = 'addIns/themes/pelican-bootstrap3/'
 STATIC_PATHS = ['images']
 ABOUT_ME = 'Thanks for visiting! I am a quantitative scientist, trained in both physics and systems biology. I am passionate about interrogating data intelligently to understand complex systems. This blog is a journal about transitioning from academia to a career in data science.'
 AVATAR = 'https://raw.githubusercontent.com/frickp/pelicanSite/master/images/headShot.jpg'
+
+#PYGMENTS_STYLE=['friendly']
+#NOTEBOOK_DIR = 'notebooks'
+#EXTRA_HEADER = open('_nb_header.html').read().decode('utf-8')
