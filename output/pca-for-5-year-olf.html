@@ -344,7 +344,7 @@ Peter Frick            </a>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [4]:</div>
+<div class="prompt input_prompt">In [1]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
@@ -373,7 +373,7 @@ first result. This is fed in as <code>BASE_URL</code>, but this posting will lik
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [5]:</div>
+<div class="prompt input_prompt">In [2]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="n">BASE_URL</span> <span class="o">=</span> <span class="s">"http://careers.stackoverflow.com/jobs/89632/data-scientist-palo-alto-or-seattle-coupang?searchTerm=data+scientist"</span>
@@ -396,7 +396,7 @@ first result. This is fed in as <code>BASE_URL</code>, but this posting will lik
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [6]:</div>
+<div class="prompt input_prompt">In [3]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s">'../../dataSandbox/forPelican/dataSciencePost2.jpg'</span><span class="p">)</span> 
@@ -406,7 +406,7 @@ first result. This is fed in as <code>BASE_URL</code>, but this posting will lik
 </div>
 <div class="output_wrapper">
 <div class="output">
-<div class="output_area"><div class="prompt output_prompt">Out[6]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[3]:</div>
 <div class="output_jpeg output_subarea output_execute_result">
 <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAgAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8KCwkMEQ8SEhEP
 ERATFhwXExQaFRARGCEYGhwdHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4e
@@ -5521,7 +5521,7 @@ KKACiiigAooooA//2Q==
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [7]:</div>
+<div class="prompt input_prompt">In [4]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="n">Image</span><span class="p">(</span><span class="n">filename</span> <span class="o">=</span> <span class="s">'../../dataSandbox/forPelican/elementsHtml.png'</span><span class="p">)</span>
@@ -5531,7 +5531,7 @@ KKACiiigAooooA//2Q==
 </div>
 <div class="output_wrapper">
 <div class="output">
-<div class="output_area"><div class="prompt output_prompt">Out[7]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[4]:</div>
 <div class="output_png output_subarea output_execute_result">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABFoAAAJXCAIAAAAsEqcgAACAAElEQVR42uy9e1RU2Zn373rX+0fm
 Xev3x5u15rdWslZ+WZlkepLptzvdy5lk5dKTdE866aR7ujN5cxtjNCba0dhppeOlbdsMxqaBBpEG
@@ -7821,7 +7821,7 @@ AAAAAElFTkSuQmCC
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [12]:</div>
+<div class="prompt input_prompt">In [5]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="n">skillList</span> <span class="o">=</span> <span class="s">''</span>
@@ -7865,7 +7865,7 @@ Cares deeply about data quality and demonstrates this commitment by attention to
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [13]:</div>
+<div class="prompt input_prompt">In [6]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="n">jobName</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">"a"</span><span class="p">,</span> <span class="p">{</span><span class="s">"class"</span> <span class="p">:</span> <span class="s">"title job-link"</span><span class="p">})</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
@@ -7882,6 +7882,7 @@ Cares deeply about data quality and demonstrates this commitment by attention to
     <span class="n">df</span><span class="p">[</span><span class="s">'data'</span><span class="p">]</span> <span class="o">=</span> <span class="bp">False</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="n">df</span><span class="p">[</span><span class="s">'data'</span><span class="p">]</span> <span class="o">=</span> <span class="bp">True</span>
+<span class="n">df</span><span class="p">[</span><span class="s">'words'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s">'words'</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -7889,7 +7890,7 @@ Cares deeply about data quality and demonstrates this commitment by attention to
 </div>
 <div class="output_wrapper">
 <div class="output">
-<div class="output_area"><div class="prompt output_prompt">Out[13]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[6]:</div>
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div>
 <table border="1" class="dataframe">
@@ -7905,7 +7906,7 @@ Cares deeply about data quality and demonstrates this commitment by attention to
 <tbody>
 <tr>
 <th>0</th>
-<td>Build</td>
+<td>build</td>
 <td>DataScientistPalo</td>
 <td>89632</td>
 <td>True</td>
