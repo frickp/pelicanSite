@@ -43,7 +43,7 @@ PLUGINS = ['ipynb','sitemap','liquid_tags','liquid_tags.notebook']
 REVERSE_CATEGORY_ORDER = True
 THEME = 'addIns/themes/pelican-bootstrap3/'
 STATIC_PATHS = ['images']
-ABOUT_ME = 'Thanks for visiting! I am a quantitative scientist, trained in both physics and systems biology. I am passionate about interrogating data intelligently to understand complex systems. This blog is a journal about transitioning from academia to a career in data science.'
+ABOUT_ME = 'Thanks for visiting! I am a quantitative scientist, trained in both physics and systems biology. I am passionate about interrogating data intelligently to understand complex systems. This blog is for exploring stats, machine learning, and data science.'
 AVATAR = 'https://raw.githubusercontent.com/frickp/pelicanSite/master/images/headShot.jpg'
 
 #PYGMENTS_STYLE=['friendly']
