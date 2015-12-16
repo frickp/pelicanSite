@@ -1,14 +1,14 @@
 
 .highlight pre .hll { background-color: #404040 }
-.highlight pre  { background: #202020; color: #d0d0d0 }
+.highlight pre  { background: #f5f5f5; color: #d0d0d0 }
 .highlight pre .c { color: #999999; font-style: italic } /* Comment */
-.highlight pre .err { color: #a61717; background-color: #e3d2d2 } /* Error */
+.highlight pre .err { color: #666666; } /* Error */
 .highlight pre .esc { color: #d0d0d0 } /* Escape */
 .highlight pre .g { color: #d0d0d0 } /* Generic */
 .highlight pre .k { color: #6ab825; font-weight: bold } /* Keyword */
 .highlight pre .l { color: #d0d0d0 } /* Literal */
 .highlight pre .n { color: #d0d0d0 } /* Name */
-.highlight pre .o { color: #A9BCF5 } /* Operator */
+.highlight pre .o { color: #A9BCF5 } /* Operator Changed 151210 */
 .highlight pre .x { color: #d0d0d0 } /* Other */
 .highlight pre .p { color: #1C1C1C } /* Punctuation */
 .highlight pre .cm { color: #999999; font-style: italic } /* Comment.Multiline */

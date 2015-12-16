@@ -35,7 +35,8 @@ DEFAULT_PAGINATION = 10
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
 
-MARKUP = ('md', 'ipynb','html','rmd')
+#MARKUP = ('md', 'ipynb','html','rmd')
+MARKUP = ('md','html')
 
 PLUGIN_PATHS = ['addIns/plugins/','addIns/pelican-plugins/']
 PLUGINS = ['ipynb','sitemap','liquid_tags','liquid_tags.notebook']
@@ -51,3 +52,10 @@ AVATAR = 'https://raw.githubusercontent.com/frickp/pelicanSite/master/images/hea
 #EXTRA_HEADER = open('_nb_header.html').read().decode('utf-8')
 #IPYNB_USE_META_SUMMARY = ['False']
 TAG_CLOUD_MAX_ITEMS=5
+#ARTICLE_PATHS = [
+#	'151015_pca_5yo*',
+#	'151017_miningDataScience*',
+#	'151019_scrapeDataSciencePt2*',
+#	'151204_SF_scrapeSalary*',
+#	'151209_MyFirst_MySQL*'
+#]
