@@ -215,6 +215,9 @@ Peter Frick            </a>
                          <li><a href="/pages/about-me.html">
                              About me
                           </a></li>
+                         <li><a href="/pages/insight.html">
+                             Insight project
+                          </a></li>
                         <li class="active">
                             <a href="/category/blog.html">Blog</a>
                         </li>
@@ -371,20 +374,6 @@ unzip world.sql.zip
 <span class="o">+</span><span class="c1">-------------+-----------------+</span>
 <span class="mi">10</span> <span class="k">rows</span> <span class="k">in</span> <span class="k">set</span> <span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">01</span> <span class="n">sec</span><span class="p">)</span>
 </pre></div>
-
-
-<h3>Now in python</h3>
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">MySQLdb</span>
-<span class="n">conn</span> <span class="o">=</span> <span class="n">MySQLdb</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s">&quot;localhost&quot;</span><span class="p">,</span> <span class="n">user</span><span class="o">=</span><span class="s">&quot;root&quot;</span><span class="p">,</span> <span class="n">passwd</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">,</span> <span class="n">db</span><span class="o">=</span><span class="s">&quot;world&quot;</span><span class="p">)</span>
-<span class="n">cursor</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
-</pre></div>
-
-
-<p>queryAll = 'select Name, Continent, Population, LifeExpectancy, GNP from Country'
-df = pd.read_sql(queryAll,conn)</p>
-<ol>
-<li>How many districts are in each city?</li>
-</ol>
             </div>
             <!-- /.entry-content -->
         </article>
@@ -395,7 +384,7 @@ df = pd.read_sql(queryAll,conn)</p>
             <aside>
 <div id="aboutme">
         <p>
-            <img width="100%" class="img-thumbnail" src="https://raw.githubusercontent.com/frickp/pelicanSite/master/images/headShot.jpg"/>
+            <img width="100%" class="img-thumbnail" src="https://raw.githubusercontent.com/frickp/insight/master/FrickHeadshot.jpg"/>
         </p>
     <p>
         <strong>About Peter Frick</strong><br/>
@@ -413,6 +402,35 @@ df = pd.read_sql(queryAll,conn)</p>
 
 
 
+            <li class="list-group-item"><a href="/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                <ul class="list-group " id="tags">
+                    <li class="list-group-item tag-1">
+                        <a href="/tag/python.html">
+                            python
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-1">
+                        <a href="/tag/data-science.html">
+                            data science
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-1">
+                        <a href="/tag/r.html">
+                            R
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-2">
+                        <a href="/tag/api.html">
+                            api
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-2">
+                        <a href="/tag/stats.html">
+                            stats
+                        </a>
+                    </li>
+                </ul>
+            </li>
 
 
     <li class="list-group-item"><h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Links</span></h4>
@@ -427,6 +445,11 @@ df = pd.read_sql(queryAll,conn)</p>
                 Greenleaf lab
             </a>
         </li>
+        <li class="list-group-item">
+            <a href="http://insightdatascience.com" target="_blank">
+                Insight Data Science
+            </a>
+        </li>
       </ul>
     </li>
     </ul>
@@ -439,7 +462,7 @@ df = pd.read_sql(queryAll,conn)</p>
    <div class="container">
       <hr>
       <div class="row">
-         <div class="col-xs-10">&copy; 2015 Peter Frick
+         <div class="col-xs-10">&copy; 2016 Peter Frick
             &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
             <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
             <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>

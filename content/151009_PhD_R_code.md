@@ -2,7 +2,7 @@ Title: Measuring cancer cell dynamics in response to therapy
 Date: 2015-10-09 10:20
 Modified: 2015-10-02 19:30
 Category: blog
-Tags: R, PhD
+Tags: R, research, systems
 Slug: r-phd-code
 Authors: Peter Frick
 Summary: Example R code to process highly-multiplexed cancer drug responses. Formatted so that *you* should be able to run it on a mac.

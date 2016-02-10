@@ -209,6 +209,9 @@ Peter Frick            </a>
                          <li><a href="/pages/about-me.html">
                              About me
                           </a></li>
+                         <li><a href="/pages/insight.html">
+                             Insight project
+                          </a></li>
                         <li class="active">
                             <a href="/category/blog.html">Blog</a>
                         </li>
@@ -225,6 +228,18 @@ Peter Frick            </a>
 <div class="container">
     <div class="row">
         <div class="col-sm-9">
+            <article>
+                <h2><a href="/lda-airline-visualization.html">Topic modeling and visualization of tweets</a></h2>
+                <div class="summary"><html><body><div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>As more people tweet to companies, it is imperative for companies to parse through the many tweets that are coming in, to figure out what people want and to quickly deal with upset customers. Machine learning can help to facilitate this. In this notebook, I'll examine a dataset of ~14,000 tweets directed at various airlines. The algorithm I'm choosing to use is <a href="https://en.wikipedia.org/wiki/Latent_Dirichlet_allocation">Latent Dirichlet Allocation</a>
+                    <a class="btn btn-default btn-xs" href="/lda-airline-visualization.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
             <article>
                 <h2><a href="/myfirst-mysql.html">MyFIRST MySQL</a></h2>
                 <div class="summary"><p>Intro to SQL. I've looked at a couple tutorials on SQL, but the best way to learn is to play around right? Let's get started.</p>
@@ -293,19 +308,27 @@ Peter Frick            </a>
             </article>
             <hr/>
             <article>
+                <h2><a href="/machine-learning-nba-shots.html">Statistical learning on NBA shot data</a></h2>
+                <div class="summary"><html><body><div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In the <a href="http://frickp.github.io/python-scrape-nba-shots.html">last post</a>, I pulled some NBA shot data for Andrew Wiggins and put that into a dataframe. Here, we will apply some <a href="https://en.wikipedia.org/wiki/Supervised_learning">supervised learning</a> techniques from <code>sklearn</code> to build predictive models and then use visualizations to better understand the data.</p>
+<p>Some topics we'll explore are prediction error, regularization, and the tradeoff between prediction accuracy and model interpretability.</p>
+                    <a class="btn btn-default btn-xs" href="/machine-learning-nba-shots.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
                 <h2><a href="/python-scrape-nba-shots.html">Scraping NBA shot data using python</a></h2>
                 <div class="summary"><html><body><div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>My goal is to learn how to scrape data using python.</p>
-<p>This is my first time scraping from the web. I found <a href="http://www.gregreda.com/2015/02/15/web-scraping-finding-the-api/">this documentation</a> <em>extremely</em> helpful. Here, I'm pulling in the shot log for Andrew Wiggins, the NBA Rookie of the Year last year.</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
+<p>My goal is to learn how to scrape data using python and do some quick data analysis.</p>
+<p>This is my first time scraping from the web. I found <a href="http://www.gregreda.com/2015/02/15/web-scraping-finding-the-api/">this documentation</a> <em>extremely</em> helpful. Here, I'm pulling in the shot log for Andrew Wiggins, the NBA Rookie of the Year for the 2014-2015 season.</p>
                     <a class="btn btn-default btn-xs" href="/python-scrape-nba-shots.html">more ...</a>
                 </div>
             </article>
@@ -336,31 +359,6 @@ Also, I found <a href="http://michael.hahsler.net/SMU/EMIS7332/R/chap8.html">thi
                 </div>
             </article>
             <hr/>
-            <article>
-                <h2><a href="/python-multiple-regression.html">Using python to get an intuition for multiple regression</a></h2>
-                <div class="summary"><html><body><div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>I want to get some intuition about regression models using multiple independent variables. More precisely, I am unsure if the relevant predictors would be better uncovered by multiple regression, or by pairwise analysis of all predictors against the response variable. So I'd like to use a dataset where I know the precise contribution of each predictor to the response variable.</p>
-                    <a class="btn btn-default btn-xs" href="/python-multiple-regression.html">more ...</a>
-                </div>
-            </article>
-            <hr/>
-            <article>
-                <h2><a href="/error-plots-r-jupyter.html">Plotting and error anlysis illustrating R notebooks (jupyter)</a></h2>
-                <div class="summary"><html><body><div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>The goal of this exercise is to try R in jupyter and compare simple model fits.
-I spent <em>way</em> too much much time trying to get plots embedded using RStudio. For now, I just want a happy, functional black box. So luckily, I've been using ipython notebook (now jupyter) and there's now R functionaliy. Time to try it out!</p>
-                    <a class="btn btn-default btn-xs" href="/error-plots-r-jupyter.html">more ...</a>
-                </div>
-            </article>
-            <hr/>
 
         <ul class="pagination">
                 <li class="prev disabled"><a href="#">&laquo;</a></li>
@@ -376,7 +374,7 @@ I spent <em>way</em> too much much time trying to get plots embedded using RStud
             <aside>
 <div id="aboutme">
         <p>
-            <img width="100%" class="img-thumbnail" src="https://raw.githubusercontent.com/frickp/pelicanSite/master/images/headShot.jpg"/>
+            <img width="100%" class="img-thumbnail" src="https://raw.githubusercontent.com/frickp/insight/master/FrickHeadshot.jpg"/>
         </p>
     <p>
         <strong>About Peter Frick</strong><br/>
@@ -394,6 +392,35 @@ I spent <em>way</em> too much much time trying to get plots embedded using RStud
 
 
 
+            <li class="list-group-item"><a href="/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                <ul class="list-group " id="tags">
+                    <li class="list-group-item tag-1">
+                        <a href="/tag/python.html">
+                            python
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-1">
+                        <a href="/tag/data-science.html">
+                            data science
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-1">
+                        <a href="/tag/r.html">
+                            R
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-2">
+                        <a href="/tag/api.html">
+                            api
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-2">
+                        <a href="/tag/stats.html">
+                            stats
+                        </a>
+                    </li>
+                </ul>
+            </li>
 
 
     <li class="list-group-item"><h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Links</span></h4>
@@ -408,6 +435,11 @@ I spent <em>way</em> too much much time trying to get plots embedded using RStud
                 Greenleaf lab
             </a>
         </li>
+        <li class="list-group-item">
+            <a href="http://insightdatascience.com" target="_blank">
+                Insight Data Science
+            </a>
+        </li>
       </ul>
     </li>
     </ul>
@@ -420,7 +452,7 @@ I spent <em>way</em> too much much time trying to get plots embedded using RStud
    <div class="container">
       <hr>
       <div class="row">
-         <div class="col-xs-10">&copy; 2015 Peter Frick
+         <div class="col-xs-10">&copy; 2016 Peter Frick
             &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
             <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
             <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>

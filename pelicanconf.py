@@ -23,6 +23,7 @@ AUTHOR_FEED_RSS = None
 LINKS = (
 	 ('Quaranta lab', 'http://ccsb.vanderbilt.edu/qlab/frontpage'),
          ('Greenleaf lab','http://greenleaf.stanford.edu'),
+         ('Insight Data Science','http://insightdatascience.com'),
         )
 
 # Social widget
@@ -39,13 +40,16 @@ DEFAULT_PAGINATION = 10
 MARKUP = ('md','html')
 
 PLUGIN_PATHS = ['addIns/plugins/','addIns/pelican-plugins/']
-PLUGINS = ['ipynb','sitemap','liquid_tags','liquid_tags.notebook']
+PLUGINS = ['ipynb','sitemap','liquid_tags','liquid_tags.notebook','tag_cloud']
 #PLUGINS = ['sitemap','liquid_tags']
 REVERSE_CATEGORY_ORDER = True
 THEME = 'addIns/themes/pelican-bootstrap3/'
 STATIC_PATHS = ['images']
 ABOUT_ME = 'Thanks for visiting! I am a quantitative scientist, trained in both physics and systems biology. I am passionate about interrogating data intelligently to understand complex systems. This blog is for exploring stats, machine learning, and data science.'
-AVATAR = 'https://raw.githubusercontent.com/frickp/pelicanSite/master/images/headShot.jpg'
+#AVATAR = 'https://raw.githubusercontent.com/frickp/pelicanSite/master/images/headShot.jpg'
+AVATAR = 'https://raw.githubusercontent.com/frickp/insight/master/FrickHeadshot.jpg'
+DISPLAY_TAGS_ON_SIDEBAR = True
+#HIDE_SIDEBAR = True
 
 #PYGMENTS_STYLE=['friendly']
 #NOTEBOOK_DIR = 'notebooks'

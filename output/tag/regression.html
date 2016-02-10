@@ -209,6 +209,9 @@ Peter Frick            </a>
                          <li><a href="/pages/about-me.html">
                              About me
                           </a></li>
+                         <li><a href="/pages/insight.html">
+                             Insight project
+                          </a></li>
                         <li >
                             <a href="/category/blog.html">Blog</a>
                         </li>
@@ -226,6 +229,19 @@ Peter Frick            </a>
     <div class="row">
         <div class="col-sm-9">
             <article>
+                <h2><a href="/machine-learning-nba-shots.html">Statistical learning on NBA shot data</a></h2>
+                <div class="summary"><html><body><div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In the <a href="http://frickp.github.io/python-scrape-nba-shots.html">last post</a>, I pulled some NBA shot data for Andrew Wiggins and put that into a dataframe. Here, we will apply some <a href="https://en.wikipedia.org/wiki/Supervised_learning">supervised learning</a> techniques from <code>sklearn</code> to build predictive models and then use visualizations to better understand the data.</p>
+<p>Some topics we'll explore are prediction error, regularization, and the tradeoff between prediction accuracy and model interpretability.</p>
+                    <a class="btn btn-default btn-xs" href="/machine-learning-nba-shots.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
                 <h2><a href="/python-multiple-regression.html">Using python to get an intuition for multiple regression</a></h2>
                 <div class="summary"><html><body><div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -237,13 +253,26 @@ Peter Frick            </a>
                 </div>
             </article>
             <hr/>
+            <article>
+                <h2><a href="/variable-selection-r-multiple-regression.html">Variable selection for multiple regression models</a></h2>
+                <div class="summary"><html><body><div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Here, I want to look at using R to perform variable selection for a linear model. Let's consider forward and reverse selection, statistical techniques to keep only variables that maximize the variance explained. The dataset I'm using is the Boston housing price dataset from the MASS library.</p>
+<p>Note, that there are some drawbacks/limitations to consider when using variable selection: <a href="http://www.stata.com/support/faqs/statistics/stepwise-regression-problems/">http://www.stata.com/support/faqs/statistics/stepwise-regression-problems/</a>
+                    <a class="btn btn-default btn-xs" href="/variable-selection-r-multiple-regression.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
 
         </div>
         <div class="col-sm-3" id="sidebar">
             <aside>
 <div id="aboutme">
         <p>
-            <img width="100%" class="img-thumbnail" src="https://raw.githubusercontent.com/frickp/pelicanSite/master/images/headShot.jpg"/>
+            <img width="100%" class="img-thumbnail" src="https://raw.githubusercontent.com/frickp/insight/master/FrickHeadshot.jpg"/>
         </p>
     <p>
         <strong>About Peter Frick</strong><br/>
@@ -261,6 +290,35 @@ Peter Frick            </a>
 
 
 
+            <li class="list-group-item"><a href="/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                <ul class="list-group " id="tags">
+                    <li class="list-group-item tag-1">
+                        <a href="/tag/python.html">
+                            python
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-1">
+                        <a href="/tag/data-science.html">
+                            data science
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-1">
+                        <a href="/tag/r.html">
+                            R
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-2">
+                        <a href="/tag/api.html">
+                            api
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-2">
+                        <a href="/tag/stats.html">
+                            stats
+                        </a>
+                    </li>
+                </ul>
+            </li>
 
 
     <li class="list-group-item"><h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Links</span></h4>
@@ -273,6 +331,11 @@ Peter Frick            </a>
         <li class="list-group-item">
             <a href="http://greenleaf.stanford.edu" target="_blank">
                 Greenleaf lab
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="http://insightdatascience.com" target="_blank">
+                Insight Data Science
             </a>
         </li>
       </ul>
