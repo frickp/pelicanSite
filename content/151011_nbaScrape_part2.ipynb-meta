@@ -1,0 +1,7 @@
+Title: Statistical learning on NBA shot data
+Slug: machine-learning-nba-shots
+Date: 2015-10-11
+Category: blog
+Tags: python, NBA, api, machine learning, regression, logistic regression, regularization
+Author: Peter Frick
+Summary: Learning to scrape data off the web. Getting shot data from nba.stats.com
