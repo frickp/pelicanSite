@@ -213,12 +213,6 @@ Peter Frick            </a>
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
-                         <li><a href="/pages/about-me.html">
-                             About me
-                          </a></li>
-                         <li><a href="/pages/insight.html">
-                             Insight project
-                          </a></li>
                         <li class="active">
                             <a href="/category/blog.html">Blog</a>
                         </li>
@@ -279,8 +273,10 @@ Peter Frick            </a>
 .highlight .err { border: 1px solid #FF0000 } /* Error */
 .highlight .k { color: #008000; font-weight: bold } /* Keyword */
 .highlight .o { color: #666666 } /* Operator */
+.highlight .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
 .highlight .cm { color: #408080; font-style: italic } /* Comment.Multiline */
 .highlight .cp { color: #BC7A00 } /* Comment.Preproc */
+.highlight .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
 .highlight .c1 { color: #408080; font-style: italic } /* Comment.Single */
 .highlight .cs { color: #408080; font-style: italic } /* Comment.Special */
 .highlight .gd { color: #A00000 } /* Generic.Deleted */
@@ -320,8 +316,10 @@ Peter Frick            </a>
 .highlight .mh { color: #666666 } /* Literal.Number.Hex */
 .highlight .mi { color: #666666 } /* Literal.Number.Integer */
 .highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sa { color: #BA2121 } /* Literal.String.Affix */
 .highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
 .highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .dl { color: #BA2121 } /* Literal.String.Delimiter */
 .highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
 .highlight .s2 { color: #BA2121 } /* Literal.String.Double */
 .highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
@@ -332,9 +330,11 @@ Peter Frick            </a>
 .highlight .s1 { color: #BA2121 } /* Literal.String.Single */
 .highlight .ss { color: #19177C } /* Literal.String.Symbol */
 .highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .fm { color: #0000FF } /* Name.Function.Magic */
 .highlight .vc { color: #19177C } /* Name.Variable.Class */
 .highlight .vg { color: #19177C } /* Name.Variable.Global */
 .highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .vm { color: #19177C } /* Name.Variable.Magic */
 .highlight .il { color: #666666 } /* Literal.Number.Integer.Long */</style><html><body><div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -349,12 +349,12 @@ Peter Frick            </a>
 <div class="prompt input_prompt">In [2]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="o">%</span><span class="k">matplotlib</span> inline
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
 <span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
 <span class="kn">from</span> <span class="nn">urllib2</span> <span class="kn">import</span> <span class="n">urlopen</span>
 <span class="kn">import</span> <span class="nn">sys</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">'../../dataSandbox/forPelican/'</span><span class="p">)</span> <span class="c">#for loading custom script</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">'../../dataSandbox/forPelican/'</span><span class="p">)</span> <span class="c1">#for loading custom script</span>
 <span class="kn">from</span> <span class="nn">scrapeSO</span> <span class="kn">import</span> <span class="n">soJobs</span>
 <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
@@ -379,11 +379,11 @@ Peter Frick            </a>
 <div class="prompt input_prompt">In [3]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="n">BASE_URL</span> <span class="o">=</span> <span class="s">"http://careers.stackoverflow.com"</span>
-<span class="n">jobQ</span> <span class="o">=</span> <span class="s">'/jobs?searchTerm=data+scientist'</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">BASE_URL</span> <span class="o">=</span> <span class="s2">"http://careers.stackoverflow.com"</span>
+<span class="n">jobQ</span> <span class="o">=</span> <span class="s1">'/jobs?searchTerm=data+scientist'</span>
 
 <span class="n">html</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">BASE_URL</span> <span class="o">+</span> <span class="n">jobQ</span><span class="p">)</span>
-<span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">html</span> <span class="p">,</span> <span class="s">'lxml'</span><span class="p">)</span>
+<span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">html</span> <span class="p">,</span> <span class="s1">'lxml'</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -403,9 +403,9 @@ Peter Frick            </a>
 <div class="prompt input_prompt">In [4]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="k">for</span> <span class="n">allElem</span> <span class="ow">in</span> <span class="n">soup</span><span class="o">.</span><span class="n">findAll</span><span class="p">(</span><span class="s">'h3'</span><span class="p">,{</span><span class="s">'class'</span><span class="p">:</span><span class="s">'-title'</span><span class="p">})[</span><span class="mi">0</span><span class="p">:</span><span class="mi">10</span><span class="p">]:</span>
-    <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">allElem</span><span class="o">.</span><span class="n">findAll</span><span class="p">(</span><span class="s">'a'</span><span class="p">):</span>
-        <span class="k">print</span> <span class="n">elem</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'href'</span><span class="p">)</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="k">for</span> <span class="n">allElem</span> <span class="ow">in</span> <span class="n">soup</span><span class="o">.</span><span class="n">findAll</span><span class="p">(</span><span class="s1">'h3'</span><span class="p">,{</span><span class="s1">'class'</span><span class="p">:</span><span class="s1">'-title'</span><span class="p">})[</span><span class="mi">0</span><span class="p">:</span><span class="mi">10</span><span class="p">]:</span>
+    <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">allElem</span><span class="o">.</span><span class="n">findAll</span><span class="p">(</span><span class="s1">'a'</span><span class="p">):</span>
+        <span class="k">print</span> <span class="n">elem</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'href'</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -444,9 +444,9 @@ Peter Frick            </a>
 <div class="prompt input_prompt">In [5]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="k">for</span> <span class="n">footer</span> <span class="ow">in</span> <span class="n">soup</span><span class="o">.</span><span class="n">findAll</span><span class="p">(</span><span class="s">'div'</span><span class="p">,{</span><span class="s">'class'</span><span class="p">:</span><span class="s">'pagination'</span><span class="p">}):</span>
-    <span class="k">for</span> <span class="n">morePages</span> <span class="ow">in</span> <span class="n">footer</span><span class="o">.</span><span class="n">findAll</span><span class="p">(</span><span class="s">'a'</span><span class="p">,{</span><span class="s">'class'</span><span class="p">:</span><span class="s">'job-link'</span><span class="p">})[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]:</span>
-        <span class="k">print</span> <span class="n">morePages</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'href'</span><span class="p">)</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="k">for</span> <span class="n">footer</span> <span class="ow">in</span> <span class="n">soup</span><span class="o">.</span><span class="n">findAll</span><span class="p">(</span><span class="s1">'div'</span><span class="p">,{</span><span class="s1">'class'</span><span class="p">:</span><span class="s1">'pagination'</span><span class="p">}):</span>
+    <span class="k">for</span> <span class="n">morePages</span> <span class="ow">in</span> <span class="n">footer</span><span class="o">.</span><span class="n">findAll</span><span class="p">(</span><span class="s1">'a'</span><span class="p">,{</span><span class="s1">'class'</span><span class="p">:</span><span class="s1">'job-link'</span><span class="p">})[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]:</span>
+        <span class="k">print</span> <span class="n">morePages</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'href'</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -486,13 +486,13 @@ Peter Frick            </a>
 <div class="prompt input_prompt">In [6]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="n">d</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
-<span class="k">for</span> <span class="n">footer</span> <span class="ow">in</span> <span class="n">soup</span><span class="o">.</span><span class="n">findAll</span><span class="p">(</span><span class="s">'div'</span><span class="p">,{</span><span class="s">'class'</span><span class="p">:</span><span class="s">'pagination'</span><span class="p">}):</span>
-    <span class="k">for</span> <span class="n">morePages</span> <span class="ow">in</span> <span class="n">footer</span><span class="o">.</span><span class="n">findAll</span><span class="p">(</span><span class="s">'a'</span><span class="p">,{</span><span class="s">'class'</span><span class="p">:</span><span class="s">'job-link'</span><span class="p">})[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]:</span>
-        <span class="k">for</span> <span class="n">allElem</span> <span class="ow">in</span> <span class="n">soup</span><span class="o">.</span><span class="n">findAll</span><span class="p">(</span><span class="s">'h3'</span><span class="p">,{</span><span class="s">'class'</span><span class="p">:</span><span class="s">'-title'</span><span class="p">}):</span>
-            <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">allElem</span><span class="o">.</span><span class="n">findAll</span><span class="p">(</span><span class="s">'a'</span><span class="p">):</span>
-                <span class="n">d</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">soJobs</span><span class="p">(</span><span class="n">BASE_URL</span> <span class="o">+</span> <span class="n">elem</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'href'</span><span class="p">)))</span>
-<span class="n">d</span><span class="p">[</span><span class="s">'words'</span><span class="p">]</span> <span class="o">=</span> <span class="n">d</span><span class="p">[</span><span class="s">'words'</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>    <span class="c">#Make lowercase</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">footer</span> <span class="ow">in</span> <span class="n">soup</span><span class="o">.</span><span class="n">findAll</span><span class="p">(</span><span class="s1">'div'</span><span class="p">,{</span><span class="s1">'class'</span><span class="p">:</span><span class="s1">'pagination'</span><span class="p">}):</span>
+    <span class="k">for</span> <span class="n">morePages</span> <span class="ow">in</span> <span class="n">footer</span><span class="o">.</span><span class="n">findAll</span><span class="p">(</span><span class="s1">'a'</span><span class="p">,{</span><span class="s1">'class'</span><span class="p">:</span><span class="s1">'job-link'</span><span class="p">})[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]:</span>
+        <span class="k">for</span> <span class="n">allElem</span> <span class="ow">in</span> <span class="n">soup</span><span class="o">.</span><span class="n">findAll</span><span class="p">(</span><span class="s1">'h3'</span><span class="p">,{</span><span class="s1">'class'</span><span class="p">:</span><span class="s1">'-title'</span><span class="p">}):</span>
+            <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">allElem</span><span class="o">.</span><span class="n">findAll</span><span class="p">(</span><span class="s1">'a'</span><span class="p">):</span>
+                <span class="n">d</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">soJobs</span><span class="p">(</span><span class="n">BASE_URL</span> <span class="o">+</span> <span class="n">elem</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'href'</span><span class="p">)))</span>
+<span class="n">d</span><span class="p">[</span><span class="s1">'words'</span><span class="p">]</span> <span class="o">=</span> <span class="n">d</span><span class="p">[</span><span class="s1">'words'</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>    <span class="c1">#Make lowercase</span>
 <span class="n">d</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -562,7 +562,7 @@ Peter Frick            </a>
 <div class="prompt input_prompt">In [7]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="nb">len</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -591,10 +591,10 @@ Peter Frick            </a>
 <div class="prompt input_prompt">In [10]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="n">ds</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">d</span><span class="p">[</span><span class="s">'data'</span><span class="p">]</span><span class="o">==</span><span class="bp">True</span><span class="p">]</span>
-<span class="n">blocked</span> <span class="o">=</span> <span class="p">[</span><span class="s">'experience'</span><span class="p">,</span><span class="s">'skills'</span><span class="p">,</span><span class="s">'you'</span><span class="p">]</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">ds</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">d</span><span class="p">[</span><span class="s1">'data'</span><span class="p">]</span><span class="o">==</span><span class="bp">True</span><span class="p">]</span>
+<span class="n">blocked</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'experience'</span><span class="p">,</span><span class="s1">'skills'</span><span class="p">,</span><span class="s1">'you'</span><span class="p">]</span>
 
-<span class="n">ds</span> <span class="o">=</span> <span class="n">ds</span><span class="p">[</span><span class="o">~</span><span class="n">ds</span><span class="p">[</span><span class="s">'words'</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">blocked</span><span class="p">)]</span>
+<span class="n">ds</span> <span class="o">=</span> <span class="n">ds</span><span class="p">[</span><span class="o">~</span><span class="n">ds</span><span class="p">[</span><span class="s1">'words'</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">blocked</span><span class="p">)]</span>
 <span class="k">print</span> <span class="nb">len</span><span class="p">(</span><span class="n">ds</span><span class="p">)</span>
 <span class="n">ds</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
@@ -680,7 +680,7 @@ Peter Frick            </a>
 <div class="prompt input_prompt">In [8]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="n">ds</span><span class="p">[</span><span class="s">'words'</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()[</span><span class="mi">0</span><span class="p">:</span><span class="mi">15</span><span class="p">]</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">ds</span><span class="p">[</span><span class="s1">'words'</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()[</span><span class="mi">0</span><span class="p">:</span><span class="mi">15</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -725,11 +725,11 @@ Now, let's visualize our word count and reap the fruits of our labor. To do this
 <div class="prompt input_prompt">In [19]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="n">wordcloud</span> <span class="o">=</span> <span class="n">WordCloud</span><span class="p">(</span><span class="n">max_font_size</span><span class="o">=</span><span class="mi">120</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span><span class="n">stopwords</span><span class="o">=</span><span class="p">[</span><span class="s">'s'</span><span class="p">,</span><span class="s">'ve'</span><span class="p">,</span><span class="s">'e'</span><span class="p">,</span><span class="s">'g'</span><span class="p">,</span><span class="s">'c'</span><span class="p">,</span><span class="s">'an'</span><span class="p">,</span><span class="s">'etc'</span><span class="p">])</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="s">' '</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">ds</span><span class="p">[</span><span class="s">'words'</span><span class="p">]))</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">wordcloud</span> <span class="o">=</span> <span class="n">WordCloud</span><span class="p">(</span><span class="n">max_font_size</span><span class="o">=</span><span class="mi">120</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span><span class="n">stopwords</span><span class="o">=</span><span class="p">[</span><span class="s1">'s'</span><span class="p">,</span><span class="s1">'ve'</span><span class="p">,</span><span class="s1">'e'</span><span class="p">,</span><span class="s1">'g'</span><span class="p">,</span><span class="s1">'c'</span><span class="p">,</span><span class="s1">'an'</span><span class="p">,</span><span class="s1">'etc'</span><span class="p">])</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="s1">' '</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">ds</span><span class="p">[</span><span class="s1">'words'</span><span class="p">]))</span>
 
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">24</span><span class="p">,</span><span class="mi">18</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">1600</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">wordcloud</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s">"off"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">"off"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -6717,13 +6717,13 @@ H/p/P6EG3dVYUp4AAAAASUVORK5CYII=
             <li class="list-group-item"><a href="/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
                 <ul class="list-group " id="tags">
                     <li class="list-group-item tag-1">
-                        <a href="/tag/python.html">
-                            python
+                        <a href="/tag/data-science.html">
+                            data science
                         </a>
                     </li>
                     <li class="list-group-item tag-1">
-                        <a href="/tag/data-science.html">
-                            data science
+                        <a href="/tag/python.html">
+                            python
                         </a>
                     </li>
                     <li class="list-group-item tag-1">
@@ -6732,13 +6732,13 @@ H/p/P6EG3dVYUp4AAAAASUVORK5CYII=
                         </a>
                     </li>
                     <li class="list-group-item tag-2">
-                        <a href="/tag/api.html">
-                            api
+                        <a href="/tag/stats.html">
+                            stats
                         </a>
                     </li>
                     <li class="list-group-item tag-2">
-                        <a href="/tag/stats.html">
-                            stats
+                        <a href="/tag/api.html">
+                            api
                         </a>
                     </li>
                 </ul>

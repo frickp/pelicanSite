@@ -213,12 +213,6 @@ Peter Frick            </a>
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
-                         <li><a href="/pages/about-me.html">
-                             About me
-                          </a></li>
-                         <li><a href="/pages/insight.html">
-                             Insight project
-                          </a></li>
                         <li class="active">
                             <a href="/category/blog.html">Blog</a>
                         </li>
@@ -279,8 +273,10 @@ Peter Frick            </a>
 .highlight .err { border: 1px solid #FF0000 } /* Error */
 .highlight .k { color: #008000; font-weight: bold } /* Keyword */
 .highlight .o { color: #666666 } /* Operator */
+.highlight .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
 .highlight .cm { color: #408080; font-style: italic } /* Comment.Multiline */
 .highlight .cp { color: #BC7A00 } /* Comment.Preproc */
+.highlight .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
 .highlight .c1 { color: #408080; font-style: italic } /* Comment.Single */
 .highlight .cs { color: #408080; font-style: italic } /* Comment.Special */
 .highlight .gd { color: #A00000 } /* Generic.Deleted */
@@ -320,8 +316,10 @@ Peter Frick            </a>
 .highlight .mh { color: #666666 } /* Literal.Number.Hex */
 .highlight .mi { color: #666666 } /* Literal.Number.Integer */
 .highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sa { color: #BA2121 } /* Literal.String.Affix */
 .highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
 .highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .dl { color: #BA2121 } /* Literal.String.Delimiter */
 .highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
 .highlight .s2 { color: #BA2121 } /* Literal.String.Double */
 .highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
@@ -332,9 +330,11 @@ Peter Frick            </a>
 .highlight .s1 { color: #BA2121 } /* Literal.String.Single */
 .highlight .ss { color: #19177C } /* Literal.String.Symbol */
 .highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .fm { color: #0000FF } /* Name.Function.Magic */
 .highlight .vc { color: #19177C } /* Name.Variable.Class */
 .highlight .vg { color: #19177C } /* Name.Variable.Global */
 .highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .vm { color: #19177C } /* Name.Variable.Magic */
 .highlight .il { color: #666666 } /* Literal.Number.Integer.Long */</style><html><body><div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -350,7 +350,7 @@ Peter Frick            </a>
 <div class="prompt input_prompt">In [1]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="o">%</span><span class="k">matplotlib</span> inline
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
 <span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">import</span> <span class="nn">json</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
@@ -375,11 +375,11 @@ Peter Frick            </a>
 <div class="prompt input_prompt">In [2]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="n">shotsUrl</span> <span class="o">=</span> <span class="s">'http://stats.nba.com/stats/playerdashptshotlog?'</span> <span class="o">+</span> \
-    <span class="s">'DateFrom=&amp;DateTo=&amp;GameSegment=&amp;LastNGames=0&amp;LeagueID=00'</span> <span class="o">+</span> \
-    <span class="s">'&amp;Location=&amp;Month=0&amp;OpponentTeamID=0&amp;Outcome=&amp;Period=0'</span> <span class="o">+</span> \
-    <span class="s">'&amp;PlayerID=203952&amp;Season=2014-15&amp;SeasonSegment=&amp;SeasonType='</span> <span class="o">+</span> \
-    <span class="s">'Regular+Season&amp;TeamID=0&amp;VsConference=&amp;VsDivision='</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">shotsUrl</span> <span class="o">=</span> <span class="s1">'http://stats.nba.com/stats/playerdashptshotlog?'</span> <span class="o">+</span> \
+    <span class="s1">'DateFrom=&amp;DateTo=&amp;GameSegment=&amp;LastNGames=0&amp;LeagueID=00'</span> <span class="o">+</span> \
+    <span class="s1">'&amp;Location=&amp;Month=0&amp;OpponentTeamID=0&amp;Outcome=&amp;Period=0'</span> <span class="o">+</span> \
+    <span class="s1">'&amp;PlayerID=203952&amp;Season=2014-15&amp;SeasonSegment=&amp;SeasonType='</span> <span class="o">+</span> \
+    <span class="s1">'Regular+Season&amp;TeamID=0&amp;VsConference=&amp;VsDivision='</span>
 </pre></div>
 </div>
 </div>
@@ -399,10 +399,10 @@ Peter Frick            </a>
 <div class="prompt input_prompt">In [3]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">shotsUrl</span><span class="p">)</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">shotsUrl</span><span class="p">)</span>
 <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
-<span class="n">shots</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s">'resultSets'</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s">'rowSet'</span><span class="p">]</span>
-<span class="n">colNames</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s">'resultSets'</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s">'headers'</span><span class="p">]</span>
+<span class="n">shots</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s1">'resultSets'</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">'rowSet'</span><span class="p">]</span>
+<span class="n">colNames</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s1">'resultSets'</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">'headers'</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -422,7 +422,7 @@ Peter Frick            </a>
 <div class="prompt input_prompt">In [11]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="n">pwd</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">pwd</span>
 </pre></div>
 </div>
 </div>
@@ -442,7 +442,7 @@ Peter Frick            </a>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="n">ls</span> <span class="s">'../../dataSandbox/forPelican/nbaWiggins.csv'</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">ls</span> <span class="s1">'../../dataSandbox/forPelican/nbaWiggins.csv'</span>
 </pre></div>
 </div>
 </div>
@@ -453,8 +453,8 @@ Peter Frick            </a>
 <div class="prompt input_prompt">In [13]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="n">dfShots</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">shots</span><span class="p">,</span><span class="n">columns</span><span class="o">=</span><span class="n">colNames</span><span class="p">)</span>
-<span class="n">dfShots</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s">'../../dataSandbox/forPelican/nbaWiggins.csv'</span><span class="p">,</span><span class="n">index_label</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">dfShots</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">shots</span><span class="p">,</span><span class="n">columns</span><span class="o">=</span><span class="n">colNames</span><span class="p">)</span>
+<span class="n">dfShots</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">'../../dataSandbox/forPelican/nbaWiggins.csv'</span><span class="p">,</span><span class="n">index_label</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
 <span class="n">dfShots</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -623,13 +623,13 @@ Peter Frick            </a>
 <div class="prompt input_prompt">In [5]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="n">allShots</span> <span class="o">=</span> <span class="n">dfShots</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">invert</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">dfShots</span><span class="o">.</span><span class="n">SHOT_CLOCK</span><span class="p">))]</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">allShots</span> <span class="o">=</span> <span class="n">dfShots</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">invert</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">dfShots</span><span class="o">.</span><span class="n">SHOT_CLOCK</span><span class="p">))]</span>
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">1600</span><span class="p">)</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
-<span class="n">allShots</span><span class="p">[</span><span class="s">'SHOT_CLOCK'</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">normed</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s">'Shot clock (s)'</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span><span class="n">fontweight</span><span class="o">=</span><span class="s">'bold'</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">'Density'</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span><span class="n">fontweight</span><span class="o">=</span><span class="s">'bold'</span><span class="p">)</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s">'Andrew Wiggins'</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span><span class="n">fontweight</span><span class="o">=</span><span class="s">'bold'</span><span class="p">)</span>
+<span class="n">allShots</span><span class="p">[</span><span class="s1">'SHOT_CLOCK'</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">normed</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">'Shot clock (s)'</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span><span class="n">fontweight</span><span class="o">=</span><span class="s1">'bold'</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">'Density'</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span><span class="n">fontweight</span><span class="o">=</span><span class="s1">'bold'</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">'Andrew Wiggins'</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span><span class="n">fontweight</span><span class="o">=</span><span class="s1">'bold'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -860,20 +860,20 @@ WsdxnJL5/2OBHXXf8dMYAAAAAElFTkSuQmCC
 <div class="prompt input_prompt">In [6]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">1600</span><span class="p">)</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">1600</span><span class="p">)</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
 
-<span class="n">madeShots</span> <span class="o">=</span> <span class="n">dfShots</span><span class="p">[(</span><span class="n">dfShots</span><span class="o">.</span><span class="n">SHOT_RESULT</span><span class="o">==</span><span class="s">'made'</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">invert</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">dfShots</span><span class="o">.</span><span class="n">SHOT_CLOCK</span><span class="p">)))]</span>
-<span class="c">#madeShots = allShots[allShots.SHOT_RESULT=='made']</span>
-<span class="n">missedShots</span> <span class="o">=</span> <span class="n">dfShots</span><span class="p">[(</span><span class="n">dfShots</span><span class="o">.</span><span class="n">SHOT_RESULT</span><span class="o">==</span><span class="s">'missed'</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">invert</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">dfShots</span><span class="o">.</span><span class="n">SHOT_CLOCK</span><span class="p">)))]</span>
+<span class="n">madeShots</span> <span class="o">=</span> <span class="n">dfShots</span><span class="p">[(</span><span class="n">dfShots</span><span class="o">.</span><span class="n">SHOT_RESULT</span><span class="o">==</span><span class="s1">'made'</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">invert</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">dfShots</span><span class="o">.</span><span class="n">SHOT_CLOCK</span><span class="p">)))]</span>
+<span class="c1">#madeShots = allShots[allShots.SHOT_RESULT=='made']</span>
+<span class="n">missedShots</span> <span class="o">=</span> <span class="n">dfShots</span><span class="p">[(</span><span class="n">dfShots</span><span class="o">.</span><span class="n">SHOT_RESULT</span><span class="o">==</span><span class="s1">'missed'</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">invert</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">dfShots</span><span class="o">.</span><span class="n">SHOT_CLOCK</span><span class="p">)))]</span>
 
-<span class="n">madeShots</span><span class="p">[</span><span class="s">'SHOT_CLOCK'</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">normed</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s">'made'</span><span class="p">)</span>
-<span class="n">missedShots</span><span class="p">[</span><span class="s">'SHOT_CLOCK'</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">normed</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s">'missed'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s">'upper right'</span><span class="p">,</span><span class="n">framealpha</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">madeShots</span><span class="p">[</span><span class="s1">'SHOT_CLOCK'</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">normed</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">'made'</span><span class="p">)</span>
+<span class="n">missedShots</span><span class="p">[</span><span class="s1">'SHOT_CLOCK'</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">normed</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">'missed'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">'upper right'</span><span class="p">,</span><span class="n">framealpha</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s">'Shot clock (s)'</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span><span class="n">fontweight</span><span class="o">=</span><span class="s">'bold'</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">'Density'</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span><span class="n">fontweight</span><span class="o">=</span><span class="s">'bold'</span><span class="p">)</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s">'Andrew Wiggins'</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span><span class="n">fontweight</span><span class="o">=</span><span class="s">'bold'</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">'Shot clock (s)'</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span><span class="n">fontweight</span><span class="o">=</span><span class="s1">'bold'</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">'Density'</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span><span class="n">fontweight</span><span class="o">=</span><span class="s1">'bold'</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">'Andrew Wiggins'</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span><span class="n">fontweight</span><span class="o">=</span><span class="s1">'bold'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1163,7 +1163,7 @@ GIZRZMzQGoZhFBkztIZhGEXGDK1hGEaR+f8Bro6FrNxo4JUAAAAASUVORK5CYII=
 <div class="prompt input_prompt">In [7]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="kn">from</span> <span class="nn">sklearn.utils</span> <span class="kn">import</span> <span class="n">resample</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.utils</span> <span class="kn">import</span> <span class="n">resample</span>
 </pre></div>
 </div>
 </div>
@@ -1196,13 +1196,13 @@ GIZRZMzQGoZhFBkztIZhGEXGDK1hGEaR+f8Bro6FrNxo4JUAAAAASUVORK5CYII=
 <div class="prompt input_prompt">In [8]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="k">def</span> <span class="nf">getCI</span><span class="p">(</span><span class="n">dist</span><span class="p">,</span><span class="n">n</span><span class="o">=</span><span class="mi">1000</span><span class="p">):</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">getCI</span><span class="p">(</span><span class="n">dist</span><span class="p">,</span><span class="n">n</span><span class="o">=</span><span class="mi">1000</span><span class="p">):</span>
     <span class="n">bootMean</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
         <span class="n">newDist</span> <span class="o">=</span> <span class="n">resample</span><span class="p">(</span><span class="n">dist</span><span class="p">)</span>
         <span class="n">bootMean</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">newDist</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
     <span class="n">bootMean</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">bootMean</span><span class="p">)</span>
-    <span class="n">madeCI</span> <span class="o">=</span> <span class="p">{</span><span class="s">'lower'</span><span class="p">:</span> <span class="n">bootMean</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="mf">0.025</span><span class="p">)],</span> <span class="s">'upper'</span><span class="p">:</span> <span class="n">bootMean</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="mf">0.975</span><span class="p">)],</span> <span class="s">'mean'</span><span class="p">:</span> <span class="n">bootMean</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="mf">0.5</span><span class="p">)]}</span>
+    <span class="n">madeCI</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'lower'</span><span class="p">:</span> <span class="n">bootMean</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="mf">0.025</span><span class="p">)],</span> <span class="s1">'upper'</span><span class="p">:</span> <span class="n">bootMean</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="mf">0.975</span><span class="p">)],</span> <span class="s1">'mean'</span><span class="p">:</span> <span class="n">bootMean</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="mf">0.5</span><span class="p">)]}</span>
     <span class="k">return</span> <span class="n">madeCI</span>
 </pre></div>
 </div>
@@ -1223,15 +1223,15 @@ GIZRZMzQGoZhFBkztIZhGEXGDK1hGEaR+f8Bro6FrNxo4JUAAAAASUVORK5CYII=
 <div class="prompt input_prompt">In [9]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="n">made</span> <span class="o">=</span> <span class="n">getCI</span><span class="p">(</span><span class="n">madeShots</span><span class="p">[</span><span class="s">'SHOT_CLOCK'</span><span class="p">],</span><span class="mi">1000</span><span class="p">)</span>
-<span class="n">missed</span> <span class="o">=</span> <span class="n">getCI</span><span class="p">(</span><span class="n">missedShots</span><span class="p">[</span><span class="s">'SHOT_CLOCK'</span><span class="p">],</span><span class="mi">1000</span><span class="p">)</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">made</span> <span class="o">=</span> <span class="n">getCI</span><span class="p">(</span><span class="n">madeShots</span><span class="p">[</span><span class="s1">'SHOT_CLOCK'</span><span class="p">],</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">missed</span> <span class="o">=</span> <span class="n">getCI</span><span class="p">(</span><span class="n">missedShots</span><span class="p">[</span><span class="s1">'SHOT_CLOCK'</span><span class="p">],</span><span class="mi">1000</span><span class="p">)</span>
 
-<span class="n">madeUp</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">made</span><span class="p">[</span><span class="s">'upper'</span><span class="p">]</span> <span class="o">-</span> <span class="n">made</span><span class="p">[</span><span class="s">'mean'</span><span class="p">])</span>
-<span class="n">madeLow</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">made</span><span class="p">[</span><span class="s">'lower'</span><span class="p">]</span> <span class="o">-</span> <span class="n">made</span><span class="p">[</span><span class="s">'mean'</span><span class="p">])</span>
-<span class="k">print</span> <span class="s">"Made shots abs. error intervals:</span><span class="se">\n</span><span class="s">"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">madeLow</span><span class="p">)</span> <span class="o">+</span><span class="s">', '</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">madeUp</span><span class="p">)</span> <span class="o">+</span> <span class="s">'</span><span class="se">\n</span><span class="s">'</span>
-<span class="n">missedUp</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">missed</span><span class="p">[</span><span class="s">'upper'</span><span class="p">]</span> <span class="o">-</span> <span class="n">missed</span><span class="p">[</span><span class="s">'mean'</span><span class="p">])</span>
-<span class="n">missedLow</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">missed</span><span class="p">[</span><span class="s">'lower'</span><span class="p">]</span> <span class="o">-</span> <span class="n">missed</span><span class="p">[</span><span class="s">'mean'</span><span class="p">])</span>
-<span class="k">print</span> <span class="s">"Missed shots abs. error intervals:</span><span class="se">\n</span><span class="s">"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">missedLow</span><span class="p">)</span> <span class="o">+</span> <span class="s">', '</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">missedUp</span><span class="p">)</span>
+<span class="n">madeUp</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">made</span><span class="p">[</span><span class="s1">'upper'</span><span class="p">]</span> <span class="o">-</span> <span class="n">made</span><span class="p">[</span><span class="s1">'mean'</span><span class="p">])</span>
+<span class="n">madeLow</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">made</span><span class="p">[</span><span class="s1">'lower'</span><span class="p">]</span> <span class="o">-</span> <span class="n">made</span><span class="p">[</span><span class="s1">'mean'</span><span class="p">])</span>
+<span class="k">print</span> <span class="s2">"Made shots abs. error intervals:</span><span class="se">\n</span><span class="s2">"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">madeLow</span><span class="p">)</span> <span class="o">+</span><span class="s1">', '</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">madeUp</span><span class="p">)</span> <span class="o">+</span> <span class="s1">'</span><span class="se">\n</span><span class="s1">'</span>
+<span class="n">missedUp</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">missed</span><span class="p">[</span><span class="s1">'upper'</span><span class="p">]</span> <span class="o">-</span> <span class="n">missed</span><span class="p">[</span><span class="s1">'mean'</span><span class="p">])</span>
+<span class="n">missedLow</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">missed</span><span class="p">[</span><span class="s1">'lower'</span><span class="p">]</span> <span class="o">-</span> <span class="n">missed</span><span class="p">[</span><span class="s1">'mean'</span><span class="p">])</span>
+<span class="k">print</span> <span class="s2">"Missed shots abs. error intervals:</span><span class="se">\n</span><span class="s2">"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">missedLow</span><span class="p">)</span> <span class="o">+</span> <span class="s1">', '</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">missedUp</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1256,22 +1256,22 @@ Missed shots abs. error intervals:
 <div class="prompt input_prompt">In [10]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">1600</span><span class="p">)</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">1600</span><span class="p">)</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
 
-<span class="n">madeShots</span> <span class="o">=</span> <span class="n">dfShots</span><span class="p">[(</span><span class="n">dfShots</span><span class="o">.</span><span class="n">SHOT_RESULT</span><span class="o">==</span><span class="s">'made'</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">invert</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">dfShots</span><span class="o">.</span><span class="n">SHOT_CLOCK</span><span class="p">)))]</span>
-<span class="n">missedShots</span> <span class="o">=</span> <span class="n">dfShots</span><span class="p">[(</span><span class="n">dfShots</span><span class="o">.</span><span class="n">SHOT_RESULT</span><span class="o">==</span><span class="s">'missed'</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">invert</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">dfShots</span><span class="o">.</span><span class="n">SHOT_CLOCK</span><span class="p">)))]</span>
+<span class="n">madeShots</span> <span class="o">=</span> <span class="n">dfShots</span><span class="p">[(</span><span class="n">dfShots</span><span class="o">.</span><span class="n">SHOT_RESULT</span><span class="o">==</span><span class="s1">'made'</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">invert</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">dfShots</span><span class="o">.</span><span class="n">SHOT_CLOCK</span><span class="p">)))]</span>
+<span class="n">missedShots</span> <span class="o">=</span> <span class="n">dfShots</span><span class="p">[(</span><span class="n">dfShots</span><span class="o">.</span><span class="n">SHOT_RESULT</span><span class="o">==</span><span class="s1">'missed'</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">invert</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">dfShots</span><span class="o">.</span><span class="n">SHOT_CLOCK</span><span class="p">)))]</span>
 
-<span class="n">madeShots</span><span class="p">[</span><span class="s">'SHOT_CLOCK'</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">normed</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s">'made'</span><span class="p">)</span>
-<span class="n">missedShots</span><span class="p">[</span><span class="s">'SHOT_CLOCK'</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">normed</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s">'missed'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s">'upper right'</span><span class="p">,</span><span class="n">framealpha</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">madeShots</span><span class="p">[</span><span class="s1">'SHOT_CLOCK'</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">normed</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">'made'</span><span class="p">)</span>
+<span class="n">missedShots</span><span class="p">[</span><span class="s1">'SHOT_CLOCK'</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">normed</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">'missed'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">'upper right'</span><span class="p">,</span><span class="n">framealpha</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s">'Shot clock (s)'</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span><span class="n">fontweight</span><span class="o">=</span><span class="s">'bold'</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">'Density'</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span><span class="n">fontweight</span><span class="o">=</span><span class="s">'bold'</span><span class="p">)</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s">'Andrew Wiggins'</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span><span class="n">fontweight</span><span class="o">=</span><span class="s">'bold'</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">'Shot clock (s)'</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span><span class="n">fontweight</span><span class="o">=</span><span class="s1">'bold'</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">'Density'</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span><span class="n">fontweight</span><span class="o">=</span><span class="s1">'bold'</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">'Andrew Wiggins'</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span><span class="n">fontweight</span><span class="o">=</span><span class="s1">'bold'</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="p">[</span><span class="n">made</span><span class="p">[</span><span class="s">'mean'</span><span class="p">]],</span><span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="mf">0.05</span><span class="p">],</span><span class="n">xerr</span><span class="o">=</span><span class="p">[[</span><span class="n">madeLow</span><span class="p">],[</span><span class="n">madeUp</span><span class="p">]],</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">capthick</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">ecolor</span><span class="o">=</span><span class="s">'b'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="p">[</span><span class="n">missed</span><span class="p">[</span><span class="s">'mean'</span><span class="p">]],</span><span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="mf">0.05</span><span class="p">],</span><span class="n">xerr</span><span class="o">=</span><span class="p">[[</span><span class="n">missedLow</span><span class="p">],[</span><span class="n">missedUp</span><span class="p">]],</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">capthick</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">ecolor</span><span class="o">=</span><span class="s">'g'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="p">[</span><span class="n">made</span><span class="p">[</span><span class="s1">'mean'</span><span class="p">]],</span><span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="mf">0.05</span><span class="p">],</span><span class="n">xerr</span><span class="o">=</span><span class="p">[[</span><span class="n">madeLow</span><span class="p">],[</span><span class="n">madeUp</span><span class="p">]],</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">capthick</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">ecolor</span><span class="o">=</span><span class="s1">'b'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="p">[</span><span class="n">missed</span><span class="p">[</span><span class="s1">'mean'</span><span class="p">]],</span><span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="mf">0.05</span><span class="p">],</span><span class="n">xerr</span><span class="o">=</span><span class="p">[[</span><span class="n">missedLow</span><span class="p">],[</span><span class="n">missedUp</span><span class="p">]],</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">capthick</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">ecolor</span><span class="o">=</span><span class="s1">'g'</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -1662,13 +1662,13 @@ KCUBIiIiDUpJgIiISIP6/+3KmkzeiicgAAAAAElFTkSuQmCC
             <li class="list-group-item"><a href="/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
                 <ul class="list-group " id="tags">
                     <li class="list-group-item tag-1">
-                        <a href="/tag/python.html">
-                            python
+                        <a href="/tag/data-science.html">
+                            data science
                         </a>
                     </li>
                     <li class="list-group-item tag-1">
-                        <a href="/tag/data-science.html">
-                            data science
+                        <a href="/tag/python.html">
+                            python
                         </a>
                     </li>
                     <li class="list-group-item tag-1">
@@ -1677,13 +1677,13 @@ KCUBIiIiDUpJgIiISIP6/+3KmkzeiicgAAAAAElFTkSuQmCC
                         </a>
                     </li>
                     <li class="list-group-item tag-2">
-                        <a href="/tag/api.html">
-                            api
+                        <a href="/tag/stats.html">
+                            stats
                         </a>
                     </li>
                     <li class="list-group-item tag-2">
-                        <a href="/tag/stats.html">
-                            stats
+                        <a href="/tag/api.html">
+                            api
                         </a>
                     </li>
                 </ul>

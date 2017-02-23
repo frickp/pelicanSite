@@ -212,12 +212,6 @@ Peter Frick            </a>
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
-                         <li><a href="/pages/about-me.html">
-                             About me
-                          </a></li>
-                         <li><a href="/pages/insight.html">
-                             Insight project
-                          </a></li>
                         <li class="active">
                             <a href="/category/blog.html">Blog</a>
                         </li>
@@ -271,14 +265,14 @@ Peter Frick            </a>
 2. Try some basic SQL commands
 I'll be using a public database of population statistics (from <a href="http://moderndata.plot.ly/graph-data-from-mysql-database-in-python/">this site</a>).</p>
 <h3>First, get the data using bash</h3>
-<div class="highlight"><pre>sudo mysql -uroot
+<div class="highlight"><pre><span></span>sudo mysql -uroot
 wget http://downloads.mysql.com/docs/world.sql.zip
 unzip world.sql.zip
 </pre></div>
 
 
 <h3>Now, use mysql scripts to create/load the database</h3>
-<div class="highlight"><pre><span class="n">mysql</span><span class="o">&gt;</span> <span class="cm">/*This is a comment*/</span>
+<div class="highlight"><pre><span></span><span class="n">mysql</span><span class="o">&gt;</span> <span class="cm">/*This is a comment*/</span>
 <span class="n">mysql</span><span class="o">&gt;</span> <span class="k">CREATE</span> <span class="k">database</span> <span class="n">world</span><span class="p">;</span>
 <span class="n">mysql</span><span class="o">&gt;</span> <span class="n">USE</span> <span class="n">world</span><span class="p">;</span>
 <span class="n">mysql</span><span class="o">&gt;</span> <span class="k">SOURCE</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">ubuntu</span><span class="o">/</span><span class="n">world</span><span class="p">.</span><span class="k">sql</span><span class="p">;</span>
@@ -287,7 +281,7 @@ unzip world.sql.zip
 
 <h3>Toes dipping slowly into the water</h3>
 <p>So what's in the database? Let's take a look.</p>
-<div class="highlight"><pre><span class="n">mysql</span><span class="o">&gt;</span> <span class="k">show</span> <span class="n">tables</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="n">mysql</span><span class="o">&gt;</span> <span class="k">show</span> <span class="n">tables</span><span class="p">;</span>
 <span class="o">+</span><span class="c1">-----------------+</span>
 <span class="o">|</span> <span class="n">Tables_in_world</span> <span class="o">|</span>
 <span class="o">+</span><span class="c1">-----------------+</span>
@@ -300,7 +294,7 @@ unzip world.sql.zip
 
 
 <p>Looks like there are three <code>tables</code> within <code>world</code>. Let's explore one of the tables, <code>City</code>.</p>
-<div class="highlight"><pre><span class="n">mysql</span><span class="o">&gt;</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">City</span> <span class="k">limit</span> <span class="mi">10</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="n">mysql</span><span class="o">&gt;</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">City</span> <span class="k">limit</span> <span class="mi">10</span><span class="p">;</span>
 <span class="o">+</span><span class="c1">----+----------------+-------------+---------------+------------+</span>
 <span class="o">|</span> <span class="n">ID</span> <span class="o">|</span> <span class="n">Name</span>           <span class="o">|</span> <span class="n">CountryCode</span> <span class="o">|</span> <span class="n">District</span>      <span class="o">|</span> <span class="n">Population</span> <span class="o">|</span>
 <span class="o">+</span><span class="c1">----+----------------+-------------+---------------+------------+</span>
@@ -320,7 +314,7 @@ unzip world.sql.zip
 
 
 <h3>What are the top ten biggest cities in the dataset?</h3>
-<div class="highlight"><pre><span class="n">mysql</span><span class="o">&gt;</span> <span class="k">select</span> <span class="n">CountryCode</span><span class="p">,</span> <span class="n">Name</span><span class="p">,</span> <span class="n">Population</span> <span class="k">from</span> <span class="n">City</span>
+<div class="highlight"><pre><span></span><span class="n">mysql</span><span class="o">&gt;</span> <span class="k">select</span> <span class="n">CountryCode</span><span class="p">,</span> <span class="n">Name</span><span class="p">,</span> <span class="n">Population</span> <span class="k">from</span> <span class="n">City</span>
     <span class="o">-&gt;</span> <span class="k">order</span> <span class="k">by</span> <span class="n">population</span> <span class="k">desc</span>
     <span class="o">-&gt;</span> <span class="k">limit</span> <span class="mi">10</span><span class="p">;</span>
 <span class="o">+</span><span class="c1">-------------+-------------------+------------+</span>
@@ -342,7 +336,7 @@ unzip world.sql.zip
 
 
 <h3>How many cities are there in the dataset? How many countries?</h3>
-<div class="highlight"><pre><span class="n">mysql</span><span class="o">&gt;</span> <span class="k">select</span> <span class="k">count</span><span class="p">(</span><span class="n">Name</span><span class="p">),</span> <span class="k">count</span><span class="p">(</span><span class="k">distinct</span><span class="p">(</span><span class="n">CountryCode</span><span class="p">))</span> <span class="k">from</span> <span class="n">City</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="n">mysql</span><span class="o">&gt;</span> <span class="k">select</span> <span class="k">count</span><span class="p">(</span><span class="n">Name</span><span class="p">),</span> <span class="k">count</span><span class="p">(</span><span class="k">distinct</span><span class="p">(</span><span class="n">CountryCode</span><span class="p">))</span> <span class="k">from</span> <span class="n">City</span><span class="p">;</span>
 <span class="o">+</span><span class="c1">-------------+------------------------------+</span>
 <span class="o">|</span> <span class="k">count</span><span class="p">(</span><span class="n">Name</span><span class="p">)</span> <span class="o">|</span> <span class="k">count</span><span class="p">(</span><span class="k">distinct</span><span class="p">(</span><span class="n">CountryCode</span><span class="p">))</span> <span class="o">|</span>
 <span class="o">+</span><span class="c1">-------------+------------------------------+</span>
@@ -354,7 +348,7 @@ unzip world.sql.zip
 
 <p>Looks like 4079 cities total and 232 countries.</p>
 <h3>What countries have the highest total populations?</h3>
-<div class="highlight"><pre><span class="n">mysql</span><span class="o">&gt;</span> <span class="k">select</span> <span class="n">CountryCode</span><span class="p">,</span> <span class="k">sum</span><span class="p">(</span><span class="n">Population</span><span class="p">)</span> <span class="k">from</span> <span class="n">City</span>
+<div class="highlight"><pre><span></span><span class="n">mysql</span><span class="o">&gt;</span> <span class="k">select</span> <span class="n">CountryCode</span><span class="p">,</span> <span class="k">sum</span><span class="p">(</span><span class="n">Population</span><span class="p">)</span> <span class="k">from</span> <span class="n">City</span>
     <span class="o">-&gt;</span> <span class="k">group</span> <span class="k">by</span> <span class="n">CountryCode</span>
     <span class="o">-&gt;</span> <span class="k">order</span> <span class="k">by</span> <span class="k">sum</span><span class="p">(</span><span class="n">Population</span><span class="p">)</span> <span class="k">desc</span>
     <span class="o">-&gt;</span> <span class="k">limit</span> <span class="mi">10</span><span class="p">;</span>
@@ -405,13 +399,13 @@ unzip world.sql.zip
             <li class="list-group-item"><a href="/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
                 <ul class="list-group " id="tags">
                     <li class="list-group-item tag-1">
-                        <a href="/tag/python.html">
-                            python
+                        <a href="/tag/data-science.html">
+                            data science
                         </a>
                     </li>
                     <li class="list-group-item tag-1">
-                        <a href="/tag/data-science.html">
-                            data science
+                        <a href="/tag/python.html">
+                            python
                         </a>
                     </li>
                     <li class="list-group-item tag-1">
@@ -420,13 +414,13 @@ unzip world.sql.zip
                         </a>
                     </li>
                     <li class="list-group-item tag-2">
-                        <a href="/tag/api.html">
-                            api
+                        <a href="/tag/stats.html">
+                            stats
                         </a>
                     </li>
                     <li class="list-group-item tag-2">
-                        <a href="/tag/stats.html">
-                            stats
+                        <a href="/tag/api.html">
+                            api
                         </a>
                     </li>
                 </ul>

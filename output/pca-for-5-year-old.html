@@ -214,12 +214,6 @@ Peter Frick            </a>
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
-                         <li><a href="/pages/about-me.html">
-                             About me
-                          </a></li>
-                         <li><a href="/pages/insight.html">
-                             Insight project
-                          </a></li>
                         <li class="active">
                             <a href="/category/blog.html">Blog</a>
                         </li>
@@ -282,8 +276,10 @@ Peter Frick            </a>
 .highlight .err { border: 1px solid #FF0000 } /* Error */
 .highlight .k { color: #008000; font-weight: bold } /* Keyword */
 .highlight .o { color: #666666 } /* Operator */
+.highlight .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
 .highlight .cm { color: #408080; font-style: italic } /* Comment.Multiline */
 .highlight .cp { color: #BC7A00 } /* Comment.Preproc */
+.highlight .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
 .highlight .c1 { color: #408080; font-style: italic } /* Comment.Single */
 .highlight .cs { color: #408080; font-style: italic } /* Comment.Special */
 .highlight .gd { color: #A00000 } /* Generic.Deleted */
@@ -323,8 +319,10 @@ Peter Frick            </a>
 .highlight .mh { color: #666666 } /* Literal.Number.Hex */
 .highlight .mi { color: #666666 } /* Literal.Number.Integer */
 .highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sa { color: #BA2121 } /* Literal.String.Affix */
 .highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
 .highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .dl { color: #BA2121 } /* Literal.String.Delimiter */
 .highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
 .highlight .s2 { color: #BA2121 } /* Literal.String.Double */
 .highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
@@ -335,9 +333,11 @@ Peter Frick            </a>
 .highlight .s1 { color: #BA2121 } /* Literal.String.Single */
 .highlight .ss { color: #19177C } /* Literal.String.Symbol */
 .highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .fm { color: #0000FF } /* Name.Function.Magic */
 .highlight .vc { color: #19177C } /* Name.Variable.Class */
 .highlight .vg { color: #19177C } /* Name.Variable.Global */
 .highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .vm { color: #19177C } /* Name.Variable.Magic */
 .highlight .il { color: #666666 } /* Literal.Number.Integer.Long */</style><html><body><div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -356,7 +356,7 @@ Peter Frick            </a>
 <div class="prompt input_prompt">In [1]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-r"><pre><span class="kp">head</span><span class="p">(</span>USArrests<span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span><span class="kp">head</span><span class="p">(</span>USArrests<span class="p">)</span>
 <span class="kn">library</span><span class="p">(</span>cluster<span class="p">)</span>
 </pre></div>
 </div>
@@ -398,7 +398,7 @@ Peter Frick            </a>
 <div class="prompt input_prompt">In [2]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-r"><pre>centerData <span class="o">=</span> <span class="kp">scale</span><span class="p">(</span>USArrests<span class="p">,</span>scale<span class="o">=</span><span class="bp">F</span><span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span>centerData <span class="o">=</span> <span class="kp">scale</span><span class="p">(</span>USArrests<span class="p">,</span>scale<span class="o">=</span><span class="bp">F</span><span class="p">)</span>
 <span class="kp">head</span><span class="p">(</span>centerData<span class="p">)</span>
 </pre></div>
 </div>
@@ -443,7 +443,7 @@ $$(y_{mean} - y_{i}) * (x_{mean} - x_{i})$$<p><em>What does that mean?</em></p>
 <div class="prompt input_prompt">In [3]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-r"><pre><span class="kp">options</span><span class="p">(</span>repr.plot.height<span class="o">=</span><span class="m">3.5</span> <span class="p">,</span> repr.plot.width<span class="o">=</span><span class="m">3</span><span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span><span class="kp">options</span><span class="p">(</span>repr.plot.height<span class="o">=</span><span class="m">3.5</span> <span class="p">,</span> repr.plot.width<span class="o">=</span><span class="m">3</span><span class="p">)</span>
 x <span class="o">=</span> <span class="m">-10</span><span class="o">:</span><span class="m">10</span>
 y <span class="o">=</span> x <span class="o">+</span> rnorm<span class="p">(</span><span class="kp">length</span><span class="p">(</span>x<span class="p">),</span>sd<span class="o">=</span><span class="m">3</span><span class="p">)</span>
 cols <span class="o">=</span> <span class="kp">rep</span><span class="p">(</span><span class="s">'black'</span><span class="p">,</span><span class="kp">length</span><span class="p">(</span>x<span class="p">));</span> cols<span class="p">[</span><span class="m">2</span><span class="p">]</span><span class="o">=</span><span class="s">'blue'</span><span class="p">;</span> cols<span class="p">[</span><span class="m">2</span><span class="p">]</span><span class="o">=</span><span class="s">'blue'</span><span class="p">;</span> cols<span class="p">[</span><span class="m">18</span><span class="p">]</span><span class="o">=</span><span class="s">'red'</span>
@@ -481,7 +481,7 @@ plot<span class="p">(</span>y<span class="p">,</span>x<span class="p">,</span>co
 <div class="prompt input_prompt">In [52]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-r"><pre>cvMat <span class="o">=</span> cov<span class="p">(</span>centerData<span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span>cvMat <span class="o">=</span> cov<span class="p">(</span>centerData<span class="p">)</span>
 <span class="kp">print</span><span class="p">(</span><span class="kp">paste</span><span class="p">(</span><span class="s">'total variance = '</span><span class="p">,</span><span class="kp">sum</span><span class="p">(</span><span class="kp">diag</span><span class="p">(</span>cvMat<span class="p">))))</span>
 cvMat
 </pre></div>
@@ -527,7 +527,7 @@ cvMat
 <div class="prompt input_prompt">In [55]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-r"><pre><span class="kp">print</span><span class="p">(</span><span class="kp">paste</span><span class="p">(</span><span class="s">'total variance = '</span><span class="p">,</span><span class="kp">sum</span><span class="p">(</span>cov<span class="p">(</span>pca<span class="o">$</span>scores<span class="p">))))</span>
+<div class=" highlight hl-r"><pre><span></span><span class="kp">print</span><span class="p">(</span><span class="kp">paste</span><span class="p">(</span><span class="s">'total variance = '</span><span class="p">,</span><span class="kp">sum</span><span class="p">(</span>cov<span class="p">(</span>pca<span class="o">$</span>scores<span class="p">))))</span>
 cov<span class="p">(</span>pca<span class="o">$</span>scores<span class="p">)</span>
 </pre></div>
 </div>
@@ -576,7 +576,7 @@ cov<span class="p">(</span>pca<span class="o">$</span>scores<span class="p">)</s
 <div class="prompt input_prompt">In [72]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-r"><pre><span class="kp">options</span><span class="p">(</span>repr.plot.height<span class="o">=</span><span class="m">3.5</span> <span class="p">,</span> repr.plot.width<span class="o">=</span><span class="m">3</span><span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span><span class="kp">options</span><span class="p">(</span>repr.plot.height<span class="o">=</span><span class="m">3.5</span> <span class="p">,</span> repr.plot.width<span class="o">=</span><span class="m">3</span><span class="p">)</span>
 barplot<span class="p">(</span><span class="kp">diag</span><span class="p">(</span>cov<span class="p">(</span>pca<span class="o">$</span>scores<span class="p">))</span><span class="o">/</span><span class="kp">sum</span><span class="p">(</span><span class="kp">diag</span><span class="p">(</span>cov<span class="p">(</span>pca<span class="o">$</span>scores<span class="p">))),</span> las<span class="o">=</span><span class="m">2</span><span class="p">,</span>ylab<span class="o">=</span><span class="s">'Var explained'</span><span class="p">,</span>font.lab<span class="o">=</span><span class="m">2</span><span class="p">)</span>
 <span class="c1">#diag(cov(pca$scores))/sum(diag(cov(pca$scores)))</span>
 </pre></div>
@@ -620,7 +620,7 @@ barplot<span class="p">(</span><span class="kp">diag</span><span class="p">(</sp
 <div class="prompt input_prompt">In [5]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-r"><pre>eigData <span class="o">=</span> <span class="kp">eigen</span><span class="p">(</span>cvMat<span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span>eigData <span class="o">=</span> <span class="kp">eigen</span><span class="p">(</span>cvMat<span class="p">)</span>
 eigVec <span class="o">=</span> eigData<span class="o">$</span>vectors
 eigVal <span class="o">=</span> eigData<span class="o">$</span>values
 
@@ -675,7 +675,7 @@ Eigenvectors 2-4 are sequentially right-ward columns.
 <div class="prompt input_prompt">In [6]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-r"><pre><span class="c1"># Define feature vector</span>
+<div class=" highlight hl-r"><pre><span></span><span class="c1"># Define feature vector</span>
 featureVec<span class="o">=</span>eigVec<span class="p">[,</span><span class="m">1</span><span class="o">:</span><span class="m">2</span><span class="p">]</span>
 
 <span class="c1"># Project the data along the PCs</span>
@@ -724,7 +724,7 @@ df<span class="o">=</span><span class="kt">data.frame</span><span class="p">(</s
 <div class="prompt input_prompt">In [7]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-r"><pre>pca <span class="o">=</span> princomp<span class="p">(</span>USArrests<span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span>pca <span class="o">=</span> princomp<span class="p">(</span>USArrests<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -735,7 +735,7 @@ df<span class="o">=</span><span class="kt">data.frame</span><span class="p">(</s
 <div class="prompt input_prompt">In [59]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-r"><pre><span class="kp">summary</span><span class="p">(</span>pca<span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span><span class="kp">summary</span><span class="p">(</span>pca<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -768,7 +768,7 @@ Cumulative Proportion   0.9655342  0.99335156 0.999151092 1.0000000000</pre>
 <div class="prompt input_prompt">In [8]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-r"><pre><span class="kp">options</span><span class="p">(</span>repr.plot.height<span class="o">=</span><span class="m">6</span> <span class="p">,</span> repr.plot.width<span class="o">=</span><span class="m">10</span><span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span><span class="kp">options</span><span class="p">(</span>repr.plot.height<span class="o">=</span><span class="m">6</span> <span class="p">,</span> repr.plot.width<span class="o">=</span><span class="m">10</span><span class="p">)</span>
 <span class="c1"># PCA calculated by hand</span>
 par<span class="p">(</span>mfrow<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">),</span>font.lab<span class="o">=</span><span class="m">2</span><span class="p">,</span>cex.lab<span class="o">=</span><span class="m">1.5</span><span class="p">,</span>cex.main<span class="o">=</span><span class="m">2</span><span class="p">)</span>
 <span class="c1">#plot(dataInPC[,1:2],type='n',xlab='PC1',ylab='PC2',main='PCA by hand')</span>
@@ -860,13 +860,13 @@ text<span class="p">(</span>pca<span class="o">$</span>scores<span class="p">[,<
             <li class="list-group-item"><a href="/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
                 <ul class="list-group " id="tags">
                     <li class="list-group-item tag-1">
-                        <a href="/tag/python.html">
-                            python
+                        <a href="/tag/data-science.html">
+                            data science
                         </a>
                     </li>
                     <li class="list-group-item tag-1">
-                        <a href="/tag/data-science.html">
-                            data science
+                        <a href="/tag/python.html">
+                            python
                         </a>
                     </li>
                     <li class="list-group-item tag-1">
@@ -875,13 +875,13 @@ text<span class="p">(</span>pca<span class="o">$</span>scores<span class="p">[,<
                         </a>
                     </li>
                     <li class="list-group-item tag-2">
-                        <a href="/tag/api.html">
-                            api
+                        <a href="/tag/stats.html">
+                            stats
                         </a>
                     </li>
                     <li class="list-group-item tag-2">
-                        <a href="/tag/stats.html">
-                            stats
+                        <a href="/tag/api.html">
+                            api
                         </a>
                     </li>
                 </ul>

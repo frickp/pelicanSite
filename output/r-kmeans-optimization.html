@@ -213,12 +213,6 @@ Peter Frick            </a>
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
-                         <li><a href="/pages/about-me.html">
-                             About me
-                          </a></li>
-                         <li><a href="/pages/insight.html">
-                             Insight project
-                          </a></li>
                         <li class="active">
                             <a href="/category/blog.html">Blog</a>
                         </li>
@@ -279,8 +273,10 @@ Peter Frick            </a>
 .highlight .err { border: 1px solid #FF0000 } /* Error */
 .highlight .k { color: #008000; font-weight: bold } /* Keyword */
 .highlight .o { color: #666666 } /* Operator */
+.highlight .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
 .highlight .cm { color: #408080; font-style: italic } /* Comment.Multiline */
 .highlight .cp { color: #BC7A00 } /* Comment.Preproc */
+.highlight .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
 .highlight .c1 { color: #408080; font-style: italic } /* Comment.Single */
 .highlight .cs { color: #408080; font-style: italic } /* Comment.Special */
 .highlight .gd { color: #A00000 } /* Generic.Deleted */
@@ -320,8 +316,10 @@ Peter Frick            </a>
 .highlight .mh { color: #666666 } /* Literal.Number.Hex */
 .highlight .mi { color: #666666 } /* Literal.Number.Integer */
 .highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sa { color: #BA2121 } /* Literal.String.Affix */
 .highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
 .highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .dl { color: #BA2121 } /* Literal.String.Delimiter */
 .highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
 .highlight .s2 { color: #BA2121 } /* Literal.String.Double */
 .highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
@@ -332,9 +330,11 @@ Peter Frick            </a>
 .highlight .s1 { color: #BA2121 } /* Literal.String.Single */
 .highlight .ss { color: #19177C } /* Literal.String.Symbol */
 .highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .fm { color: #0000FF } /* Name.Function.Magic */
 .highlight .vc { color: #19177C } /* Name.Variable.Class */
 .highlight .vg { color: #19177C } /* Name.Variable.Global */
 .highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .vm { color: #19177C } /* Name.Variable.Magic */
 .highlight .il { color: #666666 } /* Literal.Number.Integer.Long */</style><html><body><div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -351,7 +351,7 @@ Also, I found <a href="http://michael.hahsler.net/SMU/EMIS7332/R/chap8.html">thi
 <div class="prompt input_prompt">In [2]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-r"><pre><span class="kn">library</span><span class="p">(</span>stats<span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span><span class="kn">library</span><span class="p">(</span>stats<span class="p">)</span>
 <span class="kn">library</span><span class="p">(</span>cluster<span class="p">)</span>
 data<span class="p">(</span>ruspini<span class="p">,</span> package<span class="o">=</span><span class="s">"cluster"</span><span class="p">)</span>
 </pre></div>
@@ -364,7 +364,7 @@ data<span class="p">(</span>ruspini<span class="p">,</span> package<span class="
 <div class="prompt input_prompt">In [3]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-r"><pre><span class="c1">#Reshuffle and scale</span>
+<div class=" highlight hl-r"><pre><span></span><span class="c1">#Reshuffle and scale</span>
 ruspini <span class="o">&lt;-</span> ruspini<span class="p">[</span><span class="kp">sample</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="kp">nrow</span><span class="p">(</span>ruspini<span class="p">)),]</span>
 ruspini <span class="o">&lt;-</span> <span class="kp">scale</span><span class="p">(</span>ruspini<span class="p">)</span>
 df <span class="o">=</span> <span class="kt">data.frame</span><span class="p">(</span>ruspini<span class="p">)</span>
@@ -387,7 +387,7 @@ df <span class="o">=</span> <span class="kt">data.frame</span><span class="p">(<
 <div class="prompt input_prompt">In [4]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-r"><pre><span class="c1"># Take a look at the dataset</span>
+<div class=" highlight hl-r"><pre><span></span><span class="c1"># Take a look at the dataset</span>
 <span class="kp">options</span><span class="p">(</span>repr.plot.height<span class="o">=</span><span class="m">3.5</span> <span class="p">,</span> repr.plot.width<span class="o">=</span><span class="m">3</span><span class="p">)</span>
 <span class="c1">#par(font.lab=1,cex.lab=1.8,cex.main=2,cex.axis=1.4,mar = c(5,7,4,2))</span>
 plot<span class="p">(</span>df<span class="o">$</span>x<span class="p">,</span> df<span class="o">$</span>y<span class="p">,</span> xlab<span class="o">=</span><span class="s">'x'</span><span class="p">,</span> ylab<span class="o">=</span><span class="s">'y'</span><span class="p">,</span> font.lab<span class="o">=</span><span class="m">2</span><span class="p">)</span>
@@ -420,7 +420,7 @@ title<span class="p">(</span><span class="s">'ruspini dataset'</span><span class
 <div class="prompt input_prompt">In [11]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-r"><pre><span class="kp">options</span><span class="p">(</span>repr.plot.height<span class="o">=</span><span class="m">8</span> <span class="p">,</span> repr.plot.width<span class="o">=</span><span class="m">8</span><span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span><span class="kp">options</span><span class="p">(</span>repr.plot.height<span class="o">=</span><span class="m">8</span> <span class="p">,</span> repr.plot.width<span class="o">=</span><span class="m">8</span><span class="p">)</span>
 
 <span class="kp">print</span><span class="p">(</span><span class="s">'Within cluster sum of squares (w)'</span><span class="p">)</span>
 <span class="c1">#par(mfrow=c(3,3))</span>
@@ -478,7 +478,7 @@ kmW<span class="o">=</span><span class="kt">numeric</span><span class="p">()</sp
 <div class="prompt input_prompt">In [6]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-r"><pre>xRange <span class="o">=</span> <span class="kp">range</span><span class="p">(</span>df<span class="p">[,</span><span class="m">1</span><span class="p">])</span>
+<div class=" highlight hl-r"><pre><span></span>xRange <span class="o">=</span> <span class="kp">range</span><span class="p">(</span>df<span class="p">[,</span><span class="m">1</span><span class="p">])</span>
 yRange <span class="o">=</span> <span class="kp">range</span><span class="p">(</span>df<span class="p">[,</span><span class="m">2</span><span class="p">])</span>
 
 df<span class="o">$</span>simX<span class="o">=</span>runif<span class="p">(</span><span class="kp">nrow</span><span class="p">(</span>df<span class="p">),</span>min<span class="o">=</span>yRange<span class="p">[</span><span class="m">1</span><span class="p">],</span>max<span class="o">=</span>yRange<span class="p">[</span><span class="m">2</span><span class="p">])</span>
@@ -517,7 +517,7 @@ title<span class="p">(</span><span class="s">'Random data for norm.'</span><span
 <div class="prompt input_prompt">In [7]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-r"><pre><span class="kp">options</span><span class="p">(</span>repr.plot.height<span class="o">=</span><span class="m">8</span> <span class="p">,</span> repr.plot.width<span class="o">=</span><span class="m">8</span><span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span><span class="kp">options</span><span class="p">(</span>repr.plot.height<span class="o">=</span><span class="m">8</span> <span class="p">,</span> repr.plot.width<span class="o">=</span><span class="m">8</span><span class="p">)</span>
 
 
 par<span class="p">(</span>mfrow<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">3</span><span class="p">,</span><span class="m">3</span><span class="p">))</span>
@@ -573,7 +573,7 @@ par<span class="p">(</span>mfrow<span class="o">=</span><span class="kt">c</span
 <div class="prompt input_prompt">In [13]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-r"><pre>diffW <span class="o">=</span> kmW<span class="o">-</span>kmCtrl
+<div class=" highlight hl-r"><pre><span></span>diffW <span class="o">=</span> kmW<span class="o">-</span>kmCtrl
 
 <span class="kp">options</span><span class="p">(</span>repr.plot.height<span class="o">=</span><span class="m">3.5</span> <span class="p">,</span> repr.plot.width<span class="o">=</span><span class="m">3</span><span class="p">)</span>
 plot<span class="p">(</span>diffW<span class="p">,</span>type<span class="o">=</span><span class="s">'o'</span><span class="p">,</span>font.lab<span class="o">=</span><span class="m">2</span><span class="p">,</span> ylab<span class="o">=</span><span class="s">'Within SoS'</span><span class="p">,</span>xlab<span class="o">=</span><span class="s">'Clusters (k)'</span><span class="p">)</span>
@@ -615,7 +615,7 @@ title<span class="p">(</span><span class="s">'Within SoS norm. to control'</span
 <div class="prompt input_prompt">In [10]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-r"><pre><span class="kp">options</span><span class="p">(</span>repr.plot.height<span class="o">=</span><span class="m">6</span> <span class="p">,</span> repr.plot.width<span class="o">=</span><span class="m">9</span><span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span><span class="kp">options</span><span class="p">(</span>repr.plot.height<span class="o">=</span><span class="m">6</span> <span class="p">,</span> repr.plot.width<span class="o">=</span><span class="m">9</span><span class="p">)</span>
 
 ActualData  <span class="o">&lt;-</span> dist<span class="p">(</span>df<span class="p">[,</span><span class="m">1</span><span class="o">:</span><span class="m">2</span><span class="p">])</span>
 hc <span class="o">&lt;-</span> hclust<span class="p">(</span>ActualData<span class="p">,</span> method<span class="o">=</span><span class="s">"complete"</span><span class="p">)</span>
@@ -710,13 +710,13 @@ plot<span class="p">(</span>hc2<span class="p">)</span>
             <li class="list-group-item"><a href="/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
                 <ul class="list-group " id="tags">
                     <li class="list-group-item tag-1">
-                        <a href="/tag/python.html">
-                            python
+                        <a href="/tag/data-science.html">
+                            data science
                         </a>
                     </li>
                     <li class="list-group-item tag-1">
-                        <a href="/tag/data-science.html">
-                            data science
+                        <a href="/tag/python.html">
+                            python
                         </a>
                     </li>
                     <li class="list-group-item tag-1">
@@ -725,13 +725,13 @@ plot<span class="p">(</span>hc2<span class="p">)</span>
                         </a>
                     </li>
                     <li class="list-group-item tag-2">
-                        <a href="/tag/api.html">
-                            api
+                        <a href="/tag/stats.html">
+                            stats
                         </a>
                     </li>
                     <li class="list-group-item tag-2">
-                        <a href="/tag/stats.html">
-                            stats
+                        <a href="/tag/api.html">
+                            api
                         </a>
                     </li>
                 </ul>

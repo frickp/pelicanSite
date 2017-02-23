@@ -215,12 +215,6 @@ Peter Frick            </a>
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
-                         <li><a href="/pages/about-me.html">
-                             About me
-                          </a></li>
-                         <li><a href="/pages/insight.html">
-                             Insight project
-                          </a></li>
                         <li class="active">
                             <a href="/category/blog.html">Blog</a>
                         </li>
@@ -285,8 +279,10 @@ Peter Frick            </a>
 .highlight .err { border: 1px solid #FF0000 } /* Error */
 .highlight .k { color: #008000; font-weight: bold } /* Keyword */
 .highlight .o { color: #666666 } /* Operator */
+.highlight .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
 .highlight .cm { color: #408080; font-style: italic } /* Comment.Multiline */
 .highlight .cp { color: #BC7A00 } /* Comment.Preproc */
+.highlight .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
 .highlight .c1 { color: #408080; font-style: italic } /* Comment.Single */
 .highlight .cs { color: #408080; font-style: italic } /* Comment.Special */
 .highlight .gd { color: #A00000 } /* Generic.Deleted */
@@ -326,8 +322,10 @@ Peter Frick            </a>
 .highlight .mh { color: #666666 } /* Literal.Number.Hex */
 .highlight .mi { color: #666666 } /* Literal.Number.Integer */
 .highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sa { color: #BA2121 } /* Literal.String.Affix */
 .highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
 .highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .dl { color: #BA2121 } /* Literal.String.Delimiter */
 .highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
 .highlight .s2 { color: #BA2121 } /* Literal.String.Double */
 .highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
@@ -338,9 +336,11 @@ Peter Frick            </a>
 .highlight .s1 { color: #BA2121 } /* Literal.String.Single */
 .highlight .ss { color: #19177C } /* Literal.String.Symbol */
 .highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .fm { color: #0000FF } /* Name.Function.Magic */
 .highlight .vc { color: #19177C } /* Name.Variable.Class */
 .highlight .vg { color: #19177C } /* Name.Variable.Global */
 .highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .vm { color: #19177C } /* Name.Variable.Magic */
 .highlight .il { color: #666666 } /* Literal.Number.Integer.Long */</style><html><body><div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -356,7 +356,7 @@ Peter Frick            </a>
 <div class="prompt input_prompt">In [2]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="o">%</span><span class="k">matplotlib</span> inline
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
 <span class="kn">import</span> <span class="nn">matplotlib.pylab</span> <span class="kn">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
@@ -383,7 +383,7 @@ Peter Frick            </a>
 <div class="prompt input_prompt">In [3]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="n">kagTweets</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'kaggleTweets.csv'</span><span class="p">)</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">kagTweets</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'kaggleTweets.csv'</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -403,7 +403,7 @@ Peter Frick            </a>
 <div class="prompt input_prompt">In [4]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="n">airCounts</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">Counter</span><span class="p">(</span><span class="n">kagTweets</span><span class="p">[</span><span class="s">'airline'</span><span class="p">]))</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">airCounts</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">Counter</span><span class="p">(</span><span class="n">kagTweets</span><span class="p">[</span><span class="s1">'airline'</span><span class="p">]))</span>
 </pre></div>
 </div>
 </div>
@@ -414,13 +414,13 @@ Peter Frick            </a>
 <div class="prompt input_prompt">In [5]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">1600</span><span class="p">)</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">1600</span><span class="p">)</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
 
-<span class="n">barPlot</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">airCounts</span><span class="p">)),</span><span class="n">airCounts</span><span class="o">.</span><span class="n">values</span><span class="p">())</span><span class="c">#,color=[c[4],c[4],c[3],c[3]])</span>
+<span class="n">barPlot</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">airCounts</span><span class="p">)),</span><span class="n">airCounts</span><span class="o">.</span><span class="n">values</span><span class="p">())</span><span class="c1">#,color=[c[4],c[4],c[3],c[3]])</span>
 <span class="n">xticks_pos</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.65</span><span class="o">*</span><span class="n">patch</span><span class="o">.</span><span class="n">get_width</span><span class="p">()</span> <span class="o">+</span> <span class="n">patch</span><span class="o">.</span><span class="n">get_xy</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">patch</span> <span class="ow">in</span> <span class="n">barPlot</span><span class="p">]</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="n">i</span><span class="o">+</span><span class="mf">0.5</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">airCounts</span><span class="o">.</span><span class="n">keys</span><span class="p">()))],</span><span class="n">airCounts</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span><span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span><span class="n">ha</span><span class="o">=</span><span class="s">'right'</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">'Tweets to airlines'</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span><span class="n">fontweight</span><span class="o">=</span><span class="s">'bold'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="n">i</span><span class="o">+</span><span class="mf">0.5</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">airCounts</span><span class="o">.</span><span class="n">keys</span><span class="p">()))],</span><span class="n">airCounts</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span><span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span><span class="n">ha</span><span class="o">=</span><span class="s1">'right'</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">'Tweets to airlines'</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span><span class="n">fontweight</span><span class="o">=</span><span class="s1">'bold'</span><span class="p">)</span>
 
 <span class="n">yTix</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">yTix</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
@@ -806,7 +806,7 @@ MfBSISvw4nvH26Z8EQAAAABJRU5ErkJggg==
 <div class="prompt input_prompt">In [6]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="n">kagTweets</span><span class="p">[</span><span class="s">'text'</span><span class="p">][</span><span class="mi">136</span><span class="p">]</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">kagTweets</span><span class="p">[</span><span class="s1">'text'</span><span class="p">][</span><span class="mi">136</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -842,7 +842,7 @@ MfBSISvw4nvH26Z8EQAAAABJRU5ErkJggg==
 <div class="prompt input_prompt">In [7]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="kn">from</span> <span class="nn">gensim</span> <span class="kn">import</span> <span class="n">corpora</span><span class="p">,</span> <span class="n">models</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">from</span> <span class="nn">gensim</span> <span class="kn">import</span> <span class="n">corpora</span><span class="p">,</span> <span class="n">models</span>
 <span class="kn">from</span> <span class="nn">gensim.similarities</span> <span class="kn">import</span> <span class="n">MatrixSimilarity</span>
 <span class="kn">from</span> <span class="nn">gensim.utils</span> <span class="kn">import</span> <span class="n">SaveLoad</span>
 <span class="kn">from</span> <span class="nn">nltk.corpus</span> <span class="kn">import</span> <span class="n">stopwords</span>
@@ -872,7 +872,7 @@ MfBSISvw4nvH26Z8EQAAAABJRU5ErkJggg==
 <div class="prompt input_prompt">In [8]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="c">#Functions for data cleaning</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="c1">#Functions for data cleaning</span>
 <span class="n">wnl</span> <span class="o">=</span> <span class="n">WordNetLemmatizer</span><span class="p">()</span>
 
 <span class="k">def</span> <span class="nf">removePunc</span><span class="p">(</span><span class="n">myWord</span><span class="p">):</span>
@@ -880,14 +880,14 @@ MfBSISvw4nvH26Z8EQAAAABJRU5ErkJggg==
     <span class="k">if</span> <span class="n">myWord</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">myWord</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">sub</span><span class="p">(</span><span class="s">'[.:;()/!&amp;-*@$,?^\d+]'</span><span class="p">,</span><span class="s">''</span><span class="p">,</span><span class="n">myWord</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">sub</span><span class="p">(</span><span class="s1">'[.:;()/!&amp;-*@$,?^\d+]'</span><span class="p">,</span><span class="s1">''</span><span class="p">,</span><span class="n">myWord</span><span class="p">)</span>
         
 <span class="k">def</span> <span class="nf">removeAscii</span><span class="p">(</span><span class="n">myWord</span><span class="p">):</span>
     <span class="sd">"""Function to remove ascii from string input"""</span>
     <span class="k">if</span> <span class="n">myWord</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">myWord</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">sub</span><span class="p">(</span><span class="s">r'[^\x00-\x7F]+'</span><span class="p">,</span><span class="s">''</span><span class="p">,</span> <span class="n">myWord</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">'utf-8'</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()))</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">'[^\x00-\x7F]+'</span><span class="p">,</span><span class="s1">''</span><span class="p">,</span> <span class="n">myWord</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">'utf-8'</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()))</span>
 
 <span class="k">def</span> <span class="nf">lemmatize</span><span class="p">(</span><span class="n">myWord</span><span class="p">):</span>
     <span class="sd">"""Function to lemmatize words"""</span>
@@ -900,12 +900,12 @@ MfBSISvw4nvH26Z8EQAAAABJRU5ErkJggg==
     <span class="sd">"""Function to remove stop words"""</span>
     <span class="k">if</span> <span class="n">myWord</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">myWord</span>
-    <span class="k">if</span> <span class="n">myWord</span> <span class="ow">not</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">stopwords</span><span class="o">.</span><span class="n">words</span><span class="p">(</span><span class="s">'english'</span><span class="p">)):</span>
+    <span class="k">if</span> <span class="n">myWord</span> <span class="ow">not</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">stopwords</span><span class="o">.</span><span class="n">words</span><span class="p">(</span><span class="s1">'english'</span><span class="p">)):</span>
         <span class="k">return</span> <span class="n">myWord</span>
 
 <span class="k">def</span> <span class="nf">removeLinkUser</span><span class="p">(</span><span class="n">myWord</span><span class="p">):</span>
     <span class="sd">"""Function to remove web addresses and twitter handles"""</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">myWord</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">'@'</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">myWord</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">'http'</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">myWord</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">'@'</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">myWord</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">'http'</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">myWord</span>
 
 <span class="k">def</span> <span class="nf">prepText</span><span class="p">(</span><span class="n">myWord</span><span class="p">):</span>
@@ -940,7 +940,7 @@ MfBSISvw4nvH26Z8EQAAAABJRU5ErkJggg==
 <div class="prompt input_prompt">In [9]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="k">def</span> <span class="nf">filterTweetList</span><span class="p">(</span><span class="n">tweetList</span><span class="p">):</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">filterTweetList</span><span class="p">(</span><span class="n">tweetList</span><span class="p">):</span>
     <span class="sd">"""Remove stop words, lemmatize, and clean all tweets"""</span>
     <span class="k">return</span> <span class="p">[[</span><span class="n">prepText</span><span class="p">(</span><span class="n">word</span><span class="p">)</span> <span class="k">for</span> <span class="n">word</span>
                 <span class="ow">in</span> <span class="n">tweet</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
@@ -956,7 +956,7 @@ MfBSISvw4nvH26Z8EQAAAABJRU5ErkJggg==
 <div class="prompt input_prompt">In [10]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="n">cleanKagTweetList</span> <span class="o">=</span> <span class="n">filterTweetList</span><span class="p">(</span><span class="n">kagTweets</span><span class="p">[</span><span class="s">'text'</span><span class="p">])</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">cleanKagTweetList</span> <span class="o">=</span> <span class="n">filterTweetList</span><span class="p">(</span><span class="n">kagTweets</span><span class="p">[</span><span class="s1">'text'</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -976,7 +976,7 @@ MfBSISvw4nvH26Z8EQAAAABJRU5ErkJggg==
 <div class="prompt input_prompt">In [11]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="n">cleanKagTweetList</span><span class="p">[</span><span class="mi">136</span><span class="p">]</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">cleanKagTweetList</span><span class="p">[</span><span class="mi">136</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1019,7 +1019,7 @@ MfBSISvw4nvH26Z8EQAAAABJRU5ErkJggg==
 <div class="prompt input_prompt">In [12]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="k">def</span> <span class="nf">makeDict</span><span class="p">(</span><span class="n">myTweetList</span><span class="p">):</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">makeDict</span><span class="p">(</span><span class="n">myTweetList</span><span class="p">):</span>
     <span class="sd">"""Create dictionary from list of tokenized documents"""</span>
     <span class="k">return</span> <span class="n">corpora</span><span class="o">.</span><span class="n">Dictionary</span><span class="p">(</span><span class="n">myTweetList</span><span class="p">)</span>
 
@@ -1051,19 +1051,19 @@ MfBSISvw4nvH26Z8EQAAAABJRU5ErkJggg==
 <div class="prompt input_prompt">In [13]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="n">kagLda</span> <span class="o">=</span> <span class="n">SaveLoad</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s">'kaggleLDAmodel0201'</span><span class="p">)</span>
-<span class="n">kagDict</span> <span class="o">=</span> <span class="n">corpora</span><span class="o">.</span><span class="n">Dictionary</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s">'kaggleDictionary0201.dict'</span><span class="p">)</span>
-<span class="n">kagCorpus</span> <span class="o">=</span> <span class="n">corpora</span><span class="o">.</span><span class="n">MmCorpus</span><span class="p">(</span><span class="s">'kaggleCorpus0201.mm'</span><span class="p">)</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">kagLda</span> <span class="o">=</span> <span class="n">SaveLoad</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">'kaggleLDAmodel0201'</span><span class="p">)</span>
+<span class="n">kagDict</span> <span class="o">=</span> <span class="n">corpora</span><span class="o">.</span><span class="n">Dictionary</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">'kaggleDictionary0201.dict'</span><span class="p">)</span>
+<span class="n">kagCorpus</span> <span class="o">=</span> <span class="n">corpora</span><span class="o">.</span><span class="n">MmCorpus</span><span class="p">(</span><span class="s1">'kaggleCorpus0201.mm'</span><span class="p">)</span>
 
-<span class="c">#"""Create model objects"""</span>
-<span class="c">#kagDict   = makeDict(cleanKagTweetList)</span>
-<span class="c">#kagCorpus = makeCorpus(cleanKagTweetList, kagDict)</span>
-<span class="c">#kagLda = createLDA(kagCorpus, kagDict)</span>
+<span class="c1">#"""Create model objects"""</span>
+<span class="c1">#kagDict   = makeDict(cleanKagTweetList)</span>
+<span class="c1">#kagCorpus = makeCorpus(cleanKagTweetList, kagDict)</span>
+<span class="c1">#kagLda = createLDA(kagCorpus, kagDict)</span>
 
-<span class="c">#"""Save model objects"""</span>
-<span class="c">#SaveLoad.save(kagLda,'kaggleLDAmodel')</span>
-<span class="c">#corpora.MmCorpus.serialize('kaggleCorpus.mm', kagCorpus)</span>
-<span class="c">#kagDict.save('kaggleDictionary.dict')</span>
+<span class="c1">#"""Save model objects"""</span>
+<span class="c1">#SaveLoad.save(kagLda,'kaggleLDAmodel')</span>
+<span class="c1">#corpora.MmCorpus.serialize('kaggleCorpus.mm', kagCorpus)</span>
+<span class="c1">#kagDict.save('kaggleDictionary.dict')</span>
 </pre></div>
 </div>
 </div>
@@ -1083,7 +1083,7 @@ MfBSISvw4nvH26Z8EQAAAABJRU5ErkJggg==
 <div class="prompt input_prompt">In [14]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="n">pyLDAvis</span><span class="o">.</span><span class="n">enable_notebook</span><span class="p">()</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">pyLDAvis</span><span class="o">.</span><span class="n">enable_notebook</span><span class="p">()</span>
 <span class="n">ldaViz</span> <span class="o">=</span> <span class="n">pyLDAvis</span><span class="o">.</span><span class="n">gensim</span><span class="o">.</span><span class="n">prepare</span><span class="p">(</span><span class="n">kagLda</span><span class="p">,</span> <span class="n">kagCorpus</span><span class="p">,</span> <span class="n">kagDict</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1104,7 +1104,7 @@ MfBSISvw4nvH26Z8EQAAAABJRU5ErkJggg==
 <div class="prompt input_prompt">In [15]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="n">ldaViz</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">ldaViz</span>
 </pre></div>
 </div>
 </div>
@@ -1170,7 +1170,7 @@ if(typeof(LDAvis) !== "undefined"){
 <div class="prompt input_prompt">In [16]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="k">def</span> <span class="nf">translateLdaIdx</span><span class="p">(</span><span class="n">myLdaModel</span><span class="p">,</span> <span class="n">myLdaViz</span><span class="p">):</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">translateLdaIdx</span><span class="p">(</span><span class="n">myLdaModel</span><span class="p">,</span> <span class="n">myLdaViz</span><span class="p">):</span>
     <span class="sd">"""Translate lda model topics to match the topics in pyLDAvis visualization"""</span>
     <span class="n">ldaVizIdx</span> <span class="o">=</span> <span class="n">myLdaViz</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">index</span>
     <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">ldaVizIdx</span><span class="p">)</span>
@@ -1184,7 +1184,7 @@ if(typeof(LDAvis) !== "undefined"){
 <div class="prompt input_prompt">In [17]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="n">newIdx</span> <span class="o">=</span> <span class="n">translateLdaIdx</span><span class="p">(</span><span class="n">kagLda</span><span class="p">,</span><span class="n">ldaViz</span><span class="p">)</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">newIdx</span> <span class="o">=</span> <span class="n">translateLdaIdx</span><span class="p">(</span><span class="n">kagLda</span><span class="p">,</span><span class="n">ldaViz</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1204,14 +1204,14 @@ if(typeof(LDAvis) !== "undefined"){
 <div class="prompt input_prompt">In [18]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="k">def</span> <span class="nf">createDenseMat</span><span class="p">(</span><span class="n">myLdaModel</span><span class="p">,</span><span class="n">myCorpus</span><span class="p">,</span><span class="n">newIdx</span><span class="p">):</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">createDenseMat</span><span class="p">(</span><span class="n">myLdaModel</span><span class="p">,</span><span class="n">myCorpus</span><span class="p">,</span><span class="n">newIdx</span><span class="p">):</span>
     <span class="sd">"""Transform corpus to dataframe with topics matching lda visualization"""</span>
     <span class="n">numTopics</span> <span class="o">=</span> <span class="n">myLdaModel</span><span class="o">.</span><span class="n">num_topics</span>
     <span class="n">myDense</span> <span class="o">=</span> <span class="n">corpus2dense</span><span class="p">(</span><span class="n">myLdaModel</span><span class="p">[</span><span class="n">myCorpus</span><span class="p">],</span><span class="n">numTopics</span><span class="p">)</span>
     <span class="n">myDf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">myDense</span><span class="p">)</span>
     <span class="n">mySortedDf</span> <span class="o">=</span> <span class="n">myDf</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
     <span class="n">mySortedDf</span> <span class="o">=</span> <span class="n">myDf</span><span class="o">.</span><span class="n">transpose</span><span class="p">()[</span><span class="n">newIdx</span><span class="p">]</span>
-    <span class="n">mySortedDf</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s">'topic'</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">numTopics</span><span class="p">)]</span>
+    <span class="n">mySortedDf</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'topic'</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">numTopics</span><span class="p">)]</span>
     <span class="k">return</span> <span class="n">mySortedDf</span>
 </pre></div>
 </div>
@@ -1223,7 +1223,7 @@ if(typeof(LDAvis) !== "undefined"){
 <div class="prompt input_prompt">In [19]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="n">kagDf</span> <span class="o">=</span> <span class="n">createDenseMat</span><span class="p">(</span><span class="n">kagLda</span><span class="p">,</span><span class="n">kagCorpus</span><span class="p">,</span><span class="n">newIdx</span><span class="p">)</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">kagDf</span> <span class="o">=</span> <span class="n">createDenseMat</span><span class="p">(</span><span class="n">kagLda</span><span class="p">,</span><span class="n">kagCorpus</span><span class="p">,</span><span class="n">newIdx</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1243,7 +1243,7 @@ if(typeof(LDAvis) !== "undefined"){
 <div class="prompt input_prompt">In [20]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="k">def</span> <span class="nf">sortByTopicToIdx</span><span class="p">(</span><span class="n">cleanedTweetList</span><span class="p">,</span><span class="n">mySortedDf</span><span class="p">,</span><span class="n">myTopic</span><span class="p">,</span><span class="n">myTopicThresh</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">sortByTopicToIdx</span><span class="p">(</span><span class="n">cleanedTweetList</span><span class="p">,</span><span class="n">mySortedDf</span><span class="p">,</span><span class="n">myTopic</span><span class="p">,</span><span class="n">myTopicThresh</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
     <span class="sd">"""Returns an index of tweets surpassing a topic value threshold"""</span>
     <span class="n">myCleanArray</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">cleanedTweetList</span><span class="p">)</span>
     <span class="n">srtIdx</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">mySortedDf</span><span class="p">[</span><span class="n">mySortedDf</span><span class="p">[</span><span class="n">myTopic</span><span class="p">]</span><span class="o">&gt;</span><span class="n">myTopicThresh</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
@@ -1264,7 +1264,7 @@ if(typeof(LDAvis) !== "undefined"){
 <div class="prompt input_prompt">In [21]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="n">sortedIdx</span> <span class="o">=</span> <span class="n">sortByTopicToIdx</span><span class="p">(</span><span class="n">cleanKagTweetList</span><span class="p">,</span><span class="n">kagDf</span><span class="p">,</span><span class="s">'topic2'</span><span class="p">,</span><span class="n">myTopicThresh</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">sortedIdx</span> <span class="o">=</span> <span class="n">sortByTopicToIdx</span><span class="p">(</span><span class="n">cleanKagTweetList</span><span class="p">,</span><span class="n">kagDf</span><span class="p">,</span><span class="s1">'topic2'</span><span class="p">,</span><span class="n">myTopicThresh</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1275,16 +1275,16 @@ if(typeof(LDAvis) !== "undefined"){
 <div class="prompt input_prompt">In [22]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">1600</span><span class="p">)</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">1600</span><span class="p">)</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">kagDf</span><span class="o">.</span><span class="n">topic2</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s">'Bad service topic value'</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span><span class="n">fontweight</span><span class="o">=</span><span class="s">'bold'</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">'Tweets (Topic 2)'</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span><span class="n">fontweight</span><span class="o">=</span><span class="s">'bold'</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">'Bad service topic value'</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span><span class="n">fontweight</span><span class="o">=</span><span class="s1">'bold'</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">'Tweets (Topic 2)'</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span><span class="n">fontweight</span><span class="o">=</span><span class="s1">'bold'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-<span class="c">#fig.savefig('passingFilterTweets.png',dpi=500,bbox_inches='tight')</span>
+<span class="c1">#fig.savefig('passingFilterTweets.png',dpi=500,bbox_inches='tight')</span>
 </pre></div>
 </div>
 </div>
@@ -1585,15 +1585,15 @@ SUVORK5CYII=
 <div class="prompt input_prompt">In [23]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="k">def</span> <span class="nf">makeWordCloud</span><span class="p">(</span><span class="n">cleanedTweetList</span><span class="p">,</span><span class="n">mySortedDf</span><span class="p">,</span><span class="n">myTopic</span><span class="p">,</span><span class="n">myTopicThresh</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">makeWordCloud</span><span class="p">(</span><span class="n">cleanedTweetList</span><span class="p">,</span><span class="n">mySortedDf</span><span class="p">,</span><span class="n">myTopic</span><span class="p">,</span><span class="n">myTopicThresh</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
     <span class="sd">"""Create word cloud of tweets passing a given threshold for a given topic"""</span>
     <span class="n">sortedIdx</span> <span class="o">=</span> <span class="n">sortByTopicToIdx</span><span class="p">(</span><span class="n">cleanedTweetList</span><span class="p">,</span><span class="n">mySortedDf</span><span class="p">,</span><span class="n">myTopic</span><span class="p">,</span><span class="n">myTopicThresh</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
     <span class="n">mySortedTweets</span> <span class="o">=</span> <span class="n">sortTweetsByIdx</span><span class="p">(</span><span class="n">cleanedTweetList</span><span class="p">,</span><span class="n">sortedIdx</span><span class="p">)</span>
-    <span class="n">filteredWords</span> <span class="o">=</span> <span class="s">' '</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s">' '</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">string</span><span class="p">)</span> <span class="k">for</span> <span class="n">string</span> <span class="ow">in</span> <span class="n">mySortedTweets</span><span class="p">])</span>
+    <span class="n">filteredWords</span> <span class="o">=</span> <span class="s1">' '</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s1">' '</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">string</span><span class="p">)</span> <span class="k">for</span> <span class="n">string</span> <span class="ow">in</span> <span class="n">mySortedTweets</span><span class="p">])</span>
     <span class="n">myTopicCloud</span> <span class="o">=</span> <span class="n">WordCloud</span><span class="p">(</span><span class="n">max_font_size</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">filteredWords</span><span class="p">)</span>
     <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">1600</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">myTopicCloud</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s">"off"</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">"off"</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1605,7 +1605,7 @@ SUVORK5CYII=
 <div class="prompt input_prompt">In [25]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="n">makeWordCloud</span><span class="p">(</span><span class="n">cleanKagTweetList</span><span class="p">,</span><span class="n">kagDf</span><span class="p">,</span><span class="s">'topic2'</span><span class="p">,</span><span class="n">myTopicThresh</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">makeWordCloud</span><span class="p">(</span><span class="n">cleanKagTweetList</span><span class="p">,</span><span class="n">kagDf</span><span class="p">,</span><span class="s1">'topic2'</span><span class="p">,</span><span class="n">myTopicThresh</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -3132,11 +3132,11 @@ gIssDofD4XA4nCTw/wZenHlT8mfbAAAAAElFTkSuQmCC
 <div class="prompt input_prompt">In [26]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="k">def</span> <span class="nf">genSortedResample</span><span class="p">(</span><span class="n">myTweetDf</span><span class="p">,</span><span class="n">myIdx</span><span class="p">,</span><span class="n">myVar</span><span class="o">=</span><span class="s">'airline'</span><span class="p">):</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">genSortedResample</span><span class="p">(</span><span class="n">myTweetDf</span><span class="p">,</span><span class="n">myIdx</span><span class="p">,</span><span class="n">myVar</span><span class="o">=</span><span class="s1">'airline'</span><span class="p">):</span>
     <span class="sd">"""Resample sorted airline counts to estimate error. Return as pd.Dataframe"""</span>
     <span class="n">airlinePop</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">myTweetDf</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">myIdx</span><span class="p">][</span><span class="n">myVar</span><span class="p">])</span>
     <span class="nb">len</span><span class="p">(</span><span class="n">airlinePop</span><span class="p">)</span>
-    <span class="c">#Counter(resample(airlinePop))</span>
+    <span class="c1">#Counter(resample(airlinePop))</span>
     <span class="n">airlineNames</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">myTweetDf</span><span class="p">[</span><span class="n">myVar</span><span class="p">]))</span>
     <span class="n">testDf</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">airlineNames</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">):</span>
@@ -3145,7 +3145,7 @@ gIssDofD4XA4nCTw/wZenHlT8mfbAAAAAElFTkSuQmCC
     <span class="n">totalAirTweets</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">Counter</span><span class="p">(</span><span class="n">myTweetDf</span><span class="p">[</span><span class="n">myVar</span><span class="p">]))</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">totalAirTweets</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
         <span class="n">normVal</span> <span class="o">=</span> <span class="n">testDf</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">totalAirTweets</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-        <span class="n">testDf</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="s">'-norm'</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">normVal</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="n">testDf</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+        <span class="n">testDf</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="s1">'-norm'</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">normVal</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="n">testDf</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">testDf</span>
 </pre></div>
 </div>
@@ -3157,7 +3157,7 @@ gIssDofD4XA4nCTw/wZenHlT8mfbAAAAAElFTkSuQmCC
 <div class="prompt input_prompt">In [27]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="n">sortedIdx</span> <span class="o">=</span> <span class="n">sortByTopicToIdx</span><span class="p">(</span><span class="n">cleanKagTweetList</span><span class="p">,</span><span class="n">kagDf</span><span class="p">,</span><span class="s">'topic2'</span><span class="p">,</span><span class="n">myTopicThresh</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">sortedIdx</span> <span class="o">=</span> <span class="n">sortByTopicToIdx</span><span class="p">(</span><span class="n">cleanKagTweetList</span><span class="p">,</span><span class="n">kagDf</span><span class="p">,</span><span class="s1">'topic2'</span><span class="p">,</span><span class="n">myTopicThresh</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
 <span class="n">airlineDistResample</span> <span class="o">=</span> <span class="n">genSortedResample</span><span class="p">(</span><span class="n">kagTweets</span><span class="p">,</span><span class="n">sortedIdx</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -3178,20 +3178,20 @@ gIssDofD4XA4nCTw/wZenHlT8mfbAAAAAElFTkSuQmCC
 <div class="prompt input_prompt">In [28]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="k">def</span> <span class="nf">getResampleStats</span><span class="p">(</span><span class="n">resampleDf</span><span class="p">,</span><span class="n">airlineNames</span><span class="p">):</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">getResampleStats</span><span class="p">(</span><span class="n">resampleDf</span><span class="p">,</span><span class="n">airlineNames</span><span class="p">):</span>
     <span class="sd">"""Extract expected value and 95% CI values from resampling dataframe"""</span>
-    <span class="n">statDf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s">'mean'</span><span class="p">,</span><span class="s">'low95'</span><span class="p">,</span><span class="s">'hi95'</span><span class="p">])</span>
+    <span class="n">statDf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">'mean'</span><span class="p">,</span><span class="s1">'low95'</span><span class="p">,</span><span class="s1">'hi95'</span><span class="p">])</span>
     <span class="k">for</span> <span class="n">airline</span> <span class="ow">in</span> <span class="n">airlineNames</span><span class="p">:</span>
-        <span class="n">tempName</span> <span class="o">=</span> <span class="n">airline</span> <span class="o">+</span> <span class="s">'-norm'</span>
+        <span class="n">tempName</span> <span class="o">=</span> <span class="n">airline</span> <span class="o">+</span> <span class="s1">'-norm'</span>
         <span class="n">tempSort</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">resampleDf</span><span class="p">[</span><span class="n">tempName</span><span class="p">])</span>
         <span class="n">meanVal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">tempSort</span><span class="p">)</span>
         <span class="n">low95</span> <span class="o">=</span> <span class="n">meanVal</span> <span class="o">-</span> <span class="n">tempSort</span><span class="p">[</span><span class="mi">24</span><span class="p">]</span> 
         <span class="n">hi95</span> <span class="o">=</span> <span class="n">tempSort</span><span class="p">[</span><span class="mi">975</span><span class="p">]</span> <span class="o">-</span> <span class="n">meanVal</span>
-        <span class="n">statDf</span> <span class="o">=</span> <span class="n">statDf</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s">'mean'</span><span class="p">:</span> <span class="n">meanVal</span><span class="p">,</span><span class="s">'low95'</span><span class="p">:</span><span class="n">low95</span><span class="p">,</span><span class="s">'hi95'</span><span class="p">:</span><span class="n">hi95</span><span class="p">},</span><span class="n">ignore_index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+        <span class="n">statDf</span> <span class="o">=</span> <span class="n">statDf</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">'mean'</span><span class="p">:</span> <span class="n">meanVal</span><span class="p">,</span><span class="s1">'low95'</span><span class="p">:</span><span class="n">low95</span><span class="p">,</span><span class="s1">'hi95'</span><span class="p">:</span><span class="n">hi95</span><span class="p">},</span><span class="n">ignore_index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 
     <span class="n">statDf</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">airlineNames</span>
-    <span class="n">statDf</span> <span class="o">=</span> <span class="n">statDf</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s">'mean'</span><span class="p">)</span>
-    <span class="n">statDf</span> <span class="o">=</span> <span class="n">statDf</span><span class="o">/</span><span class="n">statDf</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s">'mean'</span><span class="p">]</span>
+    <span class="n">statDf</span> <span class="o">=</span> <span class="n">statDf</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">'mean'</span><span class="p">)</span>
+    <span class="n">statDf</span> <span class="o">=</span> <span class="n">statDf</span><span class="o">/</span><span class="n">statDf</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">'mean'</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">statDf</span>
 </pre></div>
 </div>
@@ -3203,12 +3203,12 @@ gIssDofD4XA4nCTw/wZenHlT8mfbAAAAAElFTkSuQmCC
 <div class="prompt input_prompt">In [29]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="k">def</span> <span class="nf">calcAirlineStats</span><span class="p">(</span><span class="n">cleanedTweetList</span><span class="p">,</span><span class="n">mySortedDf</span><span class="p">,</span><span class="n">myTopic</span><span class="p">,</span><span class="n">myTweetDf</span><span class="p">,</span><span class="n">myTopicThresh</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">calcAirlineStats</span><span class="p">(</span><span class="n">cleanedTweetList</span><span class="p">,</span><span class="n">mySortedDf</span><span class="p">,</span><span class="n">myTopic</span><span class="p">,</span><span class="n">myTweetDf</span><span class="p">,</span><span class="n">myTopicThresh</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
     <span class="sd">"""Generate mean and 95% CI given a topic and threshold"""</span>
     <span class="n">sortedIdx</span> <span class="o">=</span> <span class="n">sortByTopicToIdx</span><span class="p">(</span><span class="n">cleanedTweetList</span><span class="p">,</span><span class="n">mySortedDf</span><span class="p">,</span><span class="n">myTopic</span><span class="p">,</span><span class="n">myTopicThresh</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
     <span class="n">mySortedTweets</span> <span class="o">=</span> <span class="n">sortTweetsByIdx</span><span class="p">(</span><span class="n">cleanedTweetList</span><span class="p">,</span><span class="n">sortedIdx</span><span class="p">)</span>
     <span class="n">myResample</span> <span class="o">=</span> <span class="n">genSortedResample</span><span class="p">(</span><span class="n">myTweetDf</span><span class="p">,</span><span class="n">sortedIdx</span><span class="p">)</span>
-    <span class="n">myStats</span> <span class="o">=</span> <span class="n">getResampleStats</span><span class="p">(</span><span class="n">myResample</span><span class="p">,</span><span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">kagTweets</span><span class="p">[</span><span class="s">'airline'</span><span class="p">])))</span>
+    <span class="n">myStats</span> <span class="o">=</span> <span class="n">getResampleStats</span><span class="p">(</span><span class="n">myResample</span><span class="p">,</span><span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">kagTweets</span><span class="p">[</span><span class="s1">'airline'</span><span class="p">])))</span>
     <span class="k">return</span> <span class="n">myStats</span>
 </pre></div>
 </div>
@@ -3220,7 +3220,7 @@ gIssDofD4XA4nCTw/wZenHlT8mfbAAAAAElFTkSuQmCC
 <div class="prompt input_prompt">In [30]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="n">statDf</span> <span class="o">=</span> <span class="n">calcAirlineStats</span><span class="p">(</span><span class="n">cleanKagTweetList</span><span class="p">,</span><span class="n">kagDf</span><span class="p">,</span><span class="s">'topic2'</span><span class="p">,</span><span class="n">kagTweets</span><span class="p">)</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">statDf</span> <span class="o">=</span> <span class="n">calcAirlineStats</span><span class="p">(</span><span class="n">cleanKagTweetList</span><span class="p">,</span><span class="n">kagDf</span><span class="p">,</span><span class="s1">'topic2'</span><span class="p">,</span><span class="n">kagTweets</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -3240,8 +3240,8 @@ gIssDofD4XA4nCTw/wZenHlT8mfbAAAAAElFTkSuQmCC
 <div class="prompt input_prompt">In [31]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="n">c</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s">'Set3'</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s">"ticks"</span><span class="p">)</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s1">'Set3'</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s2">"ticks"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -3252,22 +3252,22 @@ gIssDofD4XA4nCTw/wZenHlT8mfbAAAAAElFTkSuQmCC
 <div class="prompt input_prompt">In [32]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">1600</span><span class="p">)</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">1600</span><span class="p">)</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
 
-<span class="n">barPlot</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">),</span><span class="n">statDf</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s">'mean'</span><span class="p">],</span><span class="n">yerr</span><span class="o">=</span><span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">statDf</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s">'low95'</span><span class="p">]),</span><span class="nb">list</span><span class="p">(</span><span class="n">statDf</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s">'hi95'</span><span class="p">])],</span> \
-                  <span class="c">#alpha=1,color=[c[4],c[8],c[4],c[8],c[3],c[3]])</span>
-                  <span class="c">#alpha=1,color=[c[8],c[8],c[8],c[8],c[8],c[8]])</span>
+<span class="n">barPlot</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">),</span><span class="n">statDf</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">'mean'</span><span class="p">],</span><span class="n">yerr</span><span class="o">=</span><span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">statDf</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">'low95'</span><span class="p">]),</span><span class="nb">list</span><span class="p">(</span><span class="n">statDf</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">'hi95'</span><span class="p">])],</span> \
+                  <span class="c1">#alpha=1,color=[c[4],c[8],c[4],c[8],c[3],c[3]])</span>
+                  <span class="c1">#alpha=1,color=[c[8],c[8],c[8],c[8],c[8],c[8]])</span>
                   <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="n">c</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span><span class="n">c</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span><span class="n">c</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span><span class="n">c</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span><span class="n">c</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span><span class="n">c</span><span class="p">[</span><span class="mi">4</span><span class="p">]])</span>
 <span class="n">xticks_pos</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.65</span><span class="o">*</span><span class="n">patch</span><span class="o">.</span><span class="n">get_width</span><span class="p">()</span> <span class="o">+</span> <span class="n">patch</span><span class="o">.</span><span class="n">get_xy</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">patch</span> <span class="ow">in</span> <span class="n">barPlot</span><span class="p">]</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="n">i</span><span class="o">+</span><span class="mf">0.5</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">)],</span><span class="nb">list</span><span class="p">(</span><span class="n">statDf</span><span class="o">.</span><span class="n">index</span><span class="p">),</span><span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span><span class="n">ha</span><span class="o">=</span><span class="s">'right'</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">'Bad service topic'</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span><span class="n">fontweight</span><span class="o">=</span><span class="s">'bold'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="n">i</span><span class="o">+</span><span class="mf">0.5</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">)],</span><span class="nb">list</span><span class="p">(</span><span class="n">statDf</span><span class="o">.</span><span class="n">index</span><span class="p">),</span><span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span><span class="n">ha</span><span class="o">=</span><span class="s1">'right'</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">'Bad service topic'</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span><span class="n">fontweight</span><span class="o">=</span><span class="s1">'bold'</span><span class="p">)</span>
 <span class="n">yTix</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-<span class="c">#fig.savefig('airlineBadServiceNoColor.png',dpi=500,bbox_inches='tight')</span>
+<span class="c1">#fig.savefig('airlineBadServiceNoColor.png',dpi=500,bbox_inches='tight')</span>
 </pre></div>
 </div>
 </div>
@@ -3840,7 +3840,7 @@ ODiGCZwgc3BwcAwTOEHm4ODgGCb8P0HgLY9WdvqcAAAAAElFTkSuQmCC
 <div class="prompt input_prompt">In [33]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="n">statDf</span> <span class="o">=</span> <span class="n">calcAirlineStats</span><span class="p">(</span><span class="n">cleanKagTweetList</span><span class="p">,</span><span class="n">kagDf</span><span class="p">,</span><span class="s">'topic2'</span><span class="p">,</span><span class="n">kagTweets</span><span class="p">)</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">statDf</span> <span class="o">=</span> <span class="n">calcAirlineStats</span><span class="p">(</span><span class="n">cleanKagTweetList</span><span class="p">,</span><span class="n">kagDf</span><span class="p">,</span><span class="s1">'topic2'</span><span class="p">,</span><span class="n">kagTweets</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -3851,8 +3851,8 @@ ODiGCZwgc3BwcAwTOEHm4ODgGCb8P0HgLY9WdvqcAAAAAElFTkSuQmCC
 <div class="prompt input_prompt">In [34]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="c"># J.D. Power data</span>
-<span class="n">jdAirline</span> <span class="o">=</span> <span class="p">{</span><span class="s">'Delta'</span><span class="p">:</span> <span class="mi">706</span><span class="p">,</span> <span class="s">'American'</span><span class="p">:</span> <span class="mi">700</span><span class="p">,</span><span class="s">'United'</span><span class="p">:</span> <span class="mi">665</span><span class="p">,</span><span class="s">'US Airways'</span><span class="p">:</span> <span class="mi">668</span><span class="p">,}</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># J.D. Power data</span>
+<span class="n">jdAirline</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'Delta'</span><span class="p">:</span> <span class="mi">706</span><span class="p">,</span> <span class="s1">'American'</span><span class="p">:</span> <span class="mi">700</span><span class="p">,</span><span class="s1">'United'</span><span class="p">:</span> <span class="mi">665</span><span class="p">,</span><span class="s1">'US Airways'</span><span class="p">:</span> <span class="mi">668</span><span class="p">,}</span>
 </pre></div>
 </div>
 </div>
@@ -3863,12 +3863,12 @@ ODiGCZwgc3BwcAwTOEHm4ODgGCb8P0HgLY9WdvqcAAAAAElFTkSuQmCC
 <div class="prompt input_prompt">In [35]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="n">jdDf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s">'airline'</span><span class="p">,</span><span class="s">'value'</span><span class="p">])</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">jdDf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">'airline'</span><span class="p">,</span><span class="s1">'value'</span><span class="p">])</span>
 <span class="k">for</span> <span class="n">airline</span> <span class="ow">in</span> <span class="n">jdAirline</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
-    <span class="n">jdDf</span> <span class="o">=</span> <span class="n">jdDf</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">({</span><span class="s">'airline'</span><span class="p">:</span><span class="n">airline</span><span class="p">,</span><span class="s">'value'</span><span class="p">:</span> <span class="n">jdAirline</span><span class="p">[</span><span class="n">airline</span><span class="p">]}),</span><span class="n">ignore_index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">jdDf</span> <span class="o">=</span> <span class="n">jdDf</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">({</span><span class="s1">'airline'</span><span class="p">:</span><span class="n">airline</span><span class="p">,</span><span class="s1">'value'</span><span class="p">:</span> <span class="n">jdAirline</span><span class="p">[</span><span class="n">airline</span><span class="p">]}),</span><span class="n">ignore_index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 
 <span class="n">jdDf</span> <span class="o">=</span> <span class="n">jdDf</span><span class="o">.</span><span class="n">iloc</span><span class="p">[[</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]]</span>   
-<span class="n">jdDf</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s">'relativeValue'</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">jdDf</span><span class="p">[</span><span class="s">'value'</span><span class="p">]</span><span class="o">-</span><span class="mi">691</span><span class="p">)</span>
+<span class="n">jdDf</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">'relativeValue'</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">jdDf</span><span class="p">[</span><span class="s1">'value'</span><span class="p">]</span><span class="o">-</span><span class="mi">691</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -3879,20 +3879,20 @@ ODiGCZwgc3BwcAwTOEHm4ODgGCb8P0HgLY9WdvqcAAAAAElFTkSuQmCC
 <div class="prompt input_prompt">In [36]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">1600</span><span class="p">)</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">1600</span><span class="p">)</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
 
 <span class="n">xticks_pos</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.65</span><span class="o">*</span><span class="n">patch</span><span class="o">.</span><span class="n">get_width</span><span class="p">()</span> <span class="o">+</span> <span class="n">patch</span><span class="o">.</span><span class="n">get_xy</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">patch</span> <span class="ow">in</span> <span class="n">barPlot</span><span class="p">]</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="n">i</span><span class="o">+</span><span class="mf">0.5</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">)],</span><span class="nb">list</span><span class="p">(</span><span class="n">jdDf</span><span class="o">.</span><span class="n">airline</span><span class="p">),</span><span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span><span class="n">ha</span><span class="o">=</span><span class="s">'right'</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">'Relative customer dislike'</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span><span class="n">fontweight</span><span class="o">=</span><span class="s">'bold'</span><span class="p">)</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">jdDf</span><span class="p">)),</span><span class="o">-</span><span class="n">jdDf</span><span class="p">[</span><span class="s">'relativeValue'</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="n">c</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span><span class="n">c</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span><span class="n">c</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span><span class="n">c</span><span class="p">[</span><span class="mi">3</span><span class="p">]])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="n">i</span><span class="o">+</span><span class="mf">0.5</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">)],</span><span class="nb">list</span><span class="p">(</span><span class="n">jdDf</span><span class="o">.</span><span class="n">airline</span><span class="p">),</span><span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span><span class="n">ha</span><span class="o">=</span><span class="s1">'right'</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">'Relative customer dislike'</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span><span class="n">fontweight</span><span class="o">=</span><span class="s1">'bold'</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">jdDf</span><span class="p">)),</span><span class="o">-</span><span class="n">jdDf</span><span class="p">[</span><span class="s1">'relativeValue'</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="n">c</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span><span class="n">c</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span><span class="n">c</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span><span class="n">c</span><span class="p">[</span><span class="mi">3</span><span class="p">]])</span>
 
 <span class="n">yTix</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">yTix</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">17</span><span class="p">,</span><span class="mi">30</span><span class="p">])</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s">'jdAirlineRating.png'</span><span class="p">,</span><span class="n">dpi</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span><span class="n">bbox_inches</span><span class="o">=</span><span class="s">'tight'</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">'jdAirlineRating.png'</span><span class="p">,</span><span class="n">dpi</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span><span class="n">bbox_inches</span><span class="o">=</span><span class="s1">'tight'</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -4391,13 +4391,13 @@ HypyCmWEQ0VOoYxwqMgplBEOFTmFMsKhIqdQRjhU5BTKCIeKnEIZ4VCRUygjHCpyCmWEQ0VOoYxw
             <li class="list-group-item"><a href="/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
                 <ul class="list-group " id="tags">
                     <li class="list-group-item tag-1">
-                        <a href="/tag/python.html">
-                            python
+                        <a href="/tag/data-science.html">
+                            data science
                         </a>
                     </li>
                     <li class="list-group-item tag-1">
-                        <a href="/tag/data-science.html">
-                            data science
+                        <a href="/tag/python.html">
+                            python
                         </a>
                     </li>
                     <li class="list-group-item tag-1">
@@ -4406,13 +4406,13 @@ HypyCmWEQ0VOoYxwqMgplBEOFTmFMsKhIqdQRjhU5BTKCIeKnEIZ4VCRUygjHCpyCmWEQ0VOoYxw
                         </a>
                     </li>
                     <li class="list-group-item tag-2">
-                        <a href="/tag/api.html">
-                            api
+                        <a href="/tag/stats.html">
+                            stats
                         </a>
                     </li>
                     <li class="list-group-item tag-2">
-                        <a href="/tag/stats.html">
-                            stats
+                        <a href="/tag/api.html">
+                            api
                         </a>
                     </li>
                 </ul>
