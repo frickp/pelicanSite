@@ -21,13 +21,15 @@ AUTHOR_FEED_RSS = None
 
 # Blogroll
 LINKS = (
-	 ('Quaranta lab', 'http://ccsb.vanderbilt.edu/qlab/frontpage'),
-         ('Greenleaf lab','http://greenleaf.stanford.edu'),
-         ('Insight Data Science','http://insightdatascience.com'),
-        )
+    ('Blog','http://frickp.github.io'),  
+    ('Greenleaf lab','http://greenleaf.stanford.edu'),
+    ('Insight Data Science','http://insightdatascience.com'),
+    ('Quaranta lab', 'http://ccsb.vanderbilt.edu/qlab/frontpage'),
+    ('Vanderbilt quantitative bioscience','https://medschool.vanderbilt.edu/cpb/')
+    )
 
 # Social widget
-SOCIAL = (('LinkedIn', 'https://www.linkedin.com/pub/peter-frick/39/455/ab7'),
+SOCIAL = (('LinkedIn', 'https://www.linkedin.com/in/peterlfrick/'),
         ('GitHub','https://github.com/frickp'), 
 	 )
 
@@ -39,23 +41,25 @@ DEFAULT_PAGINATION = 10
 #MARKUP = ('md', 'ipynb','html','rmd')
 MARKUP = ('md','html')
 
-PLUGIN_PATHS = ['addIns/plugins/','addIns/pelican-plugins/']
+PLUGIN_PATHS = ['addIns/plugins/','addIns/plugins/pelican-plugins/']
 PLUGINS = ['ipynb','sitemap','liquid_tags','liquid_tags.notebook','tag_cloud']
 #PLUGINS = ['sitemap','liquid_tags']
 REVERSE_CATEGORY_ORDER = True
-THEME = 'addIns/themes/pelican-bootstrap3/'
 STATIC_PATHS = ['images']
+THEME ='addIns/themes/Flex'
+#THEME = 'addIns/themes/pelican-bootstrap3/'
 ABOUT_ME = 'Thanks for visiting! I am a quantitative scientist, trained in both physics and systems biology. I am passionate about interrogating data intelligently to understand complex systems. This blog is for exploring stats, machine learning, and data science.'
 #AVATAR = 'https://raw.githubusercontent.com/frickp/pelicanSite/master/images/headShot.jpg'
 AVATAR = 'https://raw.githubusercontent.com/frickp/insight/master/FrickHeadshot.jpg'
 DISPLAY_TAGS_ON_SIDEBAR = True
 #HIDE_SIDEBAR = True
-
+SITELOGO = 'https://raw.githubusercontent.com/frickp/insight/master/FrickHeadshot.jpg'
 #PYGMENTS_STYLE=['friendly']
 #NOTEBOOK_DIR = 'notebooks'
 #EXTRA_HEADER = open('_nb_header.html').read().decode('utf-8')
 #IPYNB_USE_META_SUMMARY = ['False']
 TAG_CLOUD_MAX_ITEMS=5
+IGNORE_FILES = ['*ipynb_checkpoints']
 #ARTICLE_PATHS = [
 #	'151015_pca_5yo*',
 #	'151017_miningDataScience*',

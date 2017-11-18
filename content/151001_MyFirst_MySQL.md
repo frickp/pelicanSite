@@ -1,6 +1,6 @@
 Title: MyFIRST MySQL
-Date: 2015-12-09 10:20
-Modified: 2015-12-09 19:30
+Date: 2015-10-01 10:20
+Modified: 2015-10-01 19:30
 Category: blog
 Tags: MySQL, data science
 Slug: myfirst-mysql
